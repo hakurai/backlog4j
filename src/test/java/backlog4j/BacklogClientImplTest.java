@@ -14,6 +14,7 @@ import static org.junit.Assert.assertThat;
  */
 public class BacklogClientImplTest {
 
+    public static final int PROJECT_ID = 1073773875;
     private BacklogClient client;
 
 
@@ -41,7 +42,7 @@ public class BacklogClientImplTest {
 
     @Test
     public void testGetProjectById() throws Exception {
-        Project project = client.getProject(1073773875);
+        Project project = client.getProject(PROJECT_ID);
 
         assertProject1(project);
     }
@@ -49,7 +50,7 @@ public class BacklogClientImplTest {
 
     @Test
     public void testGetComponents() throws Exception {
-        List<Category> categoryList = client.getComponents(1073773875);
+        List<Category> categoryList = client.getComponents(PROJECT_ID);
 
         assertThat(categoryList.size(), is(3));
 
@@ -69,7 +70,7 @@ public class BacklogClientImplTest {
 
     @Test
     public void testGetVersions() throws Exception {
-        List<Version> versionList = client.getVersions(1073773875);
+        List<Version> versionList = client.getVersions(PROJECT_ID);
 
         assertThat(versionList.size(),is(4));
 
@@ -95,8 +96,32 @@ public class BacklogClientImplTest {
 
     }
 
+    @Test
+    public void testGetUsers() throws Exception {
+        List<User> userList = client.getUsers(PROJECT_ID);
+
+        assertThat(userList.size(),is(4));
+
+        User user1 = userList.get(0);
+        assertThat(user1.getId(), is(1073806664));
+        assertThat(user1.getName(), is("hakurai"));
+
+        User user2 = userList.get(1);
+        assertThat(user2.getId(), is(1073806659));
+        assertThat(user2.getName(), is("owner"));
+
+        User user3 = userList.get(2);
+        assertThat(user3.getId(), is(1073806665));
+        assertThat(user3.getName(), is("tom"));
+
+        User user4 = userList.get(3);
+        assertThat(user4.getId(), is(1073806666));
+        assertThat(user4.getName(), is("uochan"));
+
+    }
+
     private void assertProject1(Project project) {
-        assertThat(project.getId(), is(1073773875));
+        assertThat(project.getId(), is(PROJECT_ID));
         assertThat(project.getName(), is("project1"));
         assertThat(project.getKey(), is("P_1"));
         assertThat(project.getUrl(), is("https://b4jtest.backlog.jp/projects/P_1"));

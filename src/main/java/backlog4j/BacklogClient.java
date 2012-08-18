@@ -11,6 +11,7 @@ public interface BacklogClient {
     static final String BACKLOG_GETPROJECT = "backlog.getProject";
     static final String BACKLOG_GETCOMPONENTS = "backlog.getComponents";
     static final String BACKLOG_GETVERSIONS = "backlog.getVersions";
+    static final String BACKLOG_GETUSERS = "backlog.getUsers";
 
     List<Project> getProjects();
 
@@ -21,4 +22,6 @@ public interface BacklogClient {
     List<Category> getComponents(int projectId);
 
     List<Version> getVersions(int projectId);
+
+    List<User> getUsers(int projectId);
 }
