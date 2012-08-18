@@ -28,24 +28,30 @@ public class BacklogClientImplTest {
         assertThat(projects.size(), is(1));
 
         Project project = projects.get(0);
-        assertThat(project.getId(), is(1073773875));
-        assertThat(project.getName(), is("project1"));
-        assertThat(project.getKey(), is("P_1"));
-        assertThat(project.getUrl(), is("https://b4jtest.backlog.jp/projects/P_1"));
-        assertThat(project.isArchived(), is(false));
-
-
+        assertProject1(project);
     }
 
     @Test
-    public void testGetProject() throws Exception{
+    public void testGetProjectByKey() throws Exception {
         Project project = client.getProject("P_1");
 
+        assertProject1(project);
+    }
+
+    @Test
+    public void testGetProjectById() throws Exception {
+        Project project = client.getProject(1073773875);
+
+        assertProject1(project);
+    }
+
+
+    private void assertProject1(Project project) {
         assertThat(project.getId(), is(1073773875));
         assertThat(project.getName(), is("project1"));
         assertThat(project.getKey(), is("P_1"));
         assertThat(project.getUrl(), is("https://b4jtest.backlog.jp/projects/P_1"));
-        assertThat(project.isArchived(), is(false));
     }
+
 
 }

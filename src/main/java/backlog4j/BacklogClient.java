@@ -13,4 +13,6 @@ public interface BacklogClient {
     List<Project> getProjects();
 
     Project getProject(String key);
+
+    Project getProject(int id);
 }

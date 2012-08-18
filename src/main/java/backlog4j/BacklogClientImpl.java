@@ -56,6 +56,16 @@ public class BacklogClientImpl implements BacklogClient {
     @Override
     public Project getProject(String key) {
         Object[] params = new Object[]{key};
+        return getProject(params);
+    }
+
+    @Override
+    public Project getProject(int id) {
+        Object[] params = new Object[]{id};
+        return getProject(params);
+    }
+
+    private Project getProject(Object[] params){
         Object res;
         try {
             res = client.execute(BACKLOG_GETPROJECT, params);
