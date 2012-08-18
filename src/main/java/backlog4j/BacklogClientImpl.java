@@ -45,14 +45,7 @@ public class BacklogClientImpl implements BacklogClient {
             throw new BacklogException(e);
         }
 
-        ArrayList<Project> projectList = new ArrayList<Project>(res.length);
-
-        for (Object o : res) {
-            Map<String, Object> map = (Map<String, Object>) o;
-            projectList.add(new Project(map));
-        }
-
-        return Collections.unmodifiableList(projectList);
+        return toList(Project.class, res);
     }
 
     @Override
@@ -69,65 +62,23 @@ public class BacklogClientImpl implements BacklogClient {
 
     @Override
     public List<Category> getComponents(int projectId) {
-        Object[] params = new Object[]{projectId};
-        Object[] res;
-        try {
-            res = (Object[]) client.execute(BACKLOG_GETCOMPONENTS, params);
-        } catch (XmlRpcException e) {
-            throw new BacklogException(e);
-        }
+        Object[] res = getObjects(BACKLOG_GETCOMPONENTS, projectId);
 
-        List<Category> categoryList = new ArrayList<Category>(res.length);
-
-        for (Object o : res) {
-            Map<String, Object> map = (Map<String, Object>) o;
-
-            categoryList.add(new Category(map));
-        }
-
-        return Collections.unmodifiableList(categoryList);
+        return toList(Category.class, res);
     }
 
     @Override
     public List<Version> getVersions(int projectId) {
-        Object[] params = new Object[]{projectId};
-        Object[] res;
-        try {
-            res = (Object[]) client.execute(BACKLOG_GETVERSIONS, params);
-        } catch (XmlRpcException e) {
-            throw new BacklogException(e);
-        }
+        Object[] res = getObjects(BACKLOG_GETVERSIONS, projectId);
 
-        List<Version> categoryList = new ArrayList<Version>(res.length);
-
-        for (Object o : res) {
-            Map<String, Object> map = (Map<String, Object>) o;
-
-            categoryList.add(new Version(map));
-        }
-
-        return Collections.unmodifiableList(categoryList);
+        return toList(Version.class, res);
     }
 
     @Override
     public List<User> getUsers(int projectId) {
-        Object[] params = new Object[]{projectId};
-        Object[] res;
-        try {
-            res = (Object[]) client.execute(BACKLOG_GETUSERS, params);
-        } catch (XmlRpcException e) {
-            throw new BacklogException(e);
-        }
+        Object[] res = getObjects(BACKLOG_GETUSERS, projectId);
 
-        List<User> categoryList = new ArrayList<User>(res.length);
-
-        for (Object o : res) {
-            Map<String, Object> map = (Map<String, Object>) o;
-
-            categoryList.add(new User(map));
-        }
-
-        return Collections.unmodifiableList(categoryList);
+        return toList(User.class, res);
     }
 
     @Override
@@ -138,7 +89,6 @@ public class BacklogClientImpl implements BacklogClient {
     }
 
     private Object[] getObjects(String method, Object... params) {
-        Object[] res;
         try {
             return (Object[]) client.execute(method, params);
         } catch (XmlRpcException e) {
