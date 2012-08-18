@@ -46,12 +46,23 @@ public class BacklogClientImpl implements BacklogClient {
         ArrayList<Project> projectList = new ArrayList<Project>(res.length);
 
         for (Object src : res) {
-
             Map<String, Object> map = (Map<String, Object>) src;
-
             projectList.add(new Project(map));
         }
 
         return Collections.unmodifiableList(projectList);
+    }
+
+    @Override
+    public Project getProject(String key) {
+        Object[] params = new Object[]{key};
+        Object res;
+        try {
+            res = client.execute(BACKLOG_GETPROJECT, params);
+        } catch (XmlRpcException e) {
+            throw new BacklogException(e);
+        }
+
+        return new Project((Map<String,Object>)res);
     }
 }

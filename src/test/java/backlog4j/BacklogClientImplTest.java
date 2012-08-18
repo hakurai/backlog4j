@@ -37,4 +37,15 @@ public class BacklogClientImplTest {
 
     }
 
+    @Test
+    public void testGetProject() throws Exception{
+        Project project = client.getProject("P_1");
+
+        assertThat(project.getId(), is(1073773875));
+        assertThat(project.getName(), is("project1"));
+        assertThat(project.getKey(), is("P_1"));
+        assertThat(project.getUrl(), is("https://b4jtest.backlog.jp/projects/P_1"));
+        assertThat(project.isArchived(), is(false));
+    }
+
 }
