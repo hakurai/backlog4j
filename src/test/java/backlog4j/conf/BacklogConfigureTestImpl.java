@@ -1,7 +1,4 @@
-package backlog4j;
-
-import backlog4j.conf.BacklogConfigure;
-import backlog4j.conf.BacklogConfigureImpl;
+package backlog4j.conf;
 
 import java.io.FileInputStream;
 import java.io.IOException;

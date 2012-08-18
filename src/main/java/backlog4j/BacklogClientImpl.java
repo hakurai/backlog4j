@@ -45,8 +45,8 @@ public class BacklogClientImpl implements BacklogClient {
 
         ArrayList<Project> projectList = new ArrayList<Project>(res.length);
 
-        for (Object src : res) {
-            Map<String, Object> map = (Map<String, Object>) src;
+        for (Object o : res) {
+            Map<String, Object> map = (Map<String, Object>) o;
             projectList.add(new Project(map));
         }
 
@@ -65,7 +65,28 @@ public class BacklogClientImpl implements BacklogClient {
         return getProject(params);
     }
 
-    private Project getProject(Object[] params){
+    @Override
+    public List<Category> getComponents(int projectId) {
+        Object[] params = new Object[]{projectId};
+        Object[] res;
+        try {
+            res = (Object[]) client.execute(BACKLOG_GETCOMPONENTS, params);
+        } catch (XmlRpcException e) {
+            throw new BacklogException(e);
+        }
+
+        List<Category> categoryList = new ArrayList<Category>(res.length);
+
+        for (Object o : res) {
+            Map<String, Object> map = (Map<String, Object>) o;
+
+            categoryList.add(new Category(map));
+        }
+
+        return Collections.unmodifiableList(categoryList);
+    }
+
+    private Project getProject(Object[] params) {
         Object res;
         try {
             res = client.execute(BACKLOG_GETPROJECT, params);
@@ -73,6 +94,6 @@ public class BacklogClientImpl implements BacklogClient {
             throw new BacklogException(e);
         }
 
-        return new Project((Map<String,Object>)res);
+        return new Project((Map<String, Object>) res);
     }
 }

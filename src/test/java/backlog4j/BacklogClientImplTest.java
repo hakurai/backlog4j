@@ -1,5 +1,6 @@
 package backlog4j;
 
+import backlog4j.conf.BacklogConfigureTestImpl;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -43,6 +44,26 @@ public class BacklogClientImplTest {
         Project project = client.getProject(1073773875);
 
         assertProject1(project);
+    }
+
+    @Test
+    public void testGetComponents() throws Exception {
+        List<Category> categoryList = client.getComponents(1073773875);
+
+        assertThat(categoryList.size(), is(3));
+
+        Category category1 = categoryList.get(0);
+        assertThat(category1.getId(), is(1073813651));
+        assertThat(category1.getName(), is("category1"));
+
+        Category category2 = categoryList.get(1);
+        assertThat(category2.getId(), is(1073813652));
+        assertThat(category2.getName(), is("mail"));
+
+        Category category3 = categoryList.get(2);
+        assertThat(category3.getId(), is(1073813653));
+        assertThat(category3.getName(), is("test"));
+
     }
 
 
