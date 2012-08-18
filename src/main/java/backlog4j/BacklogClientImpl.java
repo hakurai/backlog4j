@@ -5,6 +5,8 @@ import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -126,6 +128,52 @@ public class BacklogClientImpl implements BacklogClient {
         }
 
         return Collections.unmodifiableList(categoryList);
+    }
+
+    @Override
+    public List<IssueType> getIssueTypes(int projectId) {
+        Object[] res = getObjects(BACKLOG_GETISSUETYPES, projectId);
+
+        return toList(IssueType.class, res);
+    }
+
+    private Object[] getObjects(String method, Object... params) {
+        Object[] res;
+        try {
+            return (Object[]) client.execute(method, params);
+        } catch (XmlRpcException e) {
+            throw new BacklogException(e);
+        }
+    }
+
+    private <T> List<T> toList(Class<T> clazz, Object[] objects) {
+        List<T> list = new ArrayList<T>(objects.length);
+
+        Constructor<T> constructor;
+        try {
+            constructor = clazz.getConstructor(Map.class);
+        } catch (NoSuchMethodException e) {
+            throw new BacklogException(e);
+        }
+
+        for (Object o : objects) {
+            Map<String, Object> map = (Map<String, Object>) o;
+
+            T t;
+            try {
+                t = constructor.newInstance(map);
+            } catch (InstantiationException e) {
+                throw new BacklogException(e);
+            } catch (IllegalAccessException e) {
+                throw new BacklogException(e);
+            } catch (InvocationTargetException e) {
+                throw new BacklogException(e);
+            }
+
+            list.add(t);
+        }
+
+        return Collections.unmodifiableList(list);
     }
 
     private Project getProject(Object[] params) {

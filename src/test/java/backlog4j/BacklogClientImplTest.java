@@ -120,6 +120,34 @@ public class BacklogClientImplTest {
 
     }
 
+    @Test
+    public void testGetIssueTypes() throws Exception {
+        List<IssueType> issueTypeList = client.getIssueTypes(PROJECT_ID);
+
+        assertThat(issueTypeList.size(),is(4));
+
+        IssueType issueType1 = issueTypeList.get(0);
+        assertThat(issueType1.getId(),is(1073884674));
+        assertThat(issueType1.getName(),is("バグ"));
+        assertThat(issueType1.getColor(),is("#990000"));
+
+        IssueType issueType2 = issueTypeList.get(1);
+        assertThat(issueType2.getId(),is(1073884675));
+        assertThat(issueType2.getName(),is("タスク"));
+        assertThat(issueType2.getColor(),is("#7ea800"));
+
+        IssueType issueType3 = issueTypeList.get(2);
+        assertThat(issueType3.getId(),is(1073884676));
+        assertThat(issueType3.getName(),is("要望"));
+        assertThat(issueType3.getColor(),is("#ff9200"));
+
+        IssueType issueType4 = issueTypeList.get(3);
+        assertThat(issueType4.getId(),is(1073884677));
+        assertThat(issueType4.getName(),is("その他"));
+        assertThat(issueType4.getColor(),is("#2779ca"));
+
+    }
+
     private void assertProject1(Project project) {
         assertThat(project.getId(), is(PROJECT_ID));
         assertThat(project.getName(), is("project1"));
