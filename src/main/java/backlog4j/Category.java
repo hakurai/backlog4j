@@ -10,9 +10,10 @@ public final class Category {
     private final int id;
     private final String name;
 
-    public Category(Map<String,Object> map) {
-        id = (Integer)map.get("id");
-        name = (String)map.get("name");
+    public Category(Map<String, Object> map) {
+        assert (map.size() == 2);
+        id = (Integer) map.get("id");
+        name = (String) map.get("name");
     }
 
     public int getId() {

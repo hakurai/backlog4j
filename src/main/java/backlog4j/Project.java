@@ -13,12 +13,13 @@ public final class Project {
     private final String url;
     private final boolean archived;
 
-    public Project(Map<String, Object> src) {
-        id = (Integer) src.get("id");
-        name = (String) src.get("name");
-        key = (String) src.get("key");
-        url = (String) src.get("url");
-        archived = (Boolean) src.get("archived");
+    public Project(Map<String, Object> map) {
+        assert (map.size() == 5);
+        id = (Integer) map.get("id");
+        name = (String) map.get("name");
+        key = (String) map.get("key");
+        url = (String) map.get("url");
+        archived = (Boolean) map.get("archived");
     }
 
     public int getId() {
