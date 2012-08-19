@@ -5,10 +5,6 @@ import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -45,7 +41,7 @@ public class BacklogClientImpl implements BacklogClient {
             throw new BacklogException(e);
         }
 
-        return toList(Project.class, res);
+        return XmlRpcUtil.toList(Project.class, res);
     }
 
     @Override
@@ -64,28 +60,41 @@ public class BacklogClientImpl implements BacklogClient {
     public List<Category> getComponents(int projectId) {
         Object[] res = getObjects(BACKLOG_GETCOMPONENTS, projectId);
 
-        return toList(Category.class, res);
+        return XmlRpcUtil.toList(Category.class, res);
     }
 
     @Override
     public List<Version> getVersions(int projectId) {
         Object[] res = getObjects(BACKLOG_GETVERSIONS, projectId);
 
-        return toList(Version.class, res);
+        return XmlRpcUtil.toList(Version.class, res);
     }
 
     @Override
     public List<User> getUsers(int projectId) {
         Object[] res = getObjects(BACKLOG_GETUSERS, projectId);
 
-        return toList(User.class, res);
+        return XmlRpcUtil.toList(User.class, res);
     }
 
     @Override
     public List<IssueType> getIssueTypes(int projectId) {
         Object[] res = getObjects(BACKLOG_GETISSUETYPES, projectId);
 
-        return toList(IssueType.class, res);
+        return XmlRpcUtil.toList(IssueType.class, res);
+    }
+
+    @Override
+    public Issue getIssue(String issueKey) {
+        Object[] params = new Object[]{issueKey};
+        Object res;
+        try {
+            res = client.execute(BACKLOG_GETISSUE, params);
+        } catch (XmlRpcException e) {
+            throw new BacklogException(e);
+        }
+
+        return new Issue((Map<String, Object>) res);
     }
 
     private Object[] getObjects(String method, Object... params) {
@@ -94,36 +103,6 @@ public class BacklogClientImpl implements BacklogClient {
         } catch (XmlRpcException e) {
             throw new BacklogException(e);
         }
-    }
-
-    private <T> List<T> toList(Class<T> clazz, Object[] objects) {
-        List<T> list = new ArrayList<T>(objects.length);
-
-        Constructor<T> constructor;
-        try {
-            constructor = clazz.getConstructor(Map.class);
-        } catch (NoSuchMethodException e) {
-            throw new BacklogException(e);
-        }
-
-        for (Object o : objects) {
-            Map<String, Object> map = (Map<String, Object>) o;
-
-            T t;
-            try {
-                t = constructor.newInstance(map);
-            } catch (InstantiationException e) {
-                throw new BacklogException(e);
-            } catch (IllegalAccessException e) {
-                throw new BacklogException(e);
-            } catch (InvocationTargetException e) {
-                throw new BacklogException(e);
-            }
-
-            list.add(t);
-        }
-
-        return Collections.unmodifiableList(list);
     }
 
     private Project getProject(Object[] params) {

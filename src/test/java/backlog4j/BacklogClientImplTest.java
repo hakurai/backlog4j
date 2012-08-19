@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -72,7 +73,7 @@ public class BacklogClientImplTest {
     public void testGetVersions() throws Exception {
         List<Version> versionList = client.getVersions(PROJECT_ID);
 
-        assertThat(versionList.size(),is(4));
+        assertThat(versionList.size(), is(4));
 
         Version version1 = versionList.get(0);
         assertThat(version1.getId(), is(1073787619));
@@ -100,7 +101,7 @@ public class BacklogClientImplTest {
     public void testGetUsers() throws Exception {
         List<User> userList = client.getUsers(PROJECT_ID);
 
-        assertThat(userList.size(),is(4));
+        assertThat(userList.size(), is(4));
 
         User user1 = userList.get(0);
         assertThat(user1.getId(), is(1073806664));
@@ -124,27 +125,109 @@ public class BacklogClientImplTest {
     public void testGetIssueTypes() throws Exception {
         List<IssueType> issueTypeList = client.getIssueTypes(PROJECT_ID);
 
-        assertThat(issueTypeList.size(),is(4));
+        assertThat(issueTypeList.size(), is(4));
 
         IssueType issueType1 = issueTypeList.get(0);
-        assertThat(issueType1.getId(),is(1073884674));
-        assertThat(issueType1.getName(),is("バグ"));
-        assertThat(issueType1.getColor(),is("#990000"));
+        assertThat(issueType1.getId(), is(1073884674));
+        assertThat(issueType1.getName(), is("バグ"));
+        assertThat(issueType1.getColor(), is("#990000"));
 
         IssueType issueType2 = issueTypeList.get(1);
-        assertThat(issueType2.getId(),is(1073884675));
-        assertThat(issueType2.getName(),is("タスク"));
-        assertThat(issueType2.getColor(),is("#7ea800"));
+        assertThat(issueType2.getId(), is(1073884675));
+        assertThat(issueType2.getName(), is("タスク"));
+        assertThat(issueType2.getColor(), is("#7ea800"));
 
         IssueType issueType3 = issueTypeList.get(2);
-        assertThat(issueType3.getId(),is(1073884676));
-        assertThat(issueType3.getName(),is("要望"));
-        assertThat(issueType3.getColor(),is("#ff9200"));
+        assertThat(issueType3.getId(), is(1073884676));
+        assertThat(issueType3.getName(), is("要望"));
+        assertThat(issueType3.getColor(), is("#ff9200"));
 
         IssueType issueType4 = issueTypeList.get(3);
-        assertThat(issueType4.getId(),is(1073884677));
-        assertThat(issueType4.getName(),is("その他"));
-        assertThat(issueType4.getColor(),is("#2779ca"));
+        assertThat(issueType4.getId(), is(1073884677));
+        assertThat(issueType4.getName(), is("その他"));
+        assertThat(issueType4.getColor(), is("#2779ca"));
+
+    }
+
+    @Test
+    public void testGetIssueP_1_1() throws Exception {
+        Issue issue = client.getIssue("P_1-1");
+
+        assertThat(issue.getId(), is(1074790283));
+        assertThat(issue.getKey(), is("P_1-1"));
+        assertThat(issue.getSummary(), is("create new task"));
+        assertThat(issue.getDescription(), is("hallo backlog!"));
+        assertThat(issue.getUrl(), is("https://b4jtest.backlog.jp/view/P_1-1"));
+        assertThat(issue.getDueDate(), is(""));
+        assertThat(issue.getStartDate(), is(""));
+        assertThat(issue.getEstimatedHours(), is(""));
+        assertThat(issue.getActualHours(), is(""));
+        assertThat(issue.getIssueType().getName(), is("バグ"));
+        assertThat(issue.getPriority().getName(), is("中"));
+        assertThat(issue.getResolution(), nullValue());
+        assertThat(issue.getStatus().getName(), is("未対応"));
+        assertThat(issue.getComponents().size(), is(1));
+        assertThat(issue.getVersions().size(), is(1));
+        assertThat(issue.getMilestones().size(), is(1));
+        assertThat(issue.getCreatedUser().getName(), is("owner"));
+        assertThat(issue.getAssigner().getName(), is("owner"));
+        assertThat(issue.getCreatedOn(), is("20120818232007"));
+        assertThat(issue.getUpdatedOn(), is("20120818232007"));
+
+    }
+
+    @Test
+    public void testGetIssueP_1_2() throws Exception {
+        Issue issue = client.getIssue("P_1-2");
+
+        assertThat(issue.getId(), is(1074790284));
+        assertThat(issue.getKey(), is("P_1-2"));
+        assertThat(issue.getSummary(), is("setup jenkins"));
+        assertThat(issue.getDescription(), is(""));
+        assertThat(issue.getUrl(), is("https://b4jtest.backlog.jp/view/P_1-2"));
+        assertThat(issue.getDueDate(), is("20120820"));
+        assertThat(issue.getStartDate(), is(""));
+        assertThat(issue.getEstimatedHours(), is(""));
+        assertThat(issue.getActualHours(), is(""));
+        assertThat(issue.getIssueType().getName(), is("タスク"));
+        assertThat(issue.getPriority().getName(), is("中"));
+        assertThat(issue.getResolution().getName(), is("対応済み"));
+        assertThat(issue.getStatus().getName(), is("完了"));
+        assertThat(issue.getComponents().size(), is(2));
+        assertThat(issue.getVersions().size(), is(2));
+        assertThat(issue.getMilestones().size(), is(2));
+        assertThat(issue.getCreatedUser().getName(), is("owner"));
+        assertThat(issue.getAssigner().getName(), is("owner"));
+        assertThat(issue.getCreatedOn(), is("20120818232128"));
+        assertThat(issue.getUpdatedOn(), is("20120819164005"));
+
+    }
+
+    @Test
+    public void testGetIssueP_1_4() throws Exception {
+        Issue issue = client.getIssue("P_1-4");
+
+        assertThat(issue.getId(), is(1074790593));
+        assertThat(issue.getKey(), is("P_1-4"));
+        assertThat(issue.getSummary(), is("empty"));
+        assertThat(issue.getDescription(), is(""));
+        assertThat(issue.getUrl(), is("https://b4jtest.backlog.jp/view/P_1-4"));
+        assertThat(issue.getDueDate(), is(""));
+        assertThat(issue.getStartDate(), is(""));
+        assertThat(issue.getEstimatedHours(), is(""));
+        assertThat(issue.getActualHours(), is(""));
+        assertThat(issue.getIssueType().getName(), is("バグ"));
+        assertThat(issue.getPriority().getName(), is("中"));
+        assertThat(issue.getResolution(), nullValue());
+        assertThat(issue.getStatus().getName(), is("未対応"));
+        assertThat(issue.getComponents().size(), is(0));
+        assertThat(issue.getVersions().size(), is(0));
+        assertThat(issue.getMilestones().size(), is(0));
+        assertThat(issue.getCreatedUser().getName(), is("owner"));
+        assertThat(issue.getAssigner(), nullValue());
+        assertThat(issue.getCreatedOn(), is("20120819153051"));
+        assertThat(issue.getUpdatedOn(), is("20120819153051"));
+
 
     }
 
