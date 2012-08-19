@@ -30,4 +30,6 @@ public interface BacklogClient {
     List<IssueType> getIssueTypes(int projectId);
 
     Issue getIssue(String issueKey);
+
+    Issue getIssue(int issueId);
 }

@@ -87,14 +87,15 @@ public class BacklogClientImpl implements BacklogClient {
     @Override
     public Issue getIssue(String issueKey) {
         Object[] params = new Object[]{issueKey};
-        Object res;
-        try {
-            res = client.execute(BACKLOG_GETISSUE, params);
-        } catch (XmlRpcException e) {
-            throw new BacklogException(e);
-        }
 
-        return new Issue((Map<String, Object>) res);
+        return getIssue(params);
+    }
+
+    @Override
+    public Issue getIssue(int issueId) {
+        Object[] params = new Object[]{issueId};
+
+        return getIssue(params);
     }
 
     private Object[] getObjects(String method, Object... params) {
@@ -114,5 +115,16 @@ public class BacklogClientImpl implements BacklogClient {
         }
 
         return new Project((Map<String, Object>) res);
+    }
+
+    private Issue getIssue(Object[] params) {
+        Object res;
+        try {
+            res = client.execute(BACKLOG_GETISSUE, params);
+        } catch (XmlRpcException e) {
+            throw new BacklogException(e);
+        }
+
+        return new Issue((Map<String, Object>) res);
     }
 }

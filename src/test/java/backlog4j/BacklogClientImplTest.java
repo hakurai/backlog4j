@@ -231,6 +231,33 @@ public class BacklogClientImplTest {
 
     }
 
+    @Test
+    public void testGetIssueP_1_1ByIssueId() throws Exception {
+        Issue issue = client.getIssue(1074790283);
+
+        assertThat(issue.getId(), is(1074790283));
+        assertThat(issue.getKey(), is("P_1-1"));
+        assertThat(issue.getSummary(), is("create new task"));
+        assertThat(issue.getDescription(), is("hallo backlog!"));
+        assertThat(issue.getUrl(), is("https://b4jtest.backlog.jp/view/P_1-1"));
+        assertThat(issue.getDueDate(), is(""));
+        assertThat(issue.getStartDate(), is(""));
+        assertThat(issue.getEstimatedHours(), is(""));
+        assertThat(issue.getActualHours(), is(""));
+        assertThat(issue.getIssueType().getName(), is("バグ"));
+        assertThat(issue.getPriority().getName(), is("中"));
+        assertThat(issue.getResolution(), nullValue());
+        assertThat(issue.getStatus().getName(), is("未対応"));
+        assertThat(issue.getComponents().size(), is(1));
+        assertThat(issue.getVersions().size(), is(1));
+        assertThat(issue.getMilestones().size(), is(1));
+        assertThat(issue.getCreatedUser().getName(), is("owner"));
+        assertThat(issue.getAssigner().getName(), is("owner"));
+        assertThat(issue.getCreatedOn(), is("20120818232007"));
+        assertThat(issue.getUpdatedOn(), is("20120818232007"));
+
+    }
+
     private void assertProject1(Project project) {
         assertThat(project.getId(), is(PROJECT_ID));
         assertThat(project.getName(), is("project1"));
