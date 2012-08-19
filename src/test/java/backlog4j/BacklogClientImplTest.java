@@ -1,5 +1,6 @@
 package backlog4j;
 
+import backlog4j.conf.BacklogConfigureImpl;
 import backlog4j.conf.BacklogConfigureTestImpl;
 import org.junit.Before;
 import org.junit.Test;
@@ -304,7 +305,7 @@ public class BacklogClientImplTest {
     public void testFindIssue() throws Exception {
         List<Issue> issueList = client.findIssue(new FindIssueRequest(PROJECT_ID), new FindIssueOrderBuilder().build());
 
-        assertThat(issueList.size(),is(5));
+        assertThat(issueList.size(), is(5));
 
         Issue p_1_1 = issueList.get(4);
         assertThat(p_1_1.getId(), is(1074790283));
@@ -327,6 +328,20 @@ public class BacklogClientImplTest {
         assertThat(p_1_1.getAssigner().getName(), is("owner"));
         assertThat(p_1_1.getCreatedOn(), is("20120818232007"));
         assertThat(p_1_1.getUpdatedOn(), is("20120818232007"));
+    }
+
+    @Test
+    public void testCreateIssue() throws Exception {
+        final int projectId = 1073771652;
+        BacklogClient client = new BacklogClientImpl(new BacklogConfigureImpl("hakurai2", "hakurai", "hakurai"));
+
+        int count = client.countIssue(new FindIssueRequest(projectId));
+
+        Issue issue = client.createIssue(new CreateIssueRequestBuilder().setProjectId(projectId).setSummary("test").build());
+
+        assertThat(issue.getSummary(), is("test"));
+
+        assertThat(client.countIssue(new FindIssueRequest(projectId)), is(count + 1));
     }
 
     private void assertProject1(Project project) {

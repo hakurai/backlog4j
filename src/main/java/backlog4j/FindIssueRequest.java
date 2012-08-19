@@ -287,6 +287,5 @@ public final class FindIssueRequest {
         }
 
         return map;
-
     }
 }

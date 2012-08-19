@@ -16,7 +16,7 @@ public final class XmlRpcUtil {
     }
 
     public static <T> List<T> toList(Class<T> clazz, Object[] objects) {
-        if(objects==null){
+        if (objects == null) {
             return Collections.emptyList();
         }
         List<T> list = new ArrayList<T>(objects.length);
@@ -48,11 +48,18 @@ public final class XmlRpcUtil {
         return Collections.unmodifiableList(list);
     }
 
-    public static <T> List<T> toList( Class<T> clazz, Object o){
-        return toList(clazz, (Object[])o);
+    public static <T> List<T> toList(Class<T> clazz, Object o) {
+        return toList(clazz, (Object[]) o);
     }
 
     public static String castToString(Object o) {
         return o == null ? "" : (String) o;
+    }
+
+
+    public static void putNonNullObject(Map<String, Object> map, String key, Object obj) {
+        if (obj != null) {
+            map.put(key, obj);
+        }
     }
 }

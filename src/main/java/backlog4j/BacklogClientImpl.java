@@ -5,7 +5,6 @@ import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -121,7 +120,7 @@ public class BacklogClientImpl implements BacklogClient {
 
     @Override
     public List<Issue> findIssue(FindIssueRequest findIssueRequest, FindIssueOrder findIssueOrder) {
-        Map<String,Object> paramMap = findIssueRequest.toMap();
+        Map<String, Object> paramMap = findIssueRequest.toMap();
         paramMap.putAll(findIssueOrder.toMap());
 
         Object[] params = new Object[]{paramMap};
@@ -132,7 +131,20 @@ public class BacklogClientImpl implements BacklogClient {
             throw new BacklogException(e);
         }
 
-        return XmlRpcUtil.toList(Issue.class,res);
+        return XmlRpcUtil.toList(Issue.class, res);
+    }
+
+    @Override
+    public Issue createIssue(CreateIssueRequest createIssueRequest) {
+        Object[] params = new Object[]{createIssueRequest.toMap()};
+        Object res;
+        try {
+            res = client.execute(BACKLOG_CREATEISSUE, params);
+        } catch (XmlRpcException e) {
+            throw new BacklogException(e);
+        }
+
+        return new Issue((Map<String,Object>)res);
     }
 
     private Object[] getObjects(String method, Object... params) {
