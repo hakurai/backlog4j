@@ -265,18 +265,39 @@ public class BacklogClientImplTest {
         assertThat(comments.size(), is(2));
 
         Comment comment1 = comments.get(0);
-        assertThat(comment1.getId(),is(1078454063));
-        assertThat(comment1.getContent(),is("completed!"));
-        assertThat(comment1.getCreatedUser().getName(),is("owner"));
-        assertThat(comment1.getCreatedOn(),is("20120819163901"));
-        assertThat(comment1.getUpdatedOn(),is("20120819163901"));
+        assertThat(comment1.getId(), is(1078454063));
+        assertThat(comment1.getContent(), is("completed!"));
+        assertThat(comment1.getCreatedUser().getName(), is("owner"));
+        assertThat(comment1.getCreatedOn(), is("20120819163901"));
+        assertThat(comment1.getUpdatedOn(), is("20120819163901"));
 
         Comment comment2 = comments.get(1);
-        assertThat(comment2.getId(),is(1078454287));
-        assertThat(comment2.getContent(),is("update!"));
-        assertThat(comment2.getCreatedUser().getName(),is("owner"));
-        assertThat(comment2.getCreatedOn(),is("20120819183620"));
-        assertThat(comment2.getUpdatedOn(),is("20120819183630"));
+        assertThat(comment2.getId(), is(1078454287));
+        assertThat(comment2.getContent(), is("update!"));
+        assertThat(comment2.getCreatedUser().getName(), is("owner"));
+        assertThat(comment2.getCreatedOn(), is("20120819183620"));
+        assertThat(comment2.getUpdatedOn(), is("20120819183630"));
+    }
+
+    @Test
+    public void testCountIssue() throws Exception {
+        int count = client.countIssue(new FindRequest(PROJECT_ID));
+
+        assertThat(count, is(4));
+    }
+
+    @Test
+    public void testCountIssueByPriority() throws Exception {
+        int count = client.countIssue(new FindRequestBuilder(PROJECT_ID).addPriorityId(3).build());
+
+        assertThat(count, is(3));
+    }
+
+    @Test
+    public void testCountIssueByCreatedUserId() throws Exception {
+        int count = client.countIssue(new FindRequestBuilder(PROJECT_ID).addCreatedUserId(1073806664).build());
+
+        assertThat(count, is(1));
     }
 
     private void assertProject1(Project project) {

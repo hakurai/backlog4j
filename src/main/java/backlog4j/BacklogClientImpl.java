@@ -105,6 +105,19 @@ public class BacklogClientImpl implements BacklogClient {
         return XmlRpcUtil.toList(Comment.class, res);
     }
 
+    @Override
+    public int countIssue(FindRequest findRequest) {
+        Object[] params = new Object[]{findRequest.toMap()};
+        Object res;
+        try {
+            res = client.execute(BACKLOG_COUNTISSUE, params);
+        } catch (XmlRpcException e) {
+            throw new BacklogException(e);
+        }
+
+        return (Integer) res;
+    }
+
     private Object[] getObjects(String method, Object... params) {
         try {
             return (Object[]) client.execute(method, params);
