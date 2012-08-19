@@ -283,14 +283,14 @@ public class BacklogClientImplTest {
     public void testCountIssue() throws Exception {
         int count = client.countIssue(new FindIssueRequest(PROJECT_ID));
 
-        assertThat(count, is(4));
+        assertThat(count, is(5));
     }
 
     @Test
     public void testCountIssueByPriority() throws Exception {
         int count = client.countIssue(new FindIssueRequestBuilder(PROJECT_ID).addPriorityId(3).build());
 
-        assertThat(count, is(3));
+        assertThat(count, is(4));
     }
 
     @Test
@@ -298,6 +298,35 @@ public class BacklogClientImplTest {
         int count = client.countIssue(new FindIssueRequestBuilder(PROJECT_ID).addCreatedUserId(1073806664).build());
 
         assertThat(count, is(1));
+    }
+
+    @Test
+    public void testFindIssue() throws Exception {
+        List<Issue> issueList = client.findIssue(new FindIssueRequest(PROJECT_ID), new FindIssueOrderBuilder().build());
+
+        assertThat(issueList.size(),is(5));
+
+        Issue p_1_1 = issueList.get(4);
+        assertThat(p_1_1.getId(), is(1074790283));
+        assertThat(p_1_1.getKey(), is("P_1-1"));
+        assertThat(p_1_1.getSummary(), is("create new task"));
+        assertThat(p_1_1.getDescription(), is("hallo backlog!"));
+        assertThat(p_1_1.getUrl(), is("https://b4jtest.backlog.jp/view/P_1-1"));
+        assertThat(p_1_1.getDueDate(), is(""));
+        assertThat(p_1_1.getStartDate(), is(""));
+        assertThat(p_1_1.getEstimatedHours(), is(""));
+        assertThat(p_1_1.getActualHours(), is(""));
+        assertThat(p_1_1.getIssueType().getName(), is("バグ"));
+        assertThat(p_1_1.getPriority().getName(), is("中"));
+        assertThat(p_1_1.getResolution(), nullValue());
+        assertThat(p_1_1.getStatus().getName(), is("未対応"));
+        assertThat(p_1_1.getComponents().size(), is(1));
+        assertThat(p_1_1.getVersions().size(), is(1));
+        assertThat(p_1_1.getMilestones().size(), is(1));
+        assertThat(p_1_1.getCreatedUser().getName(), is("owner"));
+        assertThat(p_1_1.getAssigner().getName(), is("owner"));
+        assertThat(p_1_1.getCreatedOn(), is("20120818232007"));
+        assertThat(p_1_1.getUpdatedOn(), is("20120818232007"));
     }
 
     private void assertProject1(Project project) {

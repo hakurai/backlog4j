@@ -16,6 +16,7 @@ public interface BacklogClient {
     static final String BACKLOG_GETISSUE = "backlog.getIssue";
     static final String BACKLOG_GETCOMMENTS = "backlog.getComments";
     static final String BACKLOG_COUNTISSUE = "backlog.countIssue";
+    static final String BACKLOG_FINDISSUE = "backlog.findIssue";
 
     List<Project> getProjects();
 
@@ -38,4 +39,6 @@ public interface BacklogClient {
     List<Comment> getComments(int issueId);
 
     int countIssue(FindIssueRequest findIssueRequest);
+
+    List<Issue> findIssue(FindIssueRequest findIssueRequest, FindIssueOrder findIssueOrder);
 }
