@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * @author eguchi
  */
-public final class FindRequest {
+public final class FindIssueRequest {
 
     public enum File {
         ATTACHED(1),
@@ -48,7 +48,7 @@ public final class FindRequest {
     private final List<File> file;
 
 
-    public FindRequest(int projectId) {
+    public FindIssueRequest(int projectId) {
         this(projectId,
                 null,
                 null,
@@ -72,27 +72,27 @@ public final class FindRequest {
                 null);
     }
 
-    public FindRequest(int projectId,
-                       List<Integer> issueTypeId,
-                       List<String> issueType,
-                       List<Integer> componentId,
-                       List<Integer> versionId,
-                       List<Integer> milestoneId,
-                       List<Integer> statusId,
-                       List<Integer> priorityId,
-                       List<Integer> assignerId,
-                       List<Integer> createdUserId,
-                       List<Integer> resolutionId,
-                       String createdOnMin,
-                       String createdOnMax,
-                       String updatedOnMin,
-                       String updatedOnMax,
-                       String startDateMin,
-                       String startDateMax,
-                       String dueDateMin,
-                       String dueDateMax,
-                       String query,
-                       List<File> file) {
+    public FindIssueRequest(int projectId,
+                            List<Integer> issueTypeId,
+                            List<String> issueType,
+                            List<Integer> componentId,
+                            List<Integer> versionId,
+                            List<Integer> milestoneId,
+                            List<Integer> statusId,
+                            List<Integer> priorityId,
+                            List<Integer> assignerId,
+                            List<Integer> createdUserId,
+                            List<Integer> resolutionId,
+                            String createdOnMin,
+                            String createdOnMax,
+                            String updatedOnMin,
+                            String updatedOnMax,
+                            String startDateMin,
+                            String startDateMax,
+                            String dueDateMin,
+                            String dueDateMax,
+                            String query,
+                            List<File> file) {
         this.projectId = projectId;
         this.issueTypeId = issueTypeId;
         this.issueType = issueType;

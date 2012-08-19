@@ -37,5 +37,5 @@ public interface BacklogClient {
 
     List<Comment> getComments(int issueId);
 
-    int countIssue(FindRequest findRequest);
+    int countIssue(FindIssueRequest findIssueRequest);
 }

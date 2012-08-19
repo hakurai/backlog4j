@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @author eguchi
  */
-public class FindRequestBuilder {
+public class FindIssueRequestBuilder {
 
     private int projectId;
     private List<Integer> issueTypeId;
@@ -28,10 +28,10 @@ public class FindRequestBuilder {
     private String dueDateMin;
     private String dueDateMax;
     private String query;
-    private List<FindRequest.File> file;
+    private List<FindIssueRequest.File> file;
 
 
-    public FindRequestBuilder(int projectId) {
+    public FindIssueRequestBuilder(int projectId) {
         this.projectId = projectId;
     }
 
@@ -39,7 +39,7 @@ public class FindRequestBuilder {
         return projectId;
     }
 
-    public FindRequestBuilder setProjectId(int projectId) {
+    public FindIssueRequestBuilder setProjectId(int projectId) {
         this.projectId = projectId;
 
         return this;
@@ -49,7 +49,7 @@ public class FindRequestBuilder {
         return issueTypeId;
     }
 
-    public FindRequestBuilder addIssueTypeId(int newIssueTypeId) {
+    public FindIssueRequestBuilder addIssueTypeId(int newIssueTypeId) {
         if (this.issueTypeId == null) {
             this.issueTypeId = new ArrayList<Integer>();
         }
@@ -62,7 +62,7 @@ public class FindRequestBuilder {
         return issueType;
     }
 
-    public FindRequestBuilder addIssueType(String newIssueType) {
+    public FindIssueRequestBuilder addIssueType(String newIssueType) {
         if (this.issueType == null) {
             this.issueType = new ArrayList<String>();
         }
@@ -75,7 +75,7 @@ public class FindRequestBuilder {
         return componentId;
     }
 
-    public FindRequestBuilder addComponentId(int newComponentId) {
+    public FindIssueRequestBuilder addComponentId(int newComponentId) {
         if (this.componentId == null) {
             this.componentId = new ArrayList<Integer>();
         }
@@ -88,7 +88,7 @@ public class FindRequestBuilder {
         return versionId;
     }
 
-    public FindRequestBuilder addVersionId(int newVersionId) {
+    public FindIssueRequestBuilder addVersionId(int newVersionId) {
         if (this.versionId == null) {
             this.versionId = new ArrayList<Integer>();
         }
@@ -101,7 +101,7 @@ public class FindRequestBuilder {
         return milestoneId;
     }
 
-    public FindRequestBuilder addMilestoneId(int newMilestoneId) {
+    public FindIssueRequestBuilder addMilestoneId(int newMilestoneId) {
         if (this.milestoneId == null) {
             this.milestoneId = new ArrayList<Integer>();
         }
@@ -114,7 +114,7 @@ public class FindRequestBuilder {
         return statusId;
     }
 
-    public FindRequestBuilder addStatusId(int newStatusId) {
+    public FindIssueRequestBuilder addStatusId(int newStatusId) {
         if (this.statusId == null) {
             this.statusId = new ArrayList<Integer>();
         }
@@ -127,7 +127,7 @@ public class FindRequestBuilder {
         return priorityId;
     }
 
-    public FindRequestBuilder addPriorityId(int newPriorityId) {
+    public FindIssueRequestBuilder addPriorityId(int newPriorityId) {
         if (this.priorityId == null) {
             this.priorityId = new ArrayList<Integer>();
         }
@@ -140,7 +140,7 @@ public class FindRequestBuilder {
         return assignerId;
     }
 
-    public FindRequestBuilder addAssignerId(int newAssignerId) {
+    public FindIssueRequestBuilder addAssignerId(int newAssignerId) {
         if (this.assignerId == null) {
             this.assignerId = new ArrayList<Integer>();
         }
@@ -153,7 +153,7 @@ public class FindRequestBuilder {
         return createdUserId;
     }
 
-    public FindRequestBuilder addCreatedUserId(int newCreatedUserId) {
+    public FindIssueRequestBuilder addCreatedUserId(int newCreatedUserId) {
         if (this.createdUserId == null) {
             this.createdUserId = new ArrayList<Integer>();
         }
@@ -166,7 +166,7 @@ public class FindRequestBuilder {
         return resolutionId;
     }
 
-    public FindRequestBuilder addResolutionId(int newResolutionId) {
+    public FindIssueRequestBuilder addResolutionId(int newResolutionId) {
         if (this.resolutionId == null) {
             this.resolutionId = new ArrayList<Integer>();
         }
@@ -179,7 +179,7 @@ public class FindRequestBuilder {
         return createdOnMin;
     }
 
-    public FindRequestBuilder setCreatedOnMin(String createdOnMin) {
+    public FindIssueRequestBuilder setCreatedOnMin(String createdOnMin) {
         this.createdOnMin = createdOnMin;
 
         return this;
@@ -189,7 +189,7 @@ public class FindRequestBuilder {
         return createdOnMax;
     }
 
-    public FindRequestBuilder setCreatedOnMax(String createdOnMax) {
+    public FindIssueRequestBuilder setCreatedOnMax(String createdOnMax) {
         this.createdOnMax = createdOnMax;
 
         return this;
@@ -199,7 +199,7 @@ public class FindRequestBuilder {
         return updatedOnMin;
     }
 
-    public FindRequestBuilder setUpdatedOnMin(String updatedOnMin) {
+    public FindIssueRequestBuilder setUpdatedOnMin(String updatedOnMin) {
         this.updatedOnMin = updatedOnMin;
 
         return this;
@@ -209,7 +209,7 @@ public class FindRequestBuilder {
         return updatedOnMax;
     }
 
-    public FindRequestBuilder setUpdatedOnMax(String updatedOnMax) {
+    public FindIssueRequestBuilder setUpdatedOnMax(String updatedOnMax) {
         this.updatedOnMax = updatedOnMax;
 
         return this;
@@ -219,7 +219,7 @@ public class FindRequestBuilder {
         return startDateMin;
     }
 
-    public FindRequestBuilder setStartDateMin(String startDateMin) {
+    public FindIssueRequestBuilder setStartDateMin(String startDateMin) {
         this.startDateMin = startDateMin;
 
         return this;
@@ -229,7 +229,7 @@ public class FindRequestBuilder {
         return startDateMax;
     }
 
-    public FindRequestBuilder setStartDateMax(String startDateMax) {
+    public FindIssueRequestBuilder setStartDateMax(String startDateMax) {
         this.startDateMax = startDateMax;
 
         return this;
@@ -239,7 +239,7 @@ public class FindRequestBuilder {
         return dueDateMin;
     }
 
-    public FindRequestBuilder setDueDateMin(String dueDateMin) {
+    public FindIssueRequestBuilder setDueDateMin(String dueDateMin) {
         this.dueDateMin = dueDateMin;
 
         return this;
@@ -249,7 +249,7 @@ public class FindRequestBuilder {
         return dueDateMax;
     }
 
-    public FindRequestBuilder setDueDateMax(String dueDateMax) {
+    public FindIssueRequestBuilder setDueDateMax(String dueDateMax) {
         this.dueDateMax = dueDateMax;
 
         return this;
@@ -259,24 +259,24 @@ public class FindRequestBuilder {
         return query;
     }
 
-    public FindRequestBuilder setQuery(String query) {
+    public FindIssueRequestBuilder setQuery(String query) {
         this.query = query;
 
         return this;
     }
 
-    public List<FindRequest.File> getFile() {
+    public List<FindIssueRequest.File> getFile() {
         return file;
     }
 
-    public FindRequestBuilder setFile(List<FindRequest.File> file) {
+    public FindIssueRequestBuilder setFile(List<FindIssueRequest.File> file) {
         this.file = file;
 
         return this;
     }
 
-    public FindRequest build() {
-        return new FindRequest(getProjectId(),
+    public FindIssueRequest build() {
+        return new FindIssueRequest(getProjectId(),
                 getIssueTypeId(),
                 getIssueType(),
                 getComponentId(),

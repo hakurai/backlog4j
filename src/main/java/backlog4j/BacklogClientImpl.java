@@ -106,8 +106,8 @@ public class BacklogClientImpl implements BacklogClient {
     }
 
     @Override
-    public int countIssue(FindRequest findRequest) {
-        Object[] params = new Object[]{findRequest.toMap()};
+    public int countIssue(FindIssueRequest findIssueRequest) {
+        Object[] params = new Object[]{findIssueRequest.toMap()};
         Object res;
         try {
             res = client.execute(BACKLOG_COUNTISSUE, params);

@@ -281,21 +281,21 @@ public class BacklogClientImplTest {
 
     @Test
     public void testCountIssue() throws Exception {
-        int count = client.countIssue(new FindRequest(PROJECT_ID));
+        int count = client.countIssue(new FindIssueRequest(PROJECT_ID));
 
         assertThat(count, is(4));
     }
 
     @Test
     public void testCountIssueByPriority() throws Exception {
-        int count = client.countIssue(new FindRequestBuilder(PROJECT_ID).addPriorityId(3).build());
+        int count = client.countIssue(new FindIssueRequestBuilder(PROJECT_ID).addPriorityId(3).build());
 
         assertThat(count, is(3));
     }
 
     @Test
     public void testCountIssueByCreatedUserId() throws Exception {
-        int count = client.countIssue(new FindRequestBuilder(PROJECT_ID).addCreatedUserId(1073806664).build());
+        int count = client.countIssue(new FindIssueRequestBuilder(PROJECT_ID).addCreatedUserId(1073806664).build());
 
         assertThat(count, is(1));
     }
