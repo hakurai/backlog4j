@@ -258,6 +258,27 @@ public class BacklogClientImplTest {
 
     }
 
+    @Test
+    public void testGetComments() throws Exception {
+        List<Comment> comments = client.getComments(1074790284);
+
+        assertThat(comments.size(), is(2));
+
+        Comment comment1 = comments.get(0);
+        assertThat(comment1.getId(),is(1078454063));
+        assertThat(comment1.getContent(),is("completed!"));
+        assertThat(comment1.getCreatedUser().getName(),is("owner"));
+        assertThat(comment1.getCreatedOn(),is("20120819163901"));
+        assertThat(comment1.getUpdatedOn(),is("20120819163901"));
+
+        Comment comment2 = comments.get(1);
+        assertThat(comment2.getId(),is(1078454287));
+        assertThat(comment2.getContent(),is("update!"));
+        assertThat(comment2.getCreatedUser().getName(),is("owner"));
+        assertThat(comment2.getCreatedOn(),is("20120819183620"));
+        assertThat(comment2.getUpdatedOn(),is("20120819183630"));
+    }
+
     private void assertProject1(Project project) {
         assertThat(project.getId(), is(PROJECT_ID));
         assertThat(project.getName(), is("project1"));

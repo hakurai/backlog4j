@@ -98,6 +98,13 @@ public class BacklogClientImpl implements BacklogClient {
         return getIssue(params);
     }
 
+    @Override
+    public List<Comment> getComments(int issueId) {
+        Object[] res = getObjects(BACKLOG_GETCOMMENTS, issueId);
+
+        return XmlRpcUtil.toList(Comment.class, res);
+    }
+
     private Object[] getObjects(String method, Object... params) {
         try {
             return (Object[]) client.execute(method, params);
