@@ -30,4 +30,11 @@ public final class IssueType {
     public String getColor() {
         return color;
     }
+
+    @Override
+    public String toString() {
+        return "IssueType{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

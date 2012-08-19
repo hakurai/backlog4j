@@ -41,4 +41,12 @@ public final class Project {
     public boolean isArchived() {
         return archived;
     }
+
+    @Override
+    public String toString() {
+        return "Project{" +
+                "key='" + key + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

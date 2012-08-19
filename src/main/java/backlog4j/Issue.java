@@ -135,4 +135,12 @@ public final class Issue {
     public String getUpdatedOn() {
         return updatedOn;
     }
+
+    @Override
+    public String toString() {
+        return "Issue{" +
+                "key='" + key + '\'' +
+                ", summary='" + summary + '\'' +
+                '}';
+    }
 }

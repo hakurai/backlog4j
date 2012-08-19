@@ -29,4 +29,12 @@ public final class Milestone {
     public String getDate() {
         return date;
     }
+
+    @Override
+    public String toString() {
+        return "Milestone{" +
+                "name='" + name + '\'' +
+                ", date='" + date + '\'' +
+                '}';
+    }
 }

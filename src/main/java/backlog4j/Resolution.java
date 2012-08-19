@@ -23,4 +23,11 @@ public final class Resolution {
     public String getName() {
         return name;
     }
+
+    @Override
+    public String toString() {
+        return "Resolution{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
