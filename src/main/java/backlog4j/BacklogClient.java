@@ -1,6 +1,6 @@
 package backlog4j;
 
-import java.util.List;
+import backlog4j.api.*;
 
 /**
  * @author eguchi
@@ -19,29 +19,31 @@ public interface BacklogClient {
     static final String BACKLOG_FINDISSUE = "backlog.findIssue";
     static final String BACKLOG_CREATEISSUE = "backlog.createIssue";
 
-    List<Project> getProjects();
+    Object execute(String methodName);
 
-    Project getProject(String key);
+    Object execute(String methodName, Object... params);
 
-    Project getProject(int id);
+    GetProjects getProjects();
 
-    List<Category> getComponents(int projectId);
+    GetProject getProject();
 
-    List<Version> getVersions(int projectId);
+    GetComponents getComponents();
 
-    List<User> getUsers(int projectId);
+    GetVersions getVersions();
 
-    List<IssueType> getIssueTypes(int projectId);
+    GetUsers getUsers();
 
-    Issue getIssue(String issueKey);
+    GetIssueTypes getIssueTypes();
 
-    Issue getIssue(int issueId);
+    GetIssue getIssue();
 
-    List<Comment> getComments(int issueId);
+    GetComments getComments();
 
-    int countIssue(FindIssueRequest findIssueRequest);
+    CountIssue countIssue();
 
-    List<Issue> findIssue(FindIssueRequest findIssueRequest, FindIssueOrder findIssueOrder);
+    FindIssue findIssue();
 
-    Issue createIssue(CreateIssueRequest createIssueRequest);
+    CreateIssue createIssue();
+
+
 }

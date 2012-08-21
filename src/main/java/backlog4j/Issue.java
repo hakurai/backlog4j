@@ -1,6 +1,5 @@
 package backlog4j;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +7,27 @@ import java.util.Map;
  * @author eguchi
  */
 public final class Issue {
+
+    public static final String ID = "id";
+    public static final String KEY = "key";
+    public static final String SUMMARY = "summary";
+    public static final String DESCRIPTION = "description";
+    public static final String URL = "url";
+    public static final String DUE_DATE = "due_date";
+    public static final String START_DATE = "start_date";
+    public static final String ESTIMATED_HOURS = "estimated_hours";
+    public static final String ACTUAL_HOURS = "actual_hours";
+    public static final String ISSUE_TYPE = "issueType";
+    public static final String PRIORITY = "priority";
+    public static final String RESOLUTION = "resolution";
+    public static final String STATUS = "status";
+    public static final String COMPONENTS = "components";
+    public static final String VERSIONS = "versions";
+    public static final String MILESTONES = "milestones";
+    public static final String CREATED_USER = "created_user";
+    public static final String ASSIGNER = "assigner";
+    public static final String CREATED_ON = "created_on";
+    public static final String UPDATED_ON = "updated_on";
 
     private final int id;
     private final String key;
@@ -31,28 +51,28 @@ public final class Issue {
     private final String updatedOn;
 
     public Issue(Map<String, Object> map) {
-        id = (Integer) map.get("id");
-        key = (String) map.get("key");
-        summary = (String) map.get("summary");
-        description = (String) map.get("description");
-        url = (String) map.get("url");
-        dueDate = (String) map.get("due_date");
-        startDate = XmlRpcUtil.castToString(map.get("start_date"));
-        estimatedHours = XmlRpcUtil.castToString(map.get("estimated_hours"));
-        actualHours = XmlRpcUtil.castToString(map.get("actual_hours"));
-        issueType = new IssueType((Map<String, Object>) map.get("issueType"));
-        priority = new Priority((Map<String, Object>) map.get("priority"));
-        Object resolutionSrc = map.get("resolution");
+        id = (Integer) map.get(ID);
+        key = (String) map.get(KEY);
+        summary = (String) map.get(SUMMARY);
+        description = (String) map.get(DESCRIPTION);
+        url = (String) map.get(URL);
+        dueDate = (String) map.get(DUE_DATE);
+        startDate = XmlRpcUtil.castToString(map.get(START_DATE));
+        estimatedHours = XmlRpcUtil.castToString(map.get(ESTIMATED_HOURS));
+        actualHours = XmlRpcUtil.castToString(map.get(ACTUAL_HOURS));
+        issueType = new IssueType((Map<String, Object>) map.get(ISSUE_TYPE));
+        priority = new Priority((Map<String, Object>) map.get(PRIORITY));
+        Object resolutionSrc = map.get(RESOLUTION);
         resolution = resolutionSrc == null ? null : new Resolution((Map<String, Object>) resolutionSrc);
-        status = new Status((Map<String, Object>) map.get("status"));
-        components = XmlRpcUtil.toList(Category.class, map.get("components"));
-        versions = XmlRpcUtil.toList(Version.class, map.get("versions"));
-        milestones = XmlRpcUtil.toList(Milestone.class, map.get("milestones"));
-        createdUser = new User((Map<String, Object>) map.get("created_user"));
-        Object assignerSrc = map.get("assigner");
+        status = new Status((Map<String, Object>) map.get(STATUS));
+        components = XmlRpcUtil.toList(Category.class, map.get(COMPONENTS));
+        versions = XmlRpcUtil.toList(Version.class, map.get(VERSIONS));
+        milestones = XmlRpcUtil.toList(Milestone.class, map.get(MILESTONES));
+        createdUser = new User((Map<String, Object>) map.get(CREATED_USER));
+        Object assignerSrc = map.get(ASSIGNER);
         assigner = assignerSrc == null ? null : new User((Map<String, Object>) assignerSrc);
-        createdOn = (String) map.get("created_on");
-        updatedOn = (String) map.get("updated_on");
+        createdOn = (String) map.get(CREATED_ON);
+        updatedOn = (String) map.get(UPDATED_ON);
 
     }
 

@@ -1,13 +1,33 @@
-package backlog4j;
+package backlog4j.api;
+
+import backlog4j.BacklogClient;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author eguchi
  */
-public class FindIssueRequestBuilder {
+public class CountIssue {
 
+    public enum File {
+        ATTACHED(1),
+        SHARED(2);
+
+        private final int id;
+
+        private File(int id) {
+            this.id = id;
+        }
+
+        public int getId() {
+            return id;
+        }
+    }
+
+    private final BacklogClient client;
     private int projectId;
     private List<Integer> issueTypeId;
     private List<String> issueType;
@@ -28,18 +48,18 @@ public class FindIssueRequestBuilder {
     private String dueDateMin;
     private String dueDateMax;
     private String query;
-    private List<FindIssueRequest.File> file;
+    private List<File> file;
 
 
-    public FindIssueRequestBuilder(int projectId) {
-        this.projectId = projectId;
+    public CountIssue(BacklogClient client) {
+        this.client = client;
     }
 
     public int getProjectId() {
         return projectId;
     }
 
-    public FindIssueRequestBuilder setProjectId(int projectId) {
+    public CountIssue setProjectId(int projectId) {
         this.projectId = projectId;
 
         return this;
@@ -49,7 +69,7 @@ public class FindIssueRequestBuilder {
         return issueTypeId;
     }
 
-    public FindIssueRequestBuilder addIssueTypeId(int newIssueTypeId) {
+    public CountIssue addIssueTypeId(int newIssueTypeId) {
         if (this.issueTypeId == null) {
             this.issueTypeId = new ArrayList<Integer>();
         }
@@ -62,7 +82,7 @@ public class FindIssueRequestBuilder {
         return issueType;
     }
 
-    public FindIssueRequestBuilder addIssueType(String newIssueType) {
+    public CountIssue addIssueType(String newIssueType) {
         if (this.issueType == null) {
             this.issueType = new ArrayList<String>();
         }
@@ -75,7 +95,7 @@ public class FindIssueRequestBuilder {
         return componentId;
     }
 
-    public FindIssueRequestBuilder addComponentId(int newComponentId) {
+    public CountIssue addComponentId(int newComponentId) {
         if (this.componentId == null) {
             this.componentId = new ArrayList<Integer>();
         }
@@ -88,7 +108,7 @@ public class FindIssueRequestBuilder {
         return versionId;
     }
 
-    public FindIssueRequestBuilder addVersionId(int newVersionId) {
+    public CountIssue addVersionId(int newVersionId) {
         if (this.versionId == null) {
             this.versionId = new ArrayList<Integer>();
         }
@@ -101,7 +121,7 @@ public class FindIssueRequestBuilder {
         return milestoneId;
     }
 
-    public FindIssueRequestBuilder addMilestoneId(int newMilestoneId) {
+    public CountIssue addMilestoneId(int newMilestoneId) {
         if (this.milestoneId == null) {
             this.milestoneId = new ArrayList<Integer>();
         }
@@ -114,7 +134,7 @@ public class FindIssueRequestBuilder {
         return statusId;
     }
 
-    public FindIssueRequestBuilder addStatusId(int newStatusId) {
+    public CountIssue addStatusId(int newStatusId) {
         if (this.statusId == null) {
             this.statusId = new ArrayList<Integer>();
         }
@@ -127,7 +147,7 @@ public class FindIssueRequestBuilder {
         return priorityId;
     }
 
-    public FindIssueRequestBuilder addPriorityId(int newPriorityId) {
+    public CountIssue addPriorityId(int newPriorityId) {
         if (this.priorityId == null) {
             this.priorityId = new ArrayList<Integer>();
         }
@@ -140,7 +160,7 @@ public class FindIssueRequestBuilder {
         return assignerId;
     }
 
-    public FindIssueRequestBuilder addAssignerId(int newAssignerId) {
+    public CountIssue addAssignerId(int newAssignerId) {
         if (this.assignerId == null) {
             this.assignerId = new ArrayList<Integer>();
         }
@@ -153,7 +173,7 @@ public class FindIssueRequestBuilder {
         return createdUserId;
     }
 
-    public FindIssueRequestBuilder addCreatedUserId(int newCreatedUserId) {
+    public CountIssue addCreatedUserId(int newCreatedUserId) {
         if (this.createdUserId == null) {
             this.createdUserId = new ArrayList<Integer>();
         }
@@ -166,7 +186,7 @@ public class FindIssueRequestBuilder {
         return resolutionId;
     }
 
-    public FindIssueRequestBuilder addResolutionId(int newResolutionId) {
+    public CountIssue addResolutionId(int newResolutionId) {
         if (this.resolutionId == null) {
             this.resolutionId = new ArrayList<Integer>();
         }
@@ -179,7 +199,7 @@ public class FindIssueRequestBuilder {
         return createdOnMin;
     }
 
-    public FindIssueRequestBuilder setCreatedOnMin(String createdOnMin) {
+    public CountIssue setCreatedOnMin(String createdOnMin) {
         this.createdOnMin = createdOnMin;
 
         return this;
@@ -189,7 +209,7 @@ public class FindIssueRequestBuilder {
         return createdOnMax;
     }
 
-    public FindIssueRequestBuilder setCreatedOnMax(String createdOnMax) {
+    public CountIssue setCreatedOnMax(String createdOnMax) {
         this.createdOnMax = createdOnMax;
 
         return this;
@@ -199,7 +219,7 @@ public class FindIssueRequestBuilder {
         return updatedOnMin;
     }
 
-    public FindIssueRequestBuilder setUpdatedOnMin(String updatedOnMin) {
+    public CountIssue setUpdatedOnMin(String updatedOnMin) {
         this.updatedOnMin = updatedOnMin;
 
         return this;
@@ -209,7 +229,7 @@ public class FindIssueRequestBuilder {
         return updatedOnMax;
     }
 
-    public FindIssueRequestBuilder setUpdatedOnMax(String updatedOnMax) {
+    public CountIssue setUpdatedOnMax(String updatedOnMax) {
         this.updatedOnMax = updatedOnMax;
 
         return this;
@@ -219,7 +239,7 @@ public class FindIssueRequestBuilder {
         return startDateMin;
     }
 
-    public FindIssueRequestBuilder setStartDateMin(String startDateMin) {
+    public CountIssue setStartDateMin(String startDateMin) {
         this.startDateMin = startDateMin;
 
         return this;
@@ -229,7 +249,7 @@ public class FindIssueRequestBuilder {
         return startDateMax;
     }
 
-    public FindIssueRequestBuilder setStartDateMax(String startDateMax) {
+    public CountIssue setStartDateMax(String startDateMax) {
         this.startDateMax = startDateMax;
 
         return this;
@@ -239,7 +259,7 @@ public class FindIssueRequestBuilder {
         return dueDateMin;
     }
 
-    public FindIssueRequestBuilder setDueDateMin(String dueDateMin) {
+    public CountIssue setDueDateMin(String dueDateMin) {
         this.dueDateMin = dueDateMin;
 
         return this;
@@ -249,7 +269,7 @@ public class FindIssueRequestBuilder {
         return dueDateMax;
     }
 
-    public FindIssueRequestBuilder setDueDateMax(String dueDateMax) {
+    public CountIssue setDueDateMax(String dueDateMax) {
         this.dueDateMax = dueDateMax;
 
         return this;
@@ -259,43 +279,115 @@ public class FindIssueRequestBuilder {
         return query;
     }
 
-    public FindIssueRequestBuilder setQuery(String query) {
+    public CountIssue setQuery(String query) {
         this.query = query;
 
         return this;
     }
 
-    public List<FindIssueRequest.File> getFile() {
+    public List<File> getFile() {
         return file;
     }
 
-    public FindIssueRequestBuilder setFile(List<FindIssueRequest.File> file) {
+    public CountIssue setFile(List<File> file) {
         this.file = file;
 
         return this;
     }
 
-    public FindIssueRequest build() {
-        return new FindIssueRequest(getProjectId(),
-                getIssueTypeId(),
-                getIssueType(),
-                getComponentId(),
-                getVersionId(),
-                getMilestoneId(),
-                getStatusId(),
-                getPriorityId(),
-                getAssignerId(),
-                getCreatedUserId(),
-                getResolutionId(),
-                getCreatedOnMin(),
-                getCreatedOnMax(),
-                getUpdatedOnMin(),
-                getUpdatedOnMax(),
-                getStartDateMin(),
-                getStartDateMax(),
-                getDueDateMin(),
-                getDueDateMax(),
-                getQuery(),
-                getFile());
+
+    public int execute() {
+        Object res = client.execute(BacklogClient.BACKLOG_COUNTISSUE, toMap());
+
+        return (Integer) res;
+    }
+
+    private Map<String, Object> toMap() {
+        Map<String, Object> map = new HashMap<String, Object>();
+
+        map.put("projectId", projectId);
+        if (issueTypeId != null && issueTypeId.size() > 0) {
+            map.put("issueTypeId", issueTypeId);
+        }
+        if (issueType != null && issueType.size() > 0) {
+            map.put("issueType", issueType);
+        }
+        if (componentId != null && componentId.size() > 0) {
+            map.put("componentId", componentId);
+        }
+
+        if (versionId != null && versionId.size() > 0) {
+            map.put("versionId", versionId);
+        }
+
+        if (milestoneId != null && milestoneId.size() > 0) {
+            map.put("milestoneId", milestoneId);
+        }
+
+        if (statusId != null && statusId.size() > 0) {
+            map.put("statusId", statusId);
+        }
+
+        if (priorityId != null && priorityId.size() > 0) {
+            map.put("priorityId", priorityId);
+        }
+
+        if (assignerId != null && assignerId.size() > 0) {
+            map.put("assignerId", assignerId);
+        }
+
+        if (createdUserId != null && createdUserId.size() > 0) {
+            map.put("createdUserId", createdUserId);
+        }
+
+        if (resolutionId != null && resolutionId.size() > 0) {
+            map.put("resolutionId", resolutionId);
+        }
+
+        if (createdOnMin != null) {
+            map.put("created_on_min", createdOnMin);
+        }
+
+        if (createdOnMax != null) {
+            map.put("created_on_max", createdOnMax);
+        }
+
+        if (updatedOnMin != null) {
+            map.put("updated_on_min", updatedOnMin);
+        }
+
+        if (updatedOnMax != null) {
+            map.put("updated_on_max", updatedOnMax);
+        }
+
+        if (startDateMin != null) {
+            map.put("start_date_min", startDateMin);
+        }
+
+        if (startDateMax != null) {
+            map.put("start_date_max", startDateMax);
+        }
+
+        if (dueDateMin != null) {
+            map.put("due_date_min", dueDateMin);
+        }
+
+        if (dueDateMax != null) {
+            map.put("due_date_max", dueDateMax);
+        }
+
+        if (query != null) {
+            map.put("query", query);
+        }
+
+        if (file != null && file.size() > 0) {
+            List<Integer> fileList = new ArrayList<Integer>(file.size());
+            for (File f : file) {
+                fileList.add(f.getId());
+            }
+            map.put("file", fileList);
+        }
+
+        return map;
     }
 }

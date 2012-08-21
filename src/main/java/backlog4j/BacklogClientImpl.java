@@ -1,11 +1,11 @@
 package backlog4j;
 
+import backlog4j.api.*;
 import backlog4j.conf.BacklogConfigure;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -31,139 +31,79 @@ public class BacklogClientImpl implements BacklogClient {
         client.setConfig(config);
     }
 
-    @Override
-    public List<Project> getProjects() {
-        Object[] params = new Object[]{};
-        Object[] res;
+    public Object execute(String methodName) {
+        return execute(methodName, new Object[]{});
+    }
+
+    public Object execute(String methodName, Object... params) {
         try {
-            res = (Object[]) client.execute(BACKLOG_GETPROJECTS, params);
+            return client.execute(methodName, params);
         } catch (XmlRpcException e) {
             throw new BacklogException(e);
         }
-
-        return XmlRpcUtil.toList(Project.class, res);
     }
 
     @Override
-    public Project getProject(String key) {
-        Object[] params = new Object[]{key};
-        return getProject(params);
+    public GetProjects getProjects() {
+        return new GetProjects(this);
     }
 
     @Override
-    public Project getProject(int id) {
-        Object[] params = new Object[]{id};
-        return getProject(params);
+    public GetProject getProject() {
+        return new GetProject(this);
     }
 
     @Override
-    public List<Category> getComponents(int projectId) {
-        Object[] res = getObjects(BACKLOG_GETCOMPONENTS, projectId);
-
-        return XmlRpcUtil.toList(Category.class, res);
+    public GetComponents getComponents() {
+        return new GetComponents(this);
     }
 
     @Override
-    public List<Version> getVersions(int projectId) {
-        Object[] res = getObjects(BACKLOG_GETVERSIONS, projectId);
-
-        return XmlRpcUtil.toList(Version.class, res);
+    public GetVersions getVersions() {
+        return new GetVersions(this);
     }
 
     @Override
-    public List<User> getUsers(int projectId) {
-        Object[] res = getObjects(BACKLOG_GETUSERS, projectId);
-
-        return XmlRpcUtil.toList(User.class, res);
+    public GetUsers getUsers() {
+        return new GetUsers(this);
     }
 
     @Override
-    public List<IssueType> getIssueTypes(int projectId) {
-        Object[] res = getObjects(BACKLOG_GETISSUETYPES, projectId);
-
-        return XmlRpcUtil.toList(IssueType.class, res);
+    public GetIssueTypes getIssueTypes() {
+        return new GetIssueTypes(this);
     }
 
     @Override
-    public Issue getIssue(String issueKey) {
-        Object[] params = new Object[]{issueKey};
-
-        return getIssue(params);
+    public GetIssue getIssue() {
+        return new GetIssue(this);
     }
 
     @Override
-    public Issue getIssue(int issueId) {
-        Object[] params = new Object[]{issueId};
-
-        return getIssue(params);
+    public GetComments getComments() {
+        return new GetComments(this);
     }
 
     @Override
-    public List<Comment> getComments(int issueId) {
-        Object[] res = getObjects(BACKLOG_GETCOMMENTS, issueId);
-
-        return XmlRpcUtil.toList(Comment.class, res);
+    public CountIssue countIssue() {
+        return new CountIssue(this);
     }
 
     @Override
-    public int countIssue(FindIssueRequest findIssueRequest) {
-        Object[] params = new Object[]{findIssueRequest.toMap()};
-        Object res;
-        try {
-            res = client.execute(BACKLOG_COUNTISSUE, params);
-        } catch (XmlRpcException e) {
-            throw new BacklogException(e);
-        }
-
-        return (Integer) res;
+    public FindIssue findIssue() {
+        return new FindIssue(this);
     }
 
     @Override
-    public List<Issue> findIssue(FindIssueRequest findIssueRequest, FindIssueOrder findIssueOrder) {
-        Map<String, Object> paramMap = findIssueRequest.toMap();
-        paramMap.putAll(findIssueOrder.toMap());
-
-        Object[] params = new Object[]{paramMap};
-        Object res;
-        try {
-            res = client.execute(BACKLOG_FINDISSUE, params);
-        } catch (XmlRpcException e) {
-            throw new BacklogException(e);
-        }
-
-        return XmlRpcUtil.toList(Issue.class, res);
+    public CreateIssue createIssue() {
+        return new CreateIssue(this);
     }
 
-    @Override
-    public Issue createIssue(CreateIssueRequest createIssueRequest) {
-        Object[] params = new Object[]{createIssueRequest.toMap()};
-        Object res;
-        try {
-            res = client.execute(BACKLOG_CREATEISSUE, params);
-        } catch (XmlRpcException e) {
-            throw new BacklogException(e);
-        }
-
-        return new Issue((Map<String,Object>)res);
-    }
-
-    private Object[] getObjects(String method, Object... params) {
+    public Object[] getObjects(String method, Object... params) {
         try {
             return (Object[]) client.execute(method, params);
         } catch (XmlRpcException e) {
             throw new BacklogException(e);
         }
-    }
-
-    private Project getProject(Object[] params) {
-        Object res;
-        try {
-            res = client.execute(BACKLOG_GETPROJECT, params);
-        } catch (XmlRpcException e) {
-            throw new BacklogException(e);
-        }
-
-        return new Project((Map<String, Object>) res);
     }
 
     private Issue getIssue(Object[] params) {

@@ -1,5 +1,6 @@
 package backlog4j;
 
+import backlog4j.api.*;
 import backlog4j.conf.BacklogConfigureImpl;
 import backlog4j.conf.BacklogConfigureTestImpl;
 import org.junit.Before;
@@ -27,7 +28,9 @@ public class BacklogClientImplTest {
 
     @Test
     public void testGetProjects() throws Exception {
-        List<Project> projects = client.getProjects();
+        GetProjects getProjects = client.getProjects();
+
+        List<Project> projects = getProjects.execute();
 
         assertThat(projects.size(), is(1));
 
@@ -37,14 +40,19 @@ public class BacklogClientImplTest {
 
     @Test
     public void testGetProjectByKey() throws Exception {
-        Project project = client.getProject("P_1");
+        GetProject getProject = client.getProject().setProjectKey("P_1");
+
+
+        Project project = getProject.execute();
 
         assertProject1(project);
     }
 
     @Test
     public void testGetProjectById() throws Exception {
-        Project project = client.getProject(PROJECT_ID);
+        GetProject getProject = client.getProject().setProjectId(PROJECT_ID);
+
+        Project project = getProject.execute();
 
         assertProject1(project);
     }
@@ -52,7 +60,10 @@ public class BacklogClientImplTest {
 
     @Test
     public void testGetComponents() throws Exception {
-        List<Category> categoryList = client.getComponents(PROJECT_ID);
+        GetComponents getComponents = client.getComponents().setProjectId(PROJECT_ID);
+
+
+        List<Category> categoryList = getComponents.execute();
 
         assertThat(categoryList.size(), is(3));
 
@@ -72,7 +83,10 @@ public class BacklogClientImplTest {
 
     @Test
     public void testGetVersions() throws Exception {
-        List<Version> versionList = client.getVersions(PROJECT_ID);
+        GetVersions getVersions = client.getVersions().setProjectId(PROJECT_ID);
+
+
+        List<Version> versionList = getVersions.execute();
 
         assertThat(versionList.size(), is(4));
 
@@ -100,7 +114,8 @@ public class BacklogClientImplTest {
 
     @Test
     public void testGetUsers() throws Exception {
-        List<User> userList = client.getUsers(PROJECT_ID);
+        GetUsers getUsers = client.getUsers().setProjectId(PROJECT_ID);
+        List<User> userList = getUsers.execute();
 
         assertThat(userList.size(), is(4));
 
@@ -124,7 +139,9 @@ public class BacklogClientImplTest {
 
     @Test
     public void testGetIssueTypes() throws Exception {
-        List<IssueType> issueTypeList = client.getIssueTypes(PROJECT_ID);
+        GetIssueTypes getIssueTypes = client.getIssueTypes().setProjectId(PROJECT_ID);
+
+        List<IssueType> issueTypeList = getIssueTypes.execute();
 
         assertThat(issueTypeList.size(), is(4));
 
@@ -152,7 +169,9 @@ public class BacklogClientImplTest {
 
     @Test
     public void testGetIssueP_1_1() throws Exception {
-        Issue issue = client.getIssue("P_1-1");
+        GetIssue getIssue = client.getIssue().setIssueKey("P_1-1");
+
+        Issue issue = getIssue.execute();
 
         assertThat(issue.getId(), is(1074790283));
         assertThat(issue.getKey(), is("P_1-1"));
@@ -179,7 +198,9 @@ public class BacklogClientImplTest {
 
     @Test
     public void testGetIssueP_1_2() throws Exception {
-        Issue issue = client.getIssue("P_1-2");
+        GetIssue getIssue = client.getIssue().setIssueKey("P_1-2");
+
+        Issue issue = getIssue.execute();
 
         assertThat(issue.getId(), is(1074790284));
         assertThat(issue.getKey(), is("P_1-2"));
@@ -206,7 +227,9 @@ public class BacklogClientImplTest {
 
     @Test
     public void testGetIssueP_1_4() throws Exception {
-        Issue issue = client.getIssue("P_1-4");
+        GetIssue getIssue = client.getIssue().setIssueKey("P_1-4");
+
+        Issue issue = getIssue.execute();
 
         assertThat(issue.getId(), is(1074790593));
         assertThat(issue.getKey(), is("P_1-4"));
@@ -234,7 +257,9 @@ public class BacklogClientImplTest {
 
     @Test
     public void testGetIssueP_1_1ByIssueId() throws Exception {
-        Issue issue = client.getIssue(1074790283);
+        GetIssue getIssue = client.getIssue().setIssueId(1074790283);
+
+        Issue issue = getIssue.execute();
 
         assertThat(issue.getId(), is(1074790283));
         assertThat(issue.getKey(), is("P_1-1"));
@@ -261,7 +286,9 @@ public class BacklogClientImplTest {
 
     @Test
     public void testGetComments() throws Exception {
-        List<Comment> comments = client.getComments(1074790284);
+        GetComments getComments = client.getComments().setIssueId(1074790284);
+
+        List<Comment> comments = getComments.execute();
 
         assertThat(comments.size(), is(2));
 
@@ -282,28 +309,28 @@ public class BacklogClientImplTest {
 
     @Test
     public void testCountIssue() throws Exception {
-        int count = client.countIssue(new FindIssueRequest(PROJECT_ID));
+        int count = client.countIssue().setProjectId(PROJECT_ID).execute();
 
         assertThat(count, is(5));
     }
 
     @Test
     public void testCountIssueByPriority() throws Exception {
-        int count = client.countIssue(new FindIssueRequestBuilder(PROJECT_ID).addPriorityId(3).build());
+        int count = client.countIssue().setProjectId(PROJECT_ID).addPriorityId(3).execute();
 
         assertThat(count, is(4));
     }
 
     @Test
     public void testCountIssueByCreatedUserId() throws Exception {
-        int count = client.countIssue(new FindIssueRequestBuilder(PROJECT_ID).addCreatedUserId(1073806664).build());
+        int count = client.countIssue().setProjectId(PROJECT_ID).addCreatedUserId(1073806664).execute();
 
         assertThat(count, is(1));
     }
 
     @Test
     public void testFindIssue() throws Exception {
-        List<Issue> issueList = client.findIssue(new FindIssueRequest(PROJECT_ID), new FindIssueOrderBuilder().build());
+        List<Issue> issueList = client.findIssue().setProjectId(PROJECT_ID).execute();
 
         assertThat(issueList.size(), is(5));
 
@@ -335,13 +362,13 @@ public class BacklogClientImplTest {
         final int projectId = 1073771652;
         BacklogClient client = new BacklogClientImpl(new BacklogConfigureImpl("hakurai2", "hakurai", "hakurai"));
 
-        int count = client.countIssue(new FindIssueRequest(projectId));
+        int count = client.countIssue().setProjectId(projectId).execute();
 
-        Issue issue = client.createIssue(new CreateIssueRequestBuilder().setProjectId(projectId).setSummary("test").build());
+        Issue issue = client.createIssue().setProjectId(projectId).setSummary("test").execute();
 
         assertThat(issue.getSummary(), is("test"));
 
-        assertThat(client.countIssue(new FindIssueRequest(projectId)), is(count + 1));
+        assertThat(client.countIssue().setProjectId(projectId).execute(), is(count + 1));
     }
 
     private void assertProject1(Project project) {
