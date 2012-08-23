@@ -9,3 +9,11 @@ dependencies {
     testCompile group: 'junit', name :'junit', version: '4.10'
 
 }
+
+sourceCompatibility = 1.6
+version = '0.1'
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'backlog4j', 'Implementation-Version': version
+    }
+}
