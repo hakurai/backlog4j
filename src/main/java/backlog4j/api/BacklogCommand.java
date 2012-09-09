@@ -61,6 +61,7 @@ public interface BacklogCommand<T> {
     public static final String OFFSET = "offset";
     public static final String LIMIT = "limit";
     public static final String KEY = "key";
+    public static final String COMMENT = "comment";
 
     public static final int MAX_LIMIT = 100;
 
@@ -77,6 +78,7 @@ public interface BacklogCommand<T> {
     static final String BACKLOG_FINDISSUE = "backlog.findIssue";
     static final String BACKLOG_CREATEISSUE = "backlog.createIssue";
     static final String BACKLOG_UPDATEISSUE = "backlog.updateIssue";
+    static final String BACKLOG_SWITCHSTATUS = "backlog.switchStatus";
 
     T execute();
 }

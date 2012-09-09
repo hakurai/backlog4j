@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThat;
 /**
  * @author eguchi
  */
-public class GetUsersTest extends BacklogCommandTestBase{
+public class GetUsersTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldWorkGetUsers() throws Exception {

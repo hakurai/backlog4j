@@ -12,20 +12,21 @@ import static org.junit.Assert.assertThat;
 /**
  * @author eguchi
  */
-public class CreateIssueTest extends BacklogCommandTestBase {
+public class SwitchStatusTest {
 
     @Test
-    public void testShouldWorkCreateIssue() throws Exception {
+    public void testShouldswitchStatus() throws Exception {
         final int projectId = 1073771652;
         BacklogClient client = new BacklogClientImpl(MutableSpaceConfigure.getInstance());
 
-        int count = client.countIssue().setProjectId(projectId).execute();
-
         Issue issue = client.createIssue().setProjectId(projectId).setSummary("test").execute();
 
-        assertThat(issue.getSummary(), is("test"));
+        assertThat(issue.getStatus().getName(), is("未対応"));
 
-        assertThat(client.countIssue().setProjectId(projectId).execute(), is(count + 1));
+        Issue switched = client.switchStatus().setKey(issue.getKey()).setStatusId(2).execute();
+
+        assertThat(switched.getStatus().getName(), is("処理中"));
+
+
     }
-
 }

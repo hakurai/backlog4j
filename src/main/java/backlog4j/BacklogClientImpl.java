@@ -96,4 +96,14 @@ public class BacklogClientImpl implements BacklogClient {
         return new CreateIssue(this);
     }
 
+    @Override
+    public UpdateIssue updateIssue() {
+        return new UpdateIssue(this);
+    }
+
+    @Override
+    public SwitchStatus switchStatus() {
+        return new SwitchStatus(this);
+    }
+
 }

@@ -15,8 +15,8 @@ public class CountIssue extends AbstractFindIssueRequest<Integer> {
         this.client = client;
     }
 
-    private void checkParameters(){
-        if( getProjectId() == null ){
+    private void checkParameters() {
+        if (getProjectId() == null) {
             throw new BacklogException("projectId is required");
         }
     }

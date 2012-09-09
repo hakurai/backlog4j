@@ -12,7 +12,7 @@ import static org.junit.Assert.assertThat;
 /**
  * @author eguchi
  */
-public class FindIssueTest extends BacklogCommandTestBase{
+public class FindIssueTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldWorkFindIssue() throws Exception {

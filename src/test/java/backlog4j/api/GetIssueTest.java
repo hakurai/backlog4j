@@ -10,7 +10,7 @@ import static org.junit.Assert.assertThat;
 /**
  * @author eguchi
  */
-public class GetIssueTest extends BacklogCommandTestBase{
+public class GetIssueTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldReturnP_1_1() throws Exception {

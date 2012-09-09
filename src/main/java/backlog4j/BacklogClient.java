@@ -33,5 +33,9 @@ public interface BacklogClient {
 
     CreateIssue createIssue();
 
+    UpdateIssue updateIssue();
+
+    SwitchStatus switchStatus();
+
 
 }

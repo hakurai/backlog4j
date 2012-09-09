@@ -15,25 +15,24 @@ public class MutableSpaceConfigure implements BacklogConfigure {
     private final BacklogConfigure delegate;
 
 
-    private MutableSpaceConfigure(){
+    private MutableSpaceConfigure() {
         Properties properties = new Properties();
         try {
             properties.loadFromXML(new FileInputStream("mutable.properties"));
         } catch (IOException e) {
         }
 
-        String spaceId = properties.getProperty("spaceId","");
-        String username = properties.getProperty("username","");
-        String password = properties.getProperty("password","");
+        String spaceId = properties.getProperty("spaceId", "");
+        String username = properties.getProperty("username", "");
+        String password = properties.getProperty("password", "");
 
         try {
-            delegate = new BacklogConfigureImpl(spaceId,username,password);
+            delegate = new BacklogConfigureImpl(spaceId, username, password);
         } catch (MalformedURLException e) {
             throw new IllegalStateException("failed to create ImmutableSpaceConfigure");
         }
 
     }
-
 
 
     public static BacklogConfigure getInstance() {
