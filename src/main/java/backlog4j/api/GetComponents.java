@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @author eguchi
  */
-public class GetComponents {
+public class GetComponents implements BacklogCommand<List<Category>> {
 
     private final BacklogClient client;
     private Integer projectId;
@@ -34,7 +34,7 @@ public class GetComponents {
             throw new BacklogException();
         }
 
-        Object res = client.execute(BacklogClient.BACKLOG_GETCOMPONENTS, getProjectId());
+        Object res = client.execute(BACKLOG_GETCOMPONENTS, getProjectId());
 
         return XmlRpcUtil.toList(Category.class, res);
     }

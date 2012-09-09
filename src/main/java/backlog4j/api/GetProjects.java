@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author eguchi
  */
-public class GetProjects {
+public class GetProjects implements BacklogCommand<List<Project>> {
 
     private final BacklogClient client;
 
@@ -18,7 +18,7 @@ public class GetProjects {
     }
 
     public List<Project> execute() {
-        Object res = client.execute(BacklogClient.BACKLOG_GETPROJECTS);
+        Object res = client.execute(BACKLOG_GETPROJECTS);
 
         return XmlRpcUtil.toList(Project.class, res);
     }

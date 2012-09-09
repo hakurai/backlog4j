@@ -12,8 +12,8 @@ public final class User {
 
     public User(Map<String, Object> map) {
         assert (map.size() == 2);
-        id = (Integer)map.get("id");
-        name = (String)map.get("name");
+        id = (Integer) map.get("id");
+        name = (String) map.get("name");
     }
 
     public int getId() {

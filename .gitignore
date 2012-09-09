@@ -1,5 +1,8 @@
 .idea/
+.gradle/
 out/
+build/
 .DS_Store
 *.bak
-test.properties
+immutable.properties
+mutable.properties

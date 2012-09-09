@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * @author eguchi
  */
-public class GetIssue {
+public class GetIssue implements BacklogCommand<Issue> {
 
     private final BacklogClient client;
     private Integer issueId;
@@ -50,7 +50,7 @@ public class GetIssue {
             throw new BacklogException();
         }
 
-        Object res = client.execute(BacklogClient.BACKLOG_GETISSUE, params);
+        Object res = client.execute(BACKLOG_GETISSUE, params);
 
         return new Issue((Map<String, Object>) res);
     }

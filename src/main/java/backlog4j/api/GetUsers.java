@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @author eguchi
  */
-public class GetUsers {
+public class GetUsers implements BacklogCommand<List<User>> {
 
     private final BacklogClient client;
     private Integer projectId;
@@ -34,7 +34,7 @@ public class GetUsers {
             throw new BacklogException();
         }
 
-        Object res = client.execute(BacklogClient.BACKLOG_GETUSERS, getProjectId());
+        Object res = client.execute(BACKLOG_GETUSERS, getProjectId());
 
         return XmlRpcUtil.toList(User.class, res);
     }

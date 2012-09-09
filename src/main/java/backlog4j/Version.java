@@ -14,9 +14,9 @@ public final class Version {
 
     public Version(Map<String, Object> map) {
         assert (map.size() == 3);
-        id = (Integer)map.get("id");
-        name = (String)map.get("name");
-        date = (String)map.get("date");
+        id = (Integer) map.get("id");
+        name = (String) map.get("name");
+        date = (String) map.get("date");
     }
 
     public int getId() {

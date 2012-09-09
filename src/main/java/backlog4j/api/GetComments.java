@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @author eguchi
  */
-public class GetComments {
+public class GetComments implements BacklogCommand<List<Comment>> {
 
 
     private final BacklogClient client;
@@ -35,7 +35,7 @@ public class GetComments {
             throw new BacklogException();
         }
 
-        Object res = client.execute(BacklogClient.BACKLOG_GETCOMMENTS, getIssueId());
+        Object res = client.execute(BACKLOG_GETCOMMENTS, getIssueId());
 
         return XmlRpcUtil.toList(Comment.class, res);
     }

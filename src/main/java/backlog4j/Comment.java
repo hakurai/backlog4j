@@ -16,11 +16,11 @@ public final class Comment {
 
     public Comment(Map<String, Object> map) {
         assert (map.size() == 5);
-        id = (Integer)map.get("id");
-        content = (String)map.get("content");
-        createdUser = new User((Map<String,Object>)map.get("created_user"));
-        createdOn = (String)map.get("created_on");
-        updatedOn = (String)map.get("updated_on");
+        id = (Integer) map.get("id");
+        content = (String) map.get("content");
+        createdUser = new User((Map<String, Object>) map.get("created_user"));
+        createdOn = (String) map.get("created_on");
+        updatedOn = (String) map.get("updated_on");
     }
 
     public int getId() {

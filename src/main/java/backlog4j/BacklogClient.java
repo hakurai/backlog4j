@@ -7,18 +7,6 @@ import backlog4j.api.*;
  */
 public interface BacklogClient {
 
-    static final String BACKLOG_GETPROJECTS = "backlog.getProjects";
-    static final String BACKLOG_GETPROJECT = "backlog.getProject";
-    static final String BACKLOG_GETCOMPONENTS = "backlog.getComponents";
-    static final String BACKLOG_GETVERSIONS = "backlog.getVersions";
-    static final String BACKLOG_GETUSERS = "backlog.getUsers";
-    static final String BACKLOG_GETISSUETYPES = "backlog.getIssueTypes";
-    static final String BACKLOG_GETISSUE = "backlog.getIssue";
-    static final String BACKLOG_GETCOMMENTS = "backlog.getComments";
-    static final String BACKLOG_COUNTISSUE = "backlog.countIssue";
-    static final String BACKLOG_FINDISSUE = "backlog.findIssue";
-    static final String BACKLOG_CREATEISSUE = "backlog.createIssue";
-
     Object execute(String methodName);
 
     Object execute(String methodName, Object... params);

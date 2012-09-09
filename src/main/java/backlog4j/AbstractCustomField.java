@@ -16,14 +16,14 @@ abstract class AbstractCustomField implements CustomField {
     AbstractCustomField(Map<String, Object> map) {
         id = (Integer) map.get("id");
         name = (String) map.get("name");
-        typeId = valueOfType((Integer)map.get("typeId"));
-        description = (String)map.get("description");
-        required = (Boolean)map.get("required");
+        typeId = valueOfType((Integer) map.get("typeId"));
+        description = (String) map.get("description");
+        required = (Boolean) map.get("required");
 
     }
 
-    protected Type valueOfType(int typeId){
-        switch (typeId){
+    protected Type valueOfType(int typeId) {
+        switch (typeId) {
             case 1:
                 return Type.STRING;
             case 2:

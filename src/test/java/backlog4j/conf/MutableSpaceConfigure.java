@@ -9,16 +9,16 @@ import java.util.Properties;
 /**
  * @author eguchi
  */
-public class BacklogConfigureTestImpl implements BacklogConfigure {
+public class MutableSpaceConfigure implements BacklogConfigure {
 
-    private static final BacklogConfigure BACKLOG_CONFIGURE = new BacklogConfigureTestImpl();
+    private static final BacklogConfigure BACKLOG_CONFIGURE = new MutableSpaceConfigure();
     private final BacklogConfigure delegate;
 
 
-    private BacklogConfigureTestImpl(){
+    private MutableSpaceConfigure(){
         Properties properties = new Properties();
         try {
-            properties.loadFromXML(new FileInputStream("test.properties"));
+            properties.loadFromXML(new FileInputStream("mutable.properties"));
         } catch (IOException e) {
         }
 
@@ -29,7 +29,7 @@ public class BacklogConfigureTestImpl implements BacklogConfigure {
         try {
             delegate = new BacklogConfigureImpl(spaceId,username,password);
         } catch (MalformedURLException e) {
-            throw new IllegalStateException("failed to create BacklogConfigureTestImpl");
+            throw new IllegalStateException("failed to create ImmutableSpaceConfigure");
         }
 
     }

@@ -6,7 +6,7 @@ import java.net.URL;
 /**
  * @author eguchi
  */
-public class BacklogConfigureImpl implements BacklogConfigure {
+public final class BacklogConfigureImpl implements BacklogConfigure {
 
     private final String spaceId;
     private final String username;

@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * @author eguchi
  */
-public class GetProject {
+public class GetProject implements BacklogCommand<Project> {
 
     private final BacklogClient client;
     private Integer projectId;
@@ -50,7 +50,7 @@ public class GetProject {
             throw new BacklogException();
         }
 
-        Object res = client.execute(BacklogClient.BACKLOG_GETPROJECT, params);
+        Object res = client.execute(BACKLOG_GETPROJECT, params);
 
         return new Project((Map<String, Object>) res);
     }

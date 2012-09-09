@@ -5,7 +5,7 @@ package backlog4j;
  */
 public interface CustomField {
 
-    public enum Type{
+    public enum Type {
         UNDEFINED(0),
         STRING(1),
         TEXT(2),

@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @author eguchi
  */
-public class GetVersions {
+public class GetVersions implements BacklogCommand<List<Version>> {
 
     private final BacklogClient client;
     private Integer projectId;
@@ -29,7 +29,7 @@ public class GetVersions {
     }
 
     public List<Version> execute() {
-        Object res = client.execute(BacklogClient.BACKLOG_GETVERSIONS, projectId);
+        Object res = client.execute(BACKLOG_GETVERSIONS, projectId);
 
         return XmlRpcUtil.toList(Version.class, res);
     }

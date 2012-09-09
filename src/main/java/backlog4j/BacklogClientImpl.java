@@ -6,8 +6,6 @@ import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.client.XmlRpcClient;
 import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 
-import java.util.Map;
-
 /**
  * @author eguchi
  */
@@ -98,22 +96,4 @@ public class BacklogClientImpl implements BacklogClient {
         return new CreateIssue(this);
     }
 
-    public Object[] getObjects(String method, Object... params) {
-        try {
-            return (Object[]) client.execute(method, params);
-        } catch (XmlRpcException e) {
-            throw new BacklogException(e);
-        }
-    }
-
-    private Issue getIssue(Object[] params) {
-        Object res;
-        try {
-            res = client.execute(BACKLOG_GETISSUE, params);
-        } catch (XmlRpcException e) {
-            throw new BacklogException(e);
-        }
-
-        return new Issue((Map<String, Object>) res);
-    }
 }
