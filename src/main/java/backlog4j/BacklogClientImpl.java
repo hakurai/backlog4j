@@ -106,4 +106,9 @@ public class BacklogClientImpl implements BacklogClient {
         return new SwitchStatus(this);
     }
 
+    @Override
+    public AddComment addComment() {
+        return new AddComment(this);
+    }
+
 }

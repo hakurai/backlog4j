@@ -37,5 +37,5 @@ public interface BacklogClient {
 
     SwitchStatus switchStatus();
 
-
+    AddComment addComment();
 }
