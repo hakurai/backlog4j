@@ -15,7 +15,7 @@ import static org.junit.Assert.assertThat;
 public class SwitchStatusTest {
 
     @Test
-    public void testShouldswitchStatus() throws Exception {
+    public void testShouldSwitchStatus() throws Exception {
         final int projectId = 1073771652;
         BacklogClient client = new BacklogClientImpl(MutableSpaceConfigure.getInstance());
 

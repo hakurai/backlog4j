@@ -38,4 +38,10 @@ public interface BacklogClient {
     SwitchStatus switchStatus();
 
     AddComment addComment();
+
+    AddIssueType addIssueType();
+
+    UpdateIssueType updateIssueType();
+
+    DeleteIssueType deleteIssueType();
 }

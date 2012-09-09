@@ -111,4 +111,18 @@ public class BacklogClientImpl implements BacklogClient {
         return new AddComment(this);
     }
 
+    @Override
+    public AddIssueType addIssueType() {
+        return new AddIssueType(this);
+    }
+
+    @Override
+    public UpdateIssueType updateIssueType() {
+        return new UpdateIssueType(this);
+    }
+
+    @Override
+    public DeleteIssueType deleteIssueType() {
+        return new DeleteIssueType(this);
+    }
 }
