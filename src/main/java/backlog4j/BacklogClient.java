@@ -56,4 +56,6 @@ public interface BacklogClient {
     UpdateComponent updateComponent();
 
     DeleteComponent deleteComponent();
+
+    GetTimeline getTimeline();
 }

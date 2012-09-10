@@ -155,4 +155,9 @@ public class BacklogClientImpl implements BacklogClient {
     public DeleteComponent deleteComponent() {
         return new DeleteComponent(this);
     }
+
+    @Override
+    public GetTimeline getTimeline() {
+        return new GetTimeline(this);
+    }
 }
