@@ -165,4 +165,9 @@ public class BacklogClientImpl implements BacklogClient {
     public GetProjectSummary getProjectSummary() {
         return new GetProjectSummary(this);
     }
+
+    @Override
+    public GetProjectSummaries getProjectSummaries() {
+        return new GetProjectSummaries(this);
+    }
 }

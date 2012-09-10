@@ -8,11 +8,13 @@ import java.util.Map;
 public final class Status {
     private final Integer id;
     private final String name;
+    private final Integer count;
 
     public Status(Map<String, Object> map) {
-        assert (map.size() == 2);
+        assert (map.size() > 1);
         id = (Integer) map.get("id");
         name = (String) map.get("name");
+        count = (Integer) map.get("count");
     }
 
     public static Status create(Map<String, Object> map) {
@@ -25,6 +27,10 @@ public final class Status {
 
     public String getName() {
         return name;
+    }
+
+    public Integer getCount() {
+        return count;
     }
 
     @Override

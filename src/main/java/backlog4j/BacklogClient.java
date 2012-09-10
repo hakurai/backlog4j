@@ -60,4 +60,6 @@ public interface BacklogClient {
     GetTimeline getTimeline();
 
     GetProjectSummary getProjectSummary();
+
+    GetProjectSummaries getProjectSummaries();
 }
