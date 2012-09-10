@@ -27,9 +27,9 @@ public class FindIssueTest extends BacklogCommandTestBase {
         assertThat(p_1_1.getDescription(), is("hallo backlog!"));
         assertThat(p_1_1.getUrl(), is("https://b4jtest.backlog.jp/view/P_1-1"));
         assertThat(p_1_1.getDueDate(), is(""));
-        assertThat(p_1_1.getStartDate(), is(""));
-        assertThat(p_1_1.getEstimatedHours(), is(""));
-        assertThat(p_1_1.getActualHours(), is(""));
+        assertThat(p_1_1.getStartDate(), nullValue());
+        assertThat(p_1_1.getEstimatedHours(), nullValue());
+        assertThat(p_1_1.getActualHours(), nullValue());
         assertThat(p_1_1.getIssueType().getName(), is("バグ"));
         assertThat(p_1_1.getPriority().getName(), is("中"));
         assertThat(p_1_1.getResolution(), nullValue());

@@ -7,11 +7,11 @@ import java.util.Map;
  */
 public final class Project {
 
-    private final int id;
+    private final Integer id;
     private final String name;
     private final String key;
     private final String url;
-    private final boolean archived;
+    private final Boolean archived;
 
     public Project(Map<String, Object> map) {
         assert (map.size() == 5);
@@ -22,7 +22,7 @@ public final class Project {
         archived = (Boolean) map.get("archived");
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -38,7 +38,7 @@ public final class Project {
         return url;
     }
 
-    public boolean isArchived() {
+    public Boolean isArchived() {
         return archived;
     }
 

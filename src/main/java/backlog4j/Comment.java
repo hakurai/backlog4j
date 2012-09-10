@@ -7,7 +7,7 @@ import java.util.Map;
  */
 public final class Comment {
 
-    private final int id;
+    private final Integer id;
     private final String content;
     private final User createdUser;
     private final String createdOn;
@@ -23,7 +23,7 @@ public final class Comment {
         updatedOn = (String) map.get("updated_on");
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

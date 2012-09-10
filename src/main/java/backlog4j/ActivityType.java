@@ -5,13 +5,13 @@ import java.util.Map;
 /**
  * @author eguchi
  */
-public final class Category {
+public final class ActivityType {
 
     private final Integer id;
     private final String name;
 
-    public Category(Map<String, Object> map) {
-        assert (map.size() == 2);
+
+    public ActivityType(Map<String, Object> map) {
         id = (Integer) map.get("id");
         name = (String) map.get("name");
     }
@@ -26,8 +26,9 @@ public final class Category {
 
     @Override
     public String toString() {
-        return "Category{" +
-                "name='" + name + '\'' +
+        return "ActivityType{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 '}';
     }
 
@@ -36,15 +37,15 @@ public final class Category {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Category category = (Category) o;
+        ActivityType that = (ActivityType) o;
 
-        if (id != category.id) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return id;
+        return id != null ? id.hashCode() : 0;
     }
 }

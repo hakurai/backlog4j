@@ -6,7 +6,7 @@ import java.util.Map;
  * @author eguchi
  */
 public final class Status {
-    private final int id;
+    private final Integer id;
     private final String name;
 
     public Status(Map<String, Object> map) {
@@ -15,7 +15,7 @@ public final class Status {
         name = (String) map.get("name");
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

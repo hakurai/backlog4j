@@ -24,9 +24,9 @@ public class GetIssueTest extends BacklogCommandTestBase {
         assertThat(issue.getDescription(), is("hallo backlog!"));
         assertThat(issue.getUrl(), is("https://b4jtest.backlog.jp/view/P_1-1"));
         assertThat(issue.getDueDate(), is(""));
-        assertThat(issue.getStartDate(), is(""));
-        assertThat(issue.getEstimatedHours(), is(""));
-        assertThat(issue.getActualHours(), is(""));
+        assertThat(issue.getStartDate(), nullValue());
+        assertThat(issue.getEstimatedHours(), nullValue());
+        assertThat(issue.getActualHours(), nullValue());
         assertThat(issue.getIssueType().getName(), is("バグ"));
         assertThat(issue.getPriority().getName(), is("中"));
         assertThat(issue.getResolution(), nullValue());
@@ -53,9 +53,9 @@ public class GetIssueTest extends BacklogCommandTestBase {
         assertThat(issue.getDescription(), is(""));
         assertThat(issue.getUrl(), is("https://b4jtest.backlog.jp/view/P_1-2"));
         assertThat(issue.getDueDate(), is("20120820"));
-        assertThat(issue.getStartDate(), is(""));
-        assertThat(issue.getEstimatedHours(), is(""));
-        assertThat(issue.getActualHours(), is(""));
+        assertThat(issue.getStartDate(), nullValue());
+        assertThat(issue.getEstimatedHours(), nullValue());
+        assertThat(issue.getActualHours(), nullValue());
         assertThat(issue.getIssueType().getName(), is("タスク"));
         assertThat(issue.getPriority().getName(), is("中"));
         assertThat(issue.getResolution().getName(), is("対応済み"));
@@ -82,9 +82,9 @@ public class GetIssueTest extends BacklogCommandTestBase {
         assertThat(issue.getDescription(), is("hallo backlog!"));
         assertThat(issue.getUrl(), is("https://b4jtest.backlog.jp/view/P_1-1"));
         assertThat(issue.getDueDate(), is(""));
-        assertThat(issue.getStartDate(), is(""));
-        assertThat(issue.getEstimatedHours(), is(""));
-        assertThat(issue.getActualHours(), is(""));
+        assertThat(issue.getStartDate(), nullValue());
+        assertThat(issue.getEstimatedHours(), nullValue());
+        assertThat(issue.getActualHours(), nullValue());
         assertThat(issue.getIssueType().getName(), is("バグ"));
         assertThat(issue.getPriority().getName(), is("中"));
         assertThat(issue.getResolution(), nullValue());

@@ -7,7 +7,7 @@ import java.util.Map;
  */
 public final class IssueType {
 
-    private final int id;
+    private final Integer id;
     private final String name;
     private final String color;
 
@@ -19,7 +19,7 @@ public final class IssueType {
 
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

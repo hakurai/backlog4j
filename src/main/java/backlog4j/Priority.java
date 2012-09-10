@@ -7,7 +7,7 @@ import java.util.Map;
  */
 public final class Priority {
 
-    private final int id;
+    private final Integer id;
     private final String name;
 
     public Priority(Map<String, Object> map) {
@@ -16,7 +16,7 @@ public final class Priority {
         name = (String) map.get("name");
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

@@ -29,7 +29,7 @@ public final class Issue {
     public static final String CREATED_ON = "created_on";
     public static final String UPDATED_ON = "updated_on";
 
-    private final int id;
+    private final Integer id;
     private final String key;
     private final String summary;
     private final String description;
@@ -57,9 +57,9 @@ public final class Issue {
         description = (String) map.get(DESCRIPTION);
         url = (String) map.get(URL);
         dueDate = (String) map.get(DUE_DATE);
-        startDate = XmlRpcUtil.castToString(map.get(START_DATE));
-        estimatedHours = XmlRpcUtil.castToString(map.get(ESTIMATED_HOURS));
-        actualHours = XmlRpcUtil.castToString(map.get(ACTUAL_HOURS));
+        startDate = (String) map.get(START_DATE);
+        estimatedHours = (String) map.get(ESTIMATED_HOURS);
+        actualHours = (String) map.get(ACTUAL_HOURS);
         issueType = new IssueType((Map<String, Object>) map.get(ISSUE_TYPE));
         priority = new Priority((Map<String, Object>) map.get(PRIORITY));
         Object resolutionSrc = map.get(RESOLUTION);
@@ -76,7 +76,7 @@ public final class Issue {
 
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
