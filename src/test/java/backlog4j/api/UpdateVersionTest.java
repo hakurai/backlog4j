@@ -26,5 +26,7 @@ public class UpdateVersionTest {
 
         assertThat(updatedVersion.getName(), is("updatedVersion"));
 
+        client.deleteVersion().setId(newVersion.getId()).execute();
+
     }
 }

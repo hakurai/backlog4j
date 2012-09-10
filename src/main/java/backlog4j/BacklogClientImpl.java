@@ -135,4 +135,9 @@ public class BacklogClientImpl implements BacklogClient {
     public UpdateVersion updateVersion() {
         return new UpdateVersion(this);
     }
+
+    @Override
+    public DeleteVersion deleteVersion() {
+        return new DeleteVersion(this);
+    }
 }

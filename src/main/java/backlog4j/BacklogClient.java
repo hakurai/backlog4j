@@ -48,4 +48,6 @@ public interface BacklogClient {
     AddVersion addVersion();
 
     UpdateVersion updateVersion();
+
+    DeleteVersion deleteVersion();
 }
