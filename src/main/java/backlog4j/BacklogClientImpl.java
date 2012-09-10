@@ -160,4 +160,9 @@ public class BacklogClientImpl implements BacklogClient {
     public GetTimeline getTimeline() {
         return new GetTimeline(this);
     }
+
+    @Override
+    public GetProjectSummary getProjectSummary() {
+        return new GetProjectSummary(this);
+    }
 }

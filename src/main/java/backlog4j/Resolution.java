@@ -16,6 +16,10 @@ public final class Resolution {
         name = (String) map.get("name");
     }
 
+    public static Resolution create(Map<String, Object> map) {
+        return map == null ? null : new Resolution(map);
+    }
+
     public Integer getId() {
         return id;
     }

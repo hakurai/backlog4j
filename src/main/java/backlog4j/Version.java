@@ -19,6 +19,10 @@ public final class Version {
         date = (String) map.get("date");
     }
 
+    public static Version create(Map<String, Object> map) {
+        return map == null ? null : new Version(map);
+    }
+
     public Integer getId() {
         return id;
     }

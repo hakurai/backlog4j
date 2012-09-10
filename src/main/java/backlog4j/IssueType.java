@@ -19,6 +19,10 @@ public final class IssueType {
 
     }
 
+    public static IssueType create(Map<String, Object> map){
+        return map == null ? null : new IssueType(map);
+    }
+
     public Integer getId() {
         return id;
     }

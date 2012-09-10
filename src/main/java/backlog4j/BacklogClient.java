@@ -58,4 +58,6 @@ public interface BacklogClient {
     DeleteComponent deleteComponent();
 
     GetTimeline getTimeline();
+
+    GetProjectSummary getProjectSummary();
 }

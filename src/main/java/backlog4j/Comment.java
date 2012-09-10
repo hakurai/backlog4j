@@ -23,6 +23,10 @@ public final class Comment {
         updatedOn = (String) map.get("updated_on");
     }
 
+    public static Comment create(Map<String, Object> map) {
+        return map == null ? null : new Comment(map);
+    }
+
     public Integer getId() {
         return id;
     }
@@ -49,5 +53,22 @@ public final class Comment {
                 "createdUser=" + createdUser +
                 ", content='" + content + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Comment comment = (Comment) o;
+
+        if (id != null ? !id.equals(comment.id) : comment.id != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }

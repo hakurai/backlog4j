@@ -15,6 +15,10 @@ public final class Status {
         name = (String) map.get("name");
     }
 
+    public static Status create(Map<String, Object> map) {
+        return map == null ? null : new Status(map);
+    }
+
     public Integer getId() {
         return id;
     }
@@ -28,5 +32,22 @@ public final class Status {
         return "Status{" +
                 "name='" + name + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Status status = (Status) o;
+
+        if (id != null ? !id.equals(status.id) : status.id != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 }

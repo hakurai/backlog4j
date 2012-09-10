@@ -97,6 +97,7 @@ interface BacklogCommand<T> {
     static final String BACKLOG_UPDATECOMPONENT = "backlog.updateComponent";
     static final String BACKLOG_DELETECOMPONENT = "backlog.deleteComponent";
     static final String BACKLOG_GETTIMELINE = "backlog.getTimeline";
+    static final String BACKLOG_GETPROJECTSUMMARY = "backlog.getProjectSummary";
 
 
     T execute();

@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * @author eguchi
  */
-public class Activity {
+public final class Activity {
 
     private final ActivityType type;
     private final String content;
@@ -15,12 +15,16 @@ public class Activity {
 
 
     public Activity(Map<String, Object> map) {
-        type = new ActivityType((Map<String, Object>) map.get("type"));
+        type = ActivityType.create((Map<String, Object>) map.get("type"));
         content = (String) map.get("content");
         updatedOn = (String) map.get("updated_on");
         user = new User((Map<String, Object>) map.get("user"));
         issue = new Issue((Map<String, Object>) map.get("issue"));
 
+    }
+
+    public static Activity create(Map<String, Object> map){
+        return map == null ? null : new Activity(map);
     }
 
     public ActivityType getType() {

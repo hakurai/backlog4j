@@ -60,20 +60,15 @@ public final class Issue {
         startDate = (String) map.get(START_DATE);
         estimatedHours = (String) map.get(ESTIMATED_HOURS);
         actualHours = (String) map.get(ACTUAL_HOURS);
-        Object issueTypeSrc = map.get(ISSUE_TYPE);
-        issueType = issueTypeSrc == null ? null : new IssueType((Map<String, Object>) issueTypeSrc);
-        priority = new Priority((Map<String, Object>) map.get(PRIORITY));
-        Object resolutionSrc = map.get(RESOLUTION);
-        resolution = resolutionSrc == null ? null : new Resolution((Map<String, Object>) resolutionSrc);
-        Object statusSrc = map.get(STATUS);
-        status = statusSrc == null ? null :new Status((Map<String, Object>) statusSrc);
+        issueType = IssueType.create((Map<String, Object>) map.get(ISSUE_TYPE));
+        priority = Priority.create((Map<String, Object>) map.get(PRIORITY));
+        resolution = Resolution.create((Map<String, Object>) map.get(RESOLUTION));
+        status = Status.create((Map<String, Object>) map.get(STATUS));
         components = XmlRpcUtil.toList(Category.class, map.get(COMPONENTS));
         versions = XmlRpcUtil.toList(Version.class, map.get(VERSIONS));
         milestones = XmlRpcUtil.toList(Milestone.class, map.get(MILESTONES));
-        Object createdUserSrc = map.get(CREATED_USER);
-        createdUser = createdUserSrc == null ? null : new User((Map<String, Object>) createdUserSrc);
-        Object assignerSrc = map.get(ASSIGNER);
-        assigner = assignerSrc == null ? null : new User((Map<String, Object>) assignerSrc);
+        createdUser = User.create((Map<String, Object>) map.get(CREATED_USER));
+        assigner = User.create((Map<String, Object>) map.get(ASSIGNER));
         createdOn = (String) map.get(CREATED_ON);
         updatedOn = (String) map.get(UPDATED_ON);
 
