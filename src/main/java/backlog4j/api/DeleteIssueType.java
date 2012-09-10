@@ -49,7 +49,7 @@ public class DeleteIssueType implements BacklogCommand<IssueType> {
     public IssueType execute() {
         checkParameters();
 
-        Object res = client.execute(BACKLOG_DELETEISSUETYPE, map);
+        Object res = client.execute(BACKLOG_DELETE_ISSUE_TYPE, map);
         return new IssueType((Map<String, Object>) res);
     }
 }

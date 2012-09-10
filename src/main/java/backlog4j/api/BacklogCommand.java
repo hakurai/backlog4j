@@ -73,31 +73,31 @@ interface BacklogCommand<T> {
     static final int MAX_LIMIT = 100;
 
 
-    static final String BACKLOG_GETPROJECTS = "backlog.getProjects";
-    static final String BACKLOG_GETPROJECT = "backlog.getProject";
-    static final String BACKLOG_GETCOMPONENTS = "backlog.getComponents";
-    static final String BACKLOG_GETVERSIONS = "backlog.getVersions";
-    static final String BACKLOG_GETUSERS = "backlog.getUsers";
-    static final String BACKLOG_GETISSUETYPES = "backlog.getIssueTypes";
-    static final String BACKLOG_GETISSUE = "backlog.getIssue";
-    static final String BACKLOG_GETCOMMENTS = "backlog.getComments";
-    static final String BACKLOG_COUNTISSUE = "backlog.countIssue";
-    static final String BACKLOG_FINDISSUE = "backlog.findIssue";
-    static final String BACKLOG_CREATEISSUE = "backlog.createIssue";
-    static final String BACKLOG_UPDATEISSUE = "backlog.updateIssue";
-    static final String BACKLOG_SWITCHSTATUS = "backlog.switchStatus";
-    static final String BACKLOG_ADDCOMMENT = "backlog.addComment";
-    static final String BACKLOG_ADDISSUETYPE = "backlog.addIssueType";
-    static final String BACKLOG_UPDATEISSUETYPE = "backlog.updateIssueType";
-    static final String BACKLOG_DELETEISSUETYPE = "backlog.deleteIssueType";
-    static final String BACKLOG_ADDVERSION = "backlog.addVersion";
-    static final String BACKLOG_UPDATEVERSION = "backlog.updateVersion";
-    static final String BACKLOG_DELETEVERSION = "backlog.deleteVersion";
-    static final String BACKLOG_ADDCOMPONENT = "backlog.addComponent";
-    static final String BACKLOG_UPDATECOMPONENT = "backlog.updateComponent";
-    static final String BACKLOG_DELETECOMPONENT = "backlog.deleteComponent";
-    static final String BACKLOG_GETTIMELINE = "backlog.getTimeline";
-    static final String BACKLOG_GETPROJECTSUMMARY = "backlog.getProjectSummary";
+    static final String BACKLOG_GET_PROJECTS = "backlog.getProjects";
+    static final String BACKLOG_GET_PROJECT = "backlog.getProject";
+    static final String BACKLOG_GET_COMPONENTS = "backlog.getComponents";
+    static final String BACKLOG_GET_VERSIONS = "backlog.getVersions";
+    static final String BACKLOG_GET_USERS = "backlog.getUsers";
+    static final String BACKLOG_GET_ISSUE_TYPES = "backlog.getIssueTypes";
+    static final String BACKLOG_GET_ISSUE = "backlog.getIssue";
+    static final String BACKLOG_GET_COMMENTS = "backlog.getComments";
+    static final String BACKLOG_COUNT_ISSUE = "backlog.countIssue";
+    static final String BACKLOG_FIND_ISSUE = "backlog.findIssue";
+    static final String BACKLOG_CREATE_ISSUE = "backlog.createIssue";
+    static final String BACKLOG_UPDATE_ISSUE = "backlog.updateIssue";
+    static final String BACKLOG_SWITCH_STATUS = "backlog.switchStatus";
+    static final String BACKLOG_ADD_COMMENT = "backlog.addComment";
+    static final String BACKLOG_ADD_ISSUE_TYPE = "backlog.addIssueType";
+    static final String BACKLOG_UPDATE_ISSUE_TYPE = "backlog.updateIssueType";
+    static final String BACKLOG_DELETE_ISSUE_TYPE = "backlog.deleteIssueType";
+    static final String BACKLOG_ADD_VERSION = "backlog.addVersion";
+    static final String BACKLOG_UPDATE_VERSION = "backlog.updateVersion";
+    static final String BACKLOG_DELETE_VERSION = "backlog.deleteVersion";
+    static final String BACKLOG_ADD_COMPONENT = "backlog.addComponent";
+    static final String BACKLOG_UPDATE_COMPONENT = "backlog.updateComponent";
+    static final String BACKLOG_DELETE_COMPONENT = "backlog.deleteComponent";
+    static final String BACKLOG_GET_TIMELINE = "backlog.getTimeline";
+    static final String BACKLOG_GET_PROJECT_SUMMARY = "backlog.getProjectSummary";
 
 
     T execute();

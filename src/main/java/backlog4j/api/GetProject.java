@@ -50,7 +50,7 @@ public class GetProject implements BacklogCommand<Project> {
             throw new BacklogException();
         }
 
-        Object res = client.execute(BACKLOG_GETPROJECT, params);
+        Object res = client.execute(BACKLOG_GET_PROJECT, params);
 
         return new Project((Map<String, Object>) res);
     }

@@ -50,7 +50,7 @@ public class GetIssue implements BacklogCommand<Issue> {
             throw new BacklogException();
         }
 
-        Object res = client.execute(BACKLOG_GETISSUE, params);
+        Object res = client.execute(BACKLOG_GET_ISSUE, params);
 
         return new Issue((Map<String, Object>) res);
     }

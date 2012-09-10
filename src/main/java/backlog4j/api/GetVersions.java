@@ -29,7 +29,7 @@ public class GetVersions implements BacklogCommand<List<Version>> {
     }
 
     public List<Version> execute() {
-        Object res = client.execute(BACKLOG_GETVERSIONS, projectId);
+        Object res = client.execute(BACKLOG_GET_VERSIONS, projectId);
 
         return XmlRpcUtil.toList(Version.class, res);
     }

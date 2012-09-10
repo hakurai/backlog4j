@@ -52,7 +52,7 @@ public class AddComment implements BacklogCommand<Comment> {
     public Comment execute() {
         checkParameters();
 
-        Object res = client.execute(BACKLOG_ADDCOMMENT, map);
+        Object res = client.execute(BACKLOG_ADD_COMMENT, map);
         return new Comment((Map<String, Object>) res);
     }
 }

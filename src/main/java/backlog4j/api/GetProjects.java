@@ -18,7 +18,7 @@ public class GetProjects implements BacklogCommand<List<Project>> {
     }
 
     public List<Project> execute() {
-        Object res = client.execute(BACKLOG_GETPROJECTS);
+        Object res = client.execute(BACKLOG_GET_PROJECTS);
 
         return XmlRpcUtil.toList(Project.class, res);
     }

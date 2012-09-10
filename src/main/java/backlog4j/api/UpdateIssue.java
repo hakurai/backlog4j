@@ -28,7 +28,7 @@ public class UpdateIssue extends AbstractUpdateIssue {
 
     @Override
     public Issue execute() {
-        Object res = client.execute(BACKLOG_UPDATEISSUE, map);
+        Object res = client.execute(BACKLOG_UPDATE_ISSUE, map);
 
         return new Issue((Map<String, Object>) res);
     }

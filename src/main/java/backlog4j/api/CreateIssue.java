@@ -28,7 +28,7 @@ public class CreateIssue extends AbstractUpdateIssue {
 
 
     public Issue execute() {
-        Object res = client.execute(BACKLOG_CREATEISSUE, map);
+        Object res = client.execute(BACKLOG_CREATE_ISSUE, map);
 
         return new Issue((Map<String, Object>) res);
     }

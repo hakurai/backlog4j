@@ -23,7 +23,7 @@ public class CountIssue extends AbstractFindIssueRequest<Integer> {
 
     public Integer execute() {
         checkParameters();
-        Integer res = (Integer) client.execute(BACKLOG_COUNTISSUE, map);
+        Integer res = (Integer) client.execute(BACKLOG_COUNT_ISSUE, map);
 
         return res;
     }

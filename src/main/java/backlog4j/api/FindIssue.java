@@ -63,7 +63,7 @@ public class FindIssue extends AbstractFindIssueRequest<List<Issue>> {
     }
 
     public List<Issue> execute() {
-        Object res = client.execute(BACKLOG_FINDISSUE, map);
+        Object res = client.execute(BACKLOG_FIND_ISSUE, map);
 
         return XmlRpcUtil.toList(Issue.class, res);
     }

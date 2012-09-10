@@ -34,7 +34,7 @@ public class GetUsers implements BacklogCommand<List<User>> {
             throw new BacklogException();
         }
 
-        Object res = client.execute(BACKLOG_GETUSERS, getProjectId());
+        Object res = client.execute(BACKLOG_GET_USERS, getProjectId());
 
         return XmlRpcUtil.toList(User.class, res);
     }

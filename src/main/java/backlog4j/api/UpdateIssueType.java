@@ -65,7 +65,7 @@ public class UpdateIssueType implements BacklogCommand<IssueType> {
     public IssueType execute() {
         checkParameters();
 
-        Object res = client.execute(BACKLOG_UPDATEISSUETYPE, map);
+        Object res = client.execute(BACKLOG_UPDATE_ISSUE_TYPE, map);
         return new IssueType((Map<String, Object>) res);
     }
 }

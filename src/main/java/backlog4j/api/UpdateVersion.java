@@ -83,7 +83,7 @@ public class UpdateVersion implements BacklogCommand<Version> {
     public Version execute() {
         checkParameters();
 
-        Object res = client.execute(BACKLOG_UPDATEVERSION, map);
+        Object res = client.execute(BACKLOG_UPDATE_VERSION, map);
         return new Version((Map<String, Object>) res);
     }
 }

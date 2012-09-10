@@ -65,7 +65,7 @@ public class AddIssueType implements BacklogCommand<IssueType> {
     public IssueType execute() {
         checkParameters();
 
-        Object res = client.execute(BACKLOG_ADDISSUETYPE, map);
+        Object res = client.execute(BACKLOG_ADD_ISSUE_TYPE, map);
         return new IssueType((Map<String, Object>) res);
     }
 }

@@ -34,7 +34,7 @@ public class GetComponents implements BacklogCommand<List<Category>> {
             throw new BacklogException();
         }
 
-        Object res = client.execute(BACKLOG_GETCOMPONENTS, getProjectId());
+        Object res = client.execute(BACKLOG_GET_COMPONENTS, getProjectId());
 
         return XmlRpcUtil.toList(Category.class, res);
     }

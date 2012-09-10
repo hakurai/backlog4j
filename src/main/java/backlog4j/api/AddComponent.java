@@ -53,7 +53,7 @@ public class AddComponent implements BacklogCommand<Category> {
     public Category execute() {
         checkParameters();
 
-        Object res = client.execute(BACKLOG_ADDCOMPONENT, map);
+        Object res = client.execute(BACKLOG_ADD_COMPONENT, map);
         return new Category((Map<String, Object>) res);
     }
 }

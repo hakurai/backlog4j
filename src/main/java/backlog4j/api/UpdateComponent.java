@@ -53,7 +53,7 @@ public class UpdateComponent implements BacklogCommand<Category> {
     public Category execute() {
         checkParameters();
 
-        Object res = client.execute(BACKLOG_UPDATECOMPONENT, map);
+        Object res = client.execute(BACKLOG_UPDATE_COMPONENT, map);
         return new Category((Map<String, Object>) res);
     }
 }

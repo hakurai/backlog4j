@@ -18,7 +18,7 @@ public class GetTimeline implements BacklogCommand<List<Activity>> {
     }
 
     public List<Activity> execute() {
-        Object res = client.execute(BACKLOG_GETTIMELINE);
+        Object res = client.execute(BACKLOG_GET_TIMELINE);
 
         return XmlRpcUtil.toList(Activity.class, res);
     }

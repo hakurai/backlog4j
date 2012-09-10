@@ -39,7 +39,7 @@ public class DeleteComponent implements BacklogCommand<Category> {
     public Category execute() {
         checkParameters();
 
-        Object res = client.execute(BACKLOG_DELETECOMPONENT, id);
+        Object res = client.execute(BACKLOG_DELETE_COMPONENT, id);
         return new Category((Map<String, Object>) res);
     }
 }

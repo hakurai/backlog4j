@@ -28,7 +28,7 @@ public class GetIssueTypes implements BacklogCommand<List<IssueType>> {
     }
 
     public List<IssueType> execute() {
-        Object res = client.execute(BACKLOG_GETISSUETYPES, projectId);
+        Object res = client.execute(BACKLOG_GET_ISSUE_TYPES, projectId);
 
         return XmlRpcUtil.toList(IssueType.class, res);
     }

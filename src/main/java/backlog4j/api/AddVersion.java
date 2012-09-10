@@ -73,7 +73,7 @@ public class AddVersion implements BacklogCommand<Version> {
     public Version execute() {
         checkParameters();
 
-        Object res = client.execute(BACKLOG_ADDVERSION, map);
+        Object res = client.execute(BACKLOG_ADD_VERSION, map);
         return new Version((Map<String, Object>) res);
     }
 }

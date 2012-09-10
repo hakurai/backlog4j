@@ -39,7 +39,7 @@ public class DeleteVersion implements BacklogCommand<Version> {
     public Version execute() {
         checkParameters();
 
-        Object res = client.execute(BACKLOG_DELETEVERSION, id);
+        Object res = client.execute(BACKLOG_DELETE_VERSION, id);
         return new Version((Map<String, Object>) res);
     }
 }

@@ -83,7 +83,7 @@ public class SwitchStatus implements BacklogCommand<Issue> {
     public Issue execute() {
         checkParameters();
 
-        Object res = client.execute(BACKLOG_SWITCHSTATUS, map);
+        Object res = client.execute(BACKLOG_SWITCH_STATUS, map);
 
         return new Issue((Map<String, Object>) res);
     }
