@@ -125,4 +125,9 @@ public class BacklogClientImpl implements BacklogClient {
     public DeleteIssueType deleteIssueType() {
         return new DeleteIssueType(this);
     }
+
+    @Override
+    public AddVersion AddVersion() {
+        return new AddVersion(this);
+    }
 }

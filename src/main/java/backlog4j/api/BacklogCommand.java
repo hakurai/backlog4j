@@ -89,6 +89,7 @@ interface BacklogCommand<T> {
     static final String BACKLOG_ADDISSUETYPE = "backlog.addIssueType";
     static final String BACKLOG_UPDATEISSUETYPE = "backlog.updateIssueType";
     static final String BACKLOG_DELETEISSUETYPE = "backlog.deleteIssueType";
+    static final String BACKLOG_ADDVERSION = "backlog.addVersion";
 
 
     T execute();
