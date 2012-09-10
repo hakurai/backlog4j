@@ -23,7 +23,7 @@ public class DeleteIssueTypeTest {
 
         IssueType deletedIssueType = client.addIssueType().setProjectId(projectId).setName("deletedIssueType").setColor("#e30000").execute();
 
-        client.deleteIssueType().setId(deletedIssueType.getId());
+        client.deleteIssueType().setId(deletedIssueType.getId()).execute();
 
         List<IssueType> issueTypeList = client.getIssueTypes().setProjectId(projectId).execute();
 
