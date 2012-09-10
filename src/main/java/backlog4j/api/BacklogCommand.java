@@ -67,6 +67,8 @@ interface BacklogCommand<T> {
     static final String COLOR = "color";
     static final String ID = "id";
     static final String SUBSTITUTE_ID = "substitute_id";
+    static final String ARCHIVED = "archived";
+
 
 
     static final int MAX_LIMIT = 100;
@@ -90,6 +92,7 @@ interface BacklogCommand<T> {
     static final String BACKLOG_UPDATEISSUETYPE = "backlog.updateIssueType";
     static final String BACKLOG_DELETEISSUETYPE = "backlog.deleteIssueType";
     static final String BACKLOG_ADDVERSION = "backlog.addVersion";
+    static final String BACKLOG_UPDATEVERSION = "backlog.updateVersion";
 
 
     T execute();

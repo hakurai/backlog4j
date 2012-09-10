@@ -12,16 +12,19 @@ import static org.junit.Assert.assertThat;
 /**
  * @author eguchi
  */
-public class AddVersionTest {
+public class UpdateVersionTest {
 
     @Test
-    public void testShouldWorkAddVersion() throws Exception {
+    public void testShouldWorkUpdateVersion() throws Exception {
         final int projectId = 1073771652;
         BacklogClient client = new BacklogClientImpl(MutableSpaceConfigure.getInstance());
 
         Version newVersion = client.addVersion().setProjectId(projectId).setName("newVersion").execute();
 
-        assertThat(newVersion.getName(), is("newVersion"));
+        Version updatedVersion = client.updateVersion().setId(newVersion.getId()).setName("updatedVersion").execute();
+
+
+        assertThat(updatedVersion.getName(), is("updatedVersion"));
 
     }
 }

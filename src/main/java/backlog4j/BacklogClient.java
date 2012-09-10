@@ -45,5 +45,7 @@ public interface BacklogClient {
 
     DeleteIssueType deleteIssueType();
 
-    AddVersion AddVersion();
+    AddVersion addVersion();
+
+    UpdateVersion updateVersion();
 }
