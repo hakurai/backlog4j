@@ -140,4 +140,19 @@ public class BacklogClientImpl implements BacklogClient {
     public DeleteVersion deleteVersion() {
         return new DeleteVersion(this);
     }
+
+    @Override
+    public AddComponent addComponent() {
+        return new AddComponent(this);
+    }
+
+    @Override
+    public UpdateComponent updateComponent() {
+        return new UpdateComponent(this);
+    }
+
+    @Override
+    public DeleteComponent deleteComponent() {
+        return new DeleteComponent(this);
+    }
 }

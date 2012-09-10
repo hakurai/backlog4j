@@ -2,19 +2,19 @@ package backlog4j.api;
 
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
-import backlog4j.Version;
+import backlog4j.Category;
 
 import java.util.Map;
 
 /**
  * @author eguchi
  */
-public class DeleteVersion implements BacklogCommand<Version> {
+public class DeleteComponent implements BacklogCommand<Category> {
 
     protected final BacklogClient client;
     protected Integer id;
 
-    public DeleteVersion(BacklogClient client) {
+    public DeleteComponent(BacklogClient client) {
         this.client = client;
     }
 
@@ -22,7 +22,7 @@ public class DeleteVersion implements BacklogCommand<Version> {
         return id;
     }
 
-    public DeleteVersion setId(Integer id) {
+    public DeleteComponent setId(Integer id) {
         this.id = id;
 
         return this;
@@ -36,10 +36,10 @@ public class DeleteVersion implements BacklogCommand<Version> {
     }
 
     @Override
-    public Version execute() {
+    public Category execute() {
         checkParameters();
 
-        Object res = client.execute(BACKLOG_DELETEVERSION, id);
-        return new Version((Map<String, Object>) res);
+        Object res = client.execute(BACKLOG_DELETECOMPONENT, id);
+        return new Category((Map<String, Object>) res);
     }
 }

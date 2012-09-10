@@ -50,4 +50,10 @@ public interface BacklogClient {
     UpdateVersion updateVersion();
 
     DeleteVersion deleteVersion();
+
+    AddComponent addComponent();
+
+    UpdateComponent updateComponent();
+
+    DeleteComponent deleteComponent();
 }

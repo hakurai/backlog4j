@@ -70,7 +70,6 @@ interface BacklogCommand<T> {
     static final String ARCHIVED = "archived";
 
 
-
     static final int MAX_LIMIT = 100;
 
 
@@ -94,6 +93,9 @@ interface BacklogCommand<T> {
     static final String BACKLOG_ADDVERSION = "backlog.addVersion";
     static final String BACKLOG_UPDATEVERSION = "backlog.updateVersion";
     static final String BACKLOG_DELETEVERSION = "backlog.deleteVersion";
+    static final String BACKLOG_ADDCOMPONENT = "backlog.addComponent";
+    static final String BACKLOG_UPDATECOMPONENT = "backlog.updateComponent";
+    static final String BACKLOG_DELETECOMPONENT = "backlog.deleteComponent";
 
 
     T execute();
