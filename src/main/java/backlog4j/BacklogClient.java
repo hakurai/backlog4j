@@ -64,4 +64,6 @@ public interface BacklogClient {
     GetProjectSummaries getProjectSummaries();
 
     GetUser getUser();
+
+    GetUserIcon getUserIcon();
 }

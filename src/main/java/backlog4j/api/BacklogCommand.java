@@ -100,6 +100,7 @@ interface BacklogCommand<T> {
     static final String BACKLOG_GET_PROJECT_SUMMARY = "backlog.getProjectSummary";
     static final String BACKLOG_GET_PROJECT_SUMMARIES = "backlog.getProjectSummaries";
     static final String BACKLOG_GET_USER = "backlog.getUser";
+    static final String BACKLOG_GET_USER_ICON = "backlog.getUserIcon";
 
 
     T execute();

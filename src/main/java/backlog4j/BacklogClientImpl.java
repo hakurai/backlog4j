@@ -175,4 +175,9 @@ public class BacklogClientImpl implements BacklogClient {
     public GetUser getUser() {
         return new GetUser(this);
     }
+
+    @Override
+    public GetUserIcon getUserIcon() {
+        return new GetUserIcon(this);
+    }
 }
