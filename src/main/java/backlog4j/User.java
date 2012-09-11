@@ -9,11 +9,15 @@ public final class User {
 
     private final Integer id;
     private final String name;
+    private final String lang;
+    private final String updatedOn;
 
     public User(Map<String, Object> map) {
-        assert (map.size() == 2);
+        assert (map.size() > 1);
         id = (Integer) map.get("id");
         name = (String) map.get("name");
+        lang = (String) map.get("lang");
+        updatedOn = (String) map.get("updated_on");
     }
 
     public static User create(Map<String, Object> map) {
@@ -26,6 +30,14 @@ public final class User {
 
     public String getName() {
         return name;
+    }
+
+    public String getLang() {
+        return lang;
+    }
+
+    public String getUpdatedOn() {
+        return updatedOn;
     }
 
     @Override
