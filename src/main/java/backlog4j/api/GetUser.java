@@ -1,6 +1,7 @@
 package backlog4j.api;
 
 import backlog4j.BacklogClient;
+import backlog4j.BacklogException;
 import backlog4j.User;
 
 import java.util.Map;
@@ -27,7 +28,14 @@ public class GetUser implements BacklogCommand<User> {
         return this;
     }
 
+    private void checkParameters() {
+        if (getId() == null) {
+            throw new BacklogException("id is required");
+        }
+    }
+
     public User execute() {
+        checkParameters();
         Object res = client.execute(BACKLOG_GET_USER, id);
 
         return User.create((Map<String, Object>) res);

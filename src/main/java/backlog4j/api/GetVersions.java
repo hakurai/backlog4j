@@ -1,6 +1,7 @@
 package backlog4j.api;
 
 import backlog4j.BacklogClient;
+import backlog4j.BacklogException;
 import backlog4j.Version;
 import backlog4j.XmlRpcUtil;
 
@@ -28,7 +29,14 @@ public class GetVersions implements BacklogCommand<List<Version>> {
         return this;
     }
 
+    private void checkParameters() {
+        if (getProjectId() == null) {
+            throw new BacklogException("projectId is required");
+        }
+    }
+
     public List<Version> execute() {
+        checkParameters();
         Object res = client.execute(BACKLOG_GET_VERSIONS, projectId);
 
         return XmlRpcUtil.toList(Version.class, res);

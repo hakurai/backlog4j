@@ -1,6 +1,7 @@
 package backlog4j.api;
 
 import backlog4j.BacklogClient;
+import backlog4j.BacklogException;
 import backlog4j.Issue;
 
 import java.util.Map;
@@ -26,8 +27,15 @@ public class UpdateIssue extends AbstractUpdateIssue {
         return this;
     }
 
+    private void checkParameters() {
+        if (getKey() == null) {
+            throw new BacklogException("key is required");
+        }
+    }
+
     @Override
     public Issue execute() {
+        checkParameters();
         Object res = client.execute(BACKLOG_UPDATE_ISSUE, map);
 
         return new Issue((Map<String, Object>) res);

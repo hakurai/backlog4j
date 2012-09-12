@@ -1,6 +1,7 @@
 package backlog4j.api;
 
 import backlog4j.BacklogClient;
+import backlog4j.BacklogException;
 import backlog4j.IssueType;
 import backlog4j.XmlRpcUtil;
 
@@ -27,7 +28,14 @@ public class GetIssueTypes implements BacklogCommand<List<IssueType>> {
         return this;
     }
 
+    private void checkParameters() {
+        if (getProjectId() == null) {
+            throw new BacklogException("projectId is required");
+        }
+    }
+
     public List<IssueType> execute() {
+        checkParameters();
         Object res = client.execute(BACKLOG_GET_ISSUE_TYPES, projectId);
 
         return XmlRpcUtil.toList(IssueType.class, res);

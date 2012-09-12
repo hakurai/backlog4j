@@ -47,7 +47,7 @@ public class GetProject implements BacklogCommand<Project> {
         } else if (getProjectKey() != null) {
             params = getProjectKey();
         } else {
-            throw new BacklogException();
+            throw new BacklogException("projectId or projectKey required");
         }
 
         Object res = client.execute(BACKLOG_GET_PROJECT, params);

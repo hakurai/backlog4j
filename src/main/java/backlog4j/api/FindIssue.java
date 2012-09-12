@@ -1,6 +1,7 @@
 package backlog4j.api;
 
 import backlog4j.BacklogClient;
+import backlog4j.BacklogException;
 import backlog4j.Issue;
 import backlog4j.XmlRpcUtil;
 
@@ -62,7 +63,14 @@ public class FindIssue extends AbstractFindIssueRequest<List<Issue>> {
         return this;
     }
 
+    private void checkParameters() {
+        if (getProjectId() == null) {
+            throw new BacklogException("projectId is required");
+        }
+    }
+
     public List<Issue> execute() {
+        checkParameters();
         Object res = client.execute(BACKLOG_FIND_ISSUE, map);
 
         return XmlRpcUtil.toList(Issue.class, res);

@@ -47,7 +47,7 @@ public class GetIssue implements BacklogCommand<Issue> {
         } else if (getIssueKey() != null) {
             params = getIssueKey();
         } else {
-            throw new BacklogException();
+            throw new BacklogException("issueId or issueKey is riquired");
         }
 
         Object res = client.execute(BACKLOG_GET_ISSUE, params);

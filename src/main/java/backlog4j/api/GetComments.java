@@ -30,10 +30,15 @@ public class GetComments implements BacklogCommand<List<Comment>> {
         return this;
     }
 
-    public List<Comment> execute() {
+    private void checkParameters(){
         if (getIssueId() == null) {
-            throw new BacklogException();
+            throw new BacklogException("issueId is required");
         }
+
+    }
+
+    public List<Comment> execute() {
+        checkParameters();
 
         Object res = client.execute(BACKLOG_GET_COMMENTS, getIssueId());
 

@@ -49,7 +49,7 @@ public class UpdateIssueType implements BacklogCommand<IssueType> {
         return this;
     }
 
-    protected void checkParameters() {
+    private void checkParameters() {
         if (getId() == null) {
             throw new BacklogException("id is required");
         }

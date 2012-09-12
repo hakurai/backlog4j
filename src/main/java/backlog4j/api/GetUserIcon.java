@@ -1,6 +1,7 @@
 package backlog4j.api;
 
 import backlog4j.BacklogClient;
+import backlog4j.BacklogException;
 import backlog4j.UserIcon;
 
 import java.util.Map;
@@ -27,7 +28,14 @@ public class GetUserIcon implements BacklogCommand<UserIcon> {
         return this;
     }
 
+    private void checkParameters() {
+        if (getId() == null) {
+            throw new BacklogException("id is required");
+        }
+    }
+
     public UserIcon execute() {
+        checkParameters();
         Object res = client.execute(BACKLOG_GET_USER_ICON, id);
 
         return new UserIcon((Map<String, Object>) res);

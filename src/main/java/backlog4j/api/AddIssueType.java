@@ -49,7 +49,7 @@ public class AddIssueType implements BacklogCommand<IssueType> {
         return this;
     }
 
-    protected void checkParameters() {
+    private void checkParameters() {
         if (getProjectId() == null) {
             throw new BacklogException("projectId is required");
         }
