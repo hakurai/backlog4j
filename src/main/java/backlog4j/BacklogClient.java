@@ -72,4 +72,6 @@ public interface BacklogClient {
     GetStatuses getStatuses();
 
     GetResolutions getResolutions();
+
+    GetPriorities getPriorities();
 }

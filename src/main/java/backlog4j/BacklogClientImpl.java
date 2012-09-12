@@ -195,4 +195,9 @@ public class BacklogClientImpl implements BacklogClient {
     public GetResolutions getResolutions() {
         return new GetResolutions(this);
     }
+
+    @Override
+    public GetPriorities getPriorities() {
+        return new GetPriorities(this);
+    }
 }
