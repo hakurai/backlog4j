@@ -180,4 +180,9 @@ public class BacklogClientImpl implements BacklogClient {
     public GetUserIcon getUserIcon() {
         return new GetUserIcon(this);
     }
+
+    @Override
+    public GetActivityTypes getActivityTypes() {
+        return new GetActivityTypes(this);
+    }
 }
