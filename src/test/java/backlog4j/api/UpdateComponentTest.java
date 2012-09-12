@@ -23,9 +23,9 @@ public class UpdateComponentTest {
                 client.addComponent().setProjectId(projectId).setName("newComponent").execute();
 
         Category updatedComponent = client.updateComponent()
-                        .setId(newComponent.getId())
-                        .setName("updatedComponent")
-                        .execute();
+                .setId(newComponent.getId())
+                .setName("updatedComponent")
+                .execute();
 
 
         assertThat(updatedComponent.getName(), is("updatedComponent"));

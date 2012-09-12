@@ -23,7 +23,7 @@ public final class Activity {
 
     }
 
-    public static Activity create(Map<String, Object> map){
+    public static Activity create(Map<String, Object> map) {
         return map == null ? null : new Activity(map);
     }
 

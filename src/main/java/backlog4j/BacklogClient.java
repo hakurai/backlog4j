@@ -70,4 +70,6 @@ public interface BacklogClient {
     GetActivityTypes getActivityTypes();
 
     GetStatuses getStatuses();
+
+    GetResolutions getResolutions();
 }

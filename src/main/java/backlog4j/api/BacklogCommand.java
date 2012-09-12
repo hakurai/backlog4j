@@ -103,6 +103,7 @@ interface BacklogCommand<T> {
     static final String BACKLOG_GET_USER_ICON = "backlog.getUserIcon";
     static final String BACKLOG_GET_ACTIVITY_TYPES = "backlog.getActivityTypes";
     static final String BACKLOG_GET_STATUSES = "backlog.getStatuses";
+    static final String BACKLOG_GET_RESOLUTIONS = "backlog.getResolutions";
 
 
     T execute();

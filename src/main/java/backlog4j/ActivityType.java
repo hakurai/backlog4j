@@ -1,7 +1,5 @@
 package backlog4j;
 
-import sun.reflect.generics.tree.ReturnType;
-
 import java.util.Map;
 
 /**
@@ -18,7 +16,7 @@ public final class ActivityType {
         name = (String) map.get("name");
     }
 
-    public static ActivityType create(Map<String, Object> map){
+    public static ActivityType create(Map<String, Object> map) {
         return map == null ? null : new ActivityType(map);
     }
 

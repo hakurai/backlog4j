@@ -19,7 +19,7 @@ public final class IssueType {
 
     }
 
-    public static IssueType create(Map<String, Object> map){
+    public static IssueType create(Map<String, Object> map) {
         return map == null ? null : new IssueType(map);
     }
 

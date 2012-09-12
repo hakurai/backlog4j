@@ -1,7 +1,6 @@
 package backlog4j.api;
 
 import backlog4j.Status;
-import backlog4j.User;
 import org.junit.Test;
 
 import java.util.List;

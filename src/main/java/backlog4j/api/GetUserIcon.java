@@ -1,7 +1,6 @@
 package backlog4j.api;
 
 import backlog4j.BacklogClient;
-import backlog4j.User;
 import backlog4j.UserIcon;
 
 import java.util.Map;

@@ -16,7 +16,7 @@ public final class Category {
         name = (String) map.get("name");
     }
 
-    public static Category create(Map<String, Object> map){
+    public static Category create(Map<String, Object> map) {
         return map == null ? null : new Category(map);
     }
 

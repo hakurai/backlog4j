@@ -3,7 +3,6 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogClientImpl;
 import backlog4j.Category;
-import backlog4j.Version;
 import backlog4j.conf.MutableSpaceConfigure;
 import org.junit.Test;
 
