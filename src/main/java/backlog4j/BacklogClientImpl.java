@@ -185,4 +185,9 @@ public class BacklogClientImpl implements BacklogClient {
     public GetActivityTypes getActivityTypes() {
         return new GetActivityTypes(this);
     }
+
+    @Override
+    public GetStatuses getStatuses() {
+        return new GetStatuses(this);
+    }
 }

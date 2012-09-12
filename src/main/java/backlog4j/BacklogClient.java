@@ -68,4 +68,6 @@ public interface BacklogClient {
     GetUserIcon getUserIcon();
 
     GetActivityTypes getActivityTypes();
+
+    GetStatuses getStatuses();
 }
