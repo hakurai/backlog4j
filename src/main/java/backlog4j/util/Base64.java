@@ -14,7 +14,7 @@ public class Base64 {
             'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '/'
     };
 
-    private static int[] MASKS = {0,0,63,0,15,0,3};
+    private static int[] MASKS = {0, 0, 63, 0, 15, 0, 3};
 
     static {
         INDEX_TABLE = new int[128];

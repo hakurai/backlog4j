@@ -3,7 +3,7 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
 import backlog4j.Issue;
-import backlog4j.XmlRpcUtil;
+import backlog4j.util.XmlRpcUtil;
 
 import java.util.List;
 

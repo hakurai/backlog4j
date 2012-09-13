@@ -27,6 +27,7 @@ public class Base64Test {
         assertThat(text, is("QUI="));
 
     }
+
     @Test
     public void testEncode3characters() throws Exception {
 
@@ -35,6 +36,7 @@ public class Base64Test {
         assertThat(text, is("QUJD"));
 
     }
+
     @Test
     public void testEncode4characters() throws Exception {
 

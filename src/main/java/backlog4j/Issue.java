@@ -1,5 +1,7 @@
 package backlog4j;
 
+import backlog4j.util.XmlRpcUtil;
+
 import java.util.List;
 import java.util.Map;
 
