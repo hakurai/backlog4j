@@ -29,7 +29,7 @@ public class ImmutableSpaceConfigure implements BacklogConfigure {
         try {
             delegate = new BacklogConfigureImpl(spaceId, username, password);
         } catch (MalformedURLException e) {
-            throw new IllegalStateException("failed to create ImmutableSpaceConfigure");
+            throw new IllegalStateException("failed to write ImmutableSpaceConfigure");
         }
 
     }
