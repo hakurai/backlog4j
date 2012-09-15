@@ -9,9 +9,8 @@ import backlog4j.xmlrpc.writer.XmlRpcRequestWriter;
 import javax.net.ssl.HttpsURLConnection;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author eguchi
@@ -30,11 +29,11 @@ public class XmlRpcClient {
 
     public Object execute(String methodName, Object params) {
 
-        if( params instanceof Object[]){
-            Object[] array = ((Object[])params);
-            if( array.length == 0 ){
+        if (params instanceof Object[]) {
+            Object[] array = ((Object[]) params);
+            if (array.length == 0) {
                 params = null;
-            } else if( array.length == 1 ){
+            } else if (array.length == 1) {
                 params = array[0];
             }
         }
@@ -42,15 +41,37 @@ public class XmlRpcClient {
         try {
             HttpsURLConnection con = createConnection();
 
-            XmlRpcRequestWriter.write(con.getOutputStream(), methodName, params);
+            OutputStream out = null;
+            try {
+                out = con.getOutputStream();
+                XmlRpcRequestWriter.write(out, methodName, params);
+                out.flush();
+                out.close();
+            } finally {
+                if (out != null) {
+                    out.close();
+                }
+            }
 
             con.connect();
 
-//            Map<String, List<String>> headerFields = con.getHeaderFields();
+            int code = con.getResponseCode();
+            if (code != 200) {
+                throw new BacklogException(
+                        "Backlog is returned response code : " + code +
+                                " " + con.getResponseMessage());
+            }
 
-            InputStream inputStream = con.getInputStream();
+            InputStream in = null;
+            try {
+                in = con.getInputStream();
 
-            return XmlRpcRequestReader.read(inputStream);
+                return XmlRpcRequestReader.read(in);
+            } finally {
+                if (in != null) {
+                    in.close();
+                }
+            }
 
         } catch (IOException e) {
             throw new BacklogException(e);

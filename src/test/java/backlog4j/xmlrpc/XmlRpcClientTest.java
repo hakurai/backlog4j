@@ -12,7 +12,7 @@ public class XmlRpcClientTest {
 
         XmlRpcClient client = new XmlRpcClient(ImmutableSpaceConfigure.getInstance());
 
-        client.execute("backlog.getStatuses");
+        client.execute("backlog.getStatuss");
 
     }
 }

@@ -25,7 +25,7 @@ public class XmlRpcHandler extends DefaultHandler {
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-
+        characters.setLength(0);
         if (uri.isEmpty()) {
             if (qName.equals("methodResponse")) {
 
@@ -66,13 +66,11 @@ public class XmlRpcHandler extends DefaultHandler {
             } else if (qName.equals("value")) {
                 if (name != null) {
                     stack.peek().addObject(name, characters.toString());
-                    characters.setLength(0);
                     name = null;
                     valueTag = false;
                 }
             } else if (qName.equals("name")) {
                 name = characters.toString();
-                characters.setLength(0);
                 nameTag = false;
             } else if (qName.equals("data")) {
 
@@ -84,9 +82,8 @@ public class XmlRpcHandler extends DefaultHandler {
                 ObjectReader<?> reader = stack.pop();
                 reader.read(characters.toString());
 
-                stack.peek().addObject(reader.getName(),reader.getObject());
+                stack.peek().addObject(reader.getName(), reader.getObject());
 
-                characters.setLength(0);
                 name = null;
 
             }
