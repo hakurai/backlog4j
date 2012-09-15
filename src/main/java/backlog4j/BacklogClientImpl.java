@@ -2,9 +2,9 @@ package backlog4j;
 
 import backlog4j.api.*;
 import backlog4j.conf.BacklogConfigure;
-import org.apache.xmlrpc.XmlRpcException;
-import org.apache.xmlrpc.client.XmlRpcClient;
-import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
+import backlog4j.xmlrpc.XmlRpcClient;
+//import org.apache.xmlrpc.client.XmlRpcClient;
+//import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 
 /**
  * @author eguchi
@@ -19,14 +19,14 @@ public class BacklogClientImpl implements BacklogClient {
             throw new IllegalArgumentException("configure must not be null");
         }
 
-        XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
-        config.setServerURL(configure.getXmlRpcUrl());
+//        XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
+//        config.setServerURL(configure.getXmlRpcUrl());
+//
+//        config.setBasicUserName(configure.getUsername());
+//        config.setBasicPassword(configure.getPassword());
 
-        config.setBasicUserName(configure.getUsername());
-        config.setBasicPassword(configure.getPassword());
-
-        client = new XmlRpcClient();
-        client.setConfig(config);
+        client = new XmlRpcClient(configure);
+//        client.setConfig(config);
     }
 
     public Object execute(String methodName) {
@@ -34,11 +34,9 @@ public class BacklogClientImpl implements BacklogClient {
     }
 
     public Object execute(String methodName, Object... params) {
-        try {
-            return client.execute(methodName, params);
-        } catch (XmlRpcException e) {
-            throw new BacklogException(e);
-        }
+
+        return client.execute(methodName, params);
+
     }
 
     @Override

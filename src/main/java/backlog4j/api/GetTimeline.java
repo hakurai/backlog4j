@@ -2,7 +2,7 @@ package backlog4j.api;
 
 import backlog4j.Activity;
 import backlog4j.BacklogClient;
-import backlog4j.XmlRpcUtil;
+import backlog4j.util.XmlRpcUtil;
 
 import java.util.List;
 

@@ -1,4 +1,6 @@
-package backlog4j;
+package backlog4j.util;
+
+import backlog4j.BacklogException;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
