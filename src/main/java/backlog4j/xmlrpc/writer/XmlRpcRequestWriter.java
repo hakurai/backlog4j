@@ -5,6 +5,8 @@ import backlog4j.BacklogException;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author eguchi
@@ -91,7 +93,7 @@ public class XmlRpcRequestWriter {
             requestWriter.startRequest();
             requestWriter.setMethodName(methodName);
             requestWriter.startParams();
-            if (o != null) {
+            if (hasArgument(o)) {
                 requestWriter.startParam();
                 requestWriter.writeObject(o);
                 requestWriter.endParam();
@@ -103,5 +105,33 @@ public class XmlRpcRequestWriter {
         } catch (IOException e) {
             throw new BacklogException(e);
         }
+    }
+
+    private static boolean hasArgument(Object o) {
+        if (o == null) {
+            return false;
+        }
+        if (o instanceof Object[]) {
+            Object[] array = (Object[]) o;
+            if (array.length == 0) {
+                return false;
+            }
+        }
+
+        if (o instanceof List) {
+            List<?> list = (List<?>) o;
+            if (list.isEmpty()) {
+                return false;
+            }
+        }
+
+        if (o instanceof Map) {
+            Map<?, ?> map = (Map<?, ?>) o;
+            if (map.isEmpty()) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
