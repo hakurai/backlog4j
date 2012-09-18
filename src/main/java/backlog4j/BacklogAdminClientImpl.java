@@ -19,7 +19,7 @@ class BacklogAdminClientImpl extends AbstractBacklogClientBase implements Backlo
 
     @Override
     public AddUser addUser() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return new AddUser(this);
     }
 
     @Override
