@@ -1,6 +1,7 @@
 package backlog4j.admin.api;
 
 import backlog4j.BacklogAdminClient;
+import backlog4j.BacklogException;
 import backlog4j.admin.impl.ProjectEx;
 
 import java.util.HashMap;
@@ -48,9 +49,19 @@ public class AddProject implements BacklogAdminCommand<ProjectEx> {
         return (Boolean) map.get(USE_CHART);
     }
 
+    private void checkParameters() {
+        if (getName() == null) {
+            throw new BacklogException("id is required");
+        }
+        if (getKey() == null) {
+            throw new BacklogException("key is required");
+        }
+    }
+
     @Override
     public ProjectEx execute() {
 
+        checkParameters();
         Object res = client.execute(BACKLOG_ADMIN_ADD_PROJECT, map);
 
         return new ProjectEx((Map<String, Object>) res);
