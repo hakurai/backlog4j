@@ -15,7 +15,7 @@ public class GetProjectsTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldWorkGetProjects() throws Exception {
-        GetProjects getProjects = client.getProjects();
+        GetProjects getProjects = immutableClient.getProjects();
 
         List<Project> projects = getProjects.execute();
 

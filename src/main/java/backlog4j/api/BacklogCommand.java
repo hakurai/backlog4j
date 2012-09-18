@@ -3,7 +3,7 @@ package backlog4j.api;
 /**
  * @author eguchi
  */
-interface BacklogCommand<T> {
+public interface BacklogCommand<T> {
 
     enum File {
         ATTACHED(1),

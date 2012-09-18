@@ -17,13 +17,13 @@ public final class XmlRpcUtil {
     private XmlRpcUtil() {
     }
 
-    public static <T> List<T> toList(Class<T> clazz, Object[] objects) {
+    public static <T> List<T> toList(Class<? extends T> clazz, Object[] objects) {
         if (objects == null) {
             return Collections.emptyList();
         }
         List<T> list = new ArrayList<T>(objects.length);
 
-        Constructor<T> constructor;
+        Constructor<? extends T> constructor;
         try {
             constructor = clazz.getConstructor(Map.class);
         } catch (NoSuchMethodException e) {
@@ -50,7 +50,7 @@ public final class XmlRpcUtil {
         return Collections.unmodifiableList(list);
     }
 
-    public static <T> List<T> toList(Class<T> clazz, Object o) {
+    public static <T> List<T> toList(Class<? extends T> clazz, Object o) {
         return toList(clazz, (Object[]) o);
     }
 }

@@ -3,6 +3,7 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
 import backlog4j.Project;
+import backlog4j.impl.ProjectImpl;
 
 import java.util.Map;
 
@@ -52,6 +53,6 @@ public class GetProject implements BacklogCommand<Project> {
 
         Object res = client.execute(BACKLOG_GET_PROJECT, params);
 
-        return new Project((Map<String, Object>) res);
+        return new ProjectImpl((Map<String, Object>) res);
     }
 }

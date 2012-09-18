@@ -3,6 +3,7 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
 import backlog4j.ProjectSummary;
+import backlog4j.impl.ProjectSummaryImpl;
 
 import java.util.Map;
 
@@ -39,6 +40,6 @@ public class GetProjectSummary implements BacklogCommand<ProjectSummary> {
 
         Object res = client.execute(BACKLOG_GET_PROJECT_SUMMARY, getProjectId());
 
-        return new ProjectSummary((Map<String, Object>) res);
+        return new ProjectSummaryImpl((Map<String, Object>) res);
     }
 }

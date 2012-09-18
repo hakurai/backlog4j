@@ -10,7 +10,7 @@ public class GetProjectTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldWorkKey() throws Exception {
-        GetProject getProject = client.getProject().setProjectKey("P_1");
+        GetProject getProject = immutableClient.getProject().setProjectKey("P_1");
 
 
         Project project = getProject.execute();
@@ -20,7 +20,7 @@ public class GetProjectTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldWorkProjectId() throws Exception {
-        GetProject getProject = client.getProject().setProjectId(PROJECT_ID);
+        GetProject getProject = immutableClient.getProject().setProjectId(PROJECT_ID);
 
         Project project = getProject.execute();
 

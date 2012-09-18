@@ -3,6 +3,7 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
 import backlog4j.User;
+import backlog4j.impl.UserImpl;
 
 import java.util.Map;
 
@@ -38,6 +39,6 @@ public class GetUser implements BacklogCommand<User> {
         checkParameters();
         Object res = client.execute(BACKLOG_GET_USER, id);
 
-        return User.create((Map<String, Object>) res);
+        return UserImpl.create((Map<String, Object>) res);
     }
 }

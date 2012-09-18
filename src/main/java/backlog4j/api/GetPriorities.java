@@ -2,6 +2,7 @@ package backlog4j.api;
 
 import backlog4j.BacklogClient;
 import backlog4j.Priority;
+import backlog4j.impl.PriorityImpl;
 import backlog4j.util.XmlRpcUtil;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class GetPriorities implements BacklogCommand<List<Priority>> {
     public List<Priority> execute() {
         Object res = client.execute(BACKLOG_GET_PRIORITIES);
 
-        return XmlRpcUtil.toList(Priority.class, res);
+        return XmlRpcUtil.<Priority>toList(PriorityImpl.class, res);
     }
 
 }

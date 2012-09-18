@@ -2,6 +2,7 @@ package backlog4j.api;
 
 import backlog4j.BacklogClient;
 import backlog4j.Status;
+import backlog4j.impl.StatusImpl;
 import backlog4j.util.XmlRpcUtil;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class GetStatuses implements BacklogCommand<List<Status>> {
     public List<Status> execute() {
         Object res = client.execute(BACKLOG_GET_STATUSES);
 
-        return XmlRpcUtil.toList(Status.class, res);
+        return XmlRpcUtil.<Status>toList(StatusImpl.class, res);
     }
 
 }

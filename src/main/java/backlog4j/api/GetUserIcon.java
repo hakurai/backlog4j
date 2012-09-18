@@ -3,6 +3,7 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
 import backlog4j.UserIcon;
+import backlog4j.impl.UserIconImpl;
 
 import java.util.Map;
 
@@ -38,6 +39,6 @@ public class GetUserIcon implements BacklogCommand<UserIcon> {
         checkParameters();
         Object res = client.execute(BACKLOG_GET_USER_ICON, id);
 
-        return new UserIcon((Map<String, Object>) res);
+        return new UserIconImpl((Map<String, Object>) res);
     }
 }

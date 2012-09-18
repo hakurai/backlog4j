@@ -3,6 +3,7 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
 import backlog4j.User;
+import backlog4j.impl.UserImpl;
 import backlog4j.util.XmlRpcUtil;
 
 import java.util.List;
@@ -36,6 +37,6 @@ public class GetUsers implements BacklogCommand<List<User>> {
 
         Object res = client.execute(BACKLOG_GET_USERS, getProjectId());
 
-        return XmlRpcUtil.toList(User.class, res);
+        return XmlRpcUtil.<User>toList(UserImpl.class, res);
     }
 }

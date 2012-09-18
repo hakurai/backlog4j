@@ -3,6 +3,7 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
 import backlog4j.Issue;
+import backlog4j.impl.IssueImpl;
 
 import java.util.Map;
 
@@ -52,6 +53,6 @@ public class GetIssue implements BacklogCommand<Issue> {
 
         Object res = client.execute(BACKLOG_GET_ISSUE, params);
 
-        return new Issue((Map<String, Object>) res);
+        return new IssueImpl((Map<String, Object>) res);
     }
 }

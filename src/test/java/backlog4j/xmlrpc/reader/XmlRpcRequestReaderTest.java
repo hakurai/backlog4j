@@ -113,16 +113,16 @@ public class XmlRpcRequestReaderTest {
                 "<value><string>java!</string></value>" +
                 "<value><string>scala!</string></value>" +
                 "<value><string>groovy!</string></value>" +
-                "</data>"+
+                "</data>" +
                 "</array>" +
                 "</value>" +
                 "</param>" +
                 "</params>" +
                 "</methodResponse>");
 
-        Object[] obj = (Object[])XmlRpcRequestReader.read(in);
+        Object[] obj = (Object[]) XmlRpcRequestReader.read(in);
 
-        assertThat(Arrays.asList(obj), hasItems((Object)"java!","scala!","groovy!"));
+        assertThat(Arrays.asList(obj), hasItems((Object) "java!", "scala!", "groovy!"));
     }
 
     @Test
@@ -158,12 +158,12 @@ public class XmlRpcRequestReaderTest {
                 "  </params>\n" +
                 "</methodResponse>");
 
-        Map<String,Object> map = (Map<String,Object>)XmlRpcRequestReader.read(in);
+        Map<String, Object> map = (Map<String, Object>) XmlRpcRequestReader.read(in);
 
-        assertThat(map.get("id"), is((Object)123));
-        assertThat(map.get("name"), is((Object)"えぐち"));
-        assertThat(map.get("lang"), is((Object)"ja"));
-        assertThat(map.get("updated_on"), is((Object)"20101020144113"));
+        assertThat(map.get("id"), is((Object) 123));
+        assertThat(map.get("name"), is((Object) "えぐち"));
+        assertThat(map.get("lang"), is((Object) "ja"));
+        assertThat(map.get("updated_on"), is((Object) "20101020144113"));
     }
 
     @Test
@@ -187,10 +187,10 @@ public class XmlRpcRequestReaderTest {
                 "  </fault>\n" +
                 "</methodResponse>");
 
-        Map<String,Object> map = (Map<String,Object>)XmlRpcRequestReader.read(in);
+        Map<String, Object> map = (Map<String, Object>) XmlRpcRequestReader.read(in);
 
-        assertThat(map.get("faultCode"),is((Object)0));
-        assertThat(map.get("faultString"),is((Object)"No such handler: backlog.getStatus"));
+        assertThat(map.get("faultCode"), is((Object) 0));
+        assertThat(map.get("faultString"), is((Object) "No such handler: backlog.getStatus"));
     }
 
     private InputStream toInputStream(String text) throws IOException {

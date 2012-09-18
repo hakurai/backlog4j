@@ -3,6 +3,7 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
 import backlog4j.Category;
+import backlog4j.impl.CategoryImpl;
 import backlog4j.util.XmlRpcUtil;
 
 import java.util.List;
@@ -36,6 +37,6 @@ public class GetComponents implements BacklogCommand<List<Category>> {
 
         Object res = client.execute(BACKLOG_GET_COMPONENTS, getProjectId());
 
-        return XmlRpcUtil.toList(Category.class, res);
+        return XmlRpcUtil.<Category>toList(CategoryImpl.class, res);
     }
 }

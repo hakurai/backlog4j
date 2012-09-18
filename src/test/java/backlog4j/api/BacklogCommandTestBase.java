@@ -1,9 +1,10 @@
 package backlog4j.api;
 
 import backlog4j.BacklogClient;
-import backlog4j.BacklogClientImpl;
+import backlog4j.BacklogClientFactory;
 import backlog4j.Project;
 import backlog4j.conf.ImmutableSpaceConfigure;
+import backlog4j.conf.MutableSpaceConfigure;
 import org.junit.Before;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -15,12 +16,14 @@ import static org.junit.Assert.assertThat;
 public class BacklogCommandTestBase {
 
     public static final int PROJECT_ID = 1073773875;
-    protected BacklogClient client;
+    protected BacklogClient immutableClient;
+    protected BacklogClient mutableClient;
 
 
     @Before
     public void setUp() throws Exception {
-        client = new BacklogClientImpl(ImmutableSpaceConfigure.getInstance());
+        immutableClient = new BacklogClientFactory(ImmutableSpaceConfigure.getInstance()).newBacklogClient();
+        mutableClient = new BacklogClientFactory(MutableSpaceConfigure.getInstance()).newBacklogClient();
     }
 
 

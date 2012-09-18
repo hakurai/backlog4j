@@ -3,6 +3,7 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
 import backlog4j.Category;
+import backlog4j.impl.CategoryImpl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -54,6 +55,6 @@ public class AddComponent implements BacklogCommand<Category> {
         checkParameters();
 
         Object res = client.execute(BACKLOG_ADD_COMPONENT, map);
-        return new Category((Map<String, Object>) res);
+        return new CategoryImpl((Map<String, Object>) res);
     }
 }

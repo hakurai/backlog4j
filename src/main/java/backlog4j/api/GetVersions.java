@@ -3,6 +3,7 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
 import backlog4j.Version;
+import backlog4j.impl.VersionImpl;
 import backlog4j.util.XmlRpcUtil;
 
 import java.util.List;
@@ -39,6 +40,6 @@ public class GetVersions implements BacklogCommand<List<Version>> {
         checkParameters();
         Object res = client.execute(BACKLOG_GET_VERSIONS, projectId);
 
-        return XmlRpcUtil.toList(Version.class, res);
+        return XmlRpcUtil.<Version>toList(VersionImpl.class, res);
     }
 }

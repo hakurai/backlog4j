@@ -3,6 +3,7 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
 import backlog4j.Category;
+import backlog4j.impl.CategoryImpl;
 
 import java.util.Map;
 
@@ -40,6 +41,6 @@ public class DeleteComponent implements BacklogCommand<Category> {
         checkParameters();
 
         Object res = client.execute(BACKLOG_DELETE_COMPONENT, id);
-        return new Category((Map<String, Object>) res);
+        return new CategoryImpl((Map<String, Object>) res);
     }
 }

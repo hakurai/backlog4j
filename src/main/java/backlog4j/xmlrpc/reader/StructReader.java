@@ -21,7 +21,7 @@ public class StructReader extends ObjectReader<Map<String, Object>> {
     }
 
     @Override
-    public void addObject( String name, Object obj) {
+    public void addObject(String name, Object obj) {
         map.put(name, obj);
     }
 }

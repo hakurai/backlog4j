@@ -3,6 +3,7 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
 import backlog4j.IssueType;
+import backlog4j.impl.IssueTypeImpl;
 import backlog4j.util.XmlRpcUtil;
 
 import java.util.List;
@@ -38,6 +39,6 @@ public class GetIssueTypes implements BacklogCommand<List<IssueType>> {
         checkParameters();
         Object res = client.execute(BACKLOG_GET_ISSUE_TYPES, projectId);
 
-        return XmlRpcUtil.toList(IssueType.class, res);
+        return XmlRpcUtil.<IssueType>toList(IssueTypeImpl.class, res);
     }
 }

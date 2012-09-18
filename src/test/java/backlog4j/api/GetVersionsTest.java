@@ -15,7 +15,7 @@ public class GetVersionsTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldWorkGetVersions() throws Exception {
-        GetVersions getVersions = client.getVersions().setProjectId(PROJECT_ID);
+        GetVersions getVersions = immutableClient.getVersions().setProjectId(PROJECT_ID);
 
 
         List<Version> versionList = getVersions.execute();

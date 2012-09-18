@@ -15,7 +15,7 @@ public class GetCommentsTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldWorkGetComments() throws Exception {
-        GetComments getComments = client.getComments().setIssueId(1074790284);
+        GetComments getComments = immutableClient.getComments().setIssueId(1074790284);
 
         List<Comment> comments = getComments.execute();
 

@@ -15,7 +15,7 @@ public class GetUsersTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldWorkGetUsers() throws Exception {
-        GetUsers getUsers = client.getUsers().setProjectId(PROJECT_ID);
+        GetUsers getUsers = immutableClient.getUsers().setProjectId(PROJECT_ID);
         List<User> userList = getUsers.execute();
 
         assertThat(userList.size(), is(4));

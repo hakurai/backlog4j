@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * @author eguchi
  */
-public abstract class AbstractUpdateIssue implements BacklogCommand<Issue> {
+abstract class AbstractUpdateIssue implements BacklogCommand<Issue> {
 
     protected final Map<String, Object> map = new HashMap<String, Object>();
 

@@ -3,6 +3,7 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
 import backlog4j.Version;
+import backlog4j.impl.VersionImpl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -84,6 +85,6 @@ public class UpdateVersion implements BacklogCommand<Version> {
         checkParameters();
 
         Object res = client.execute(BACKLOG_UPDATE_VERSION, map);
-        return new Version((Map<String, Object>) res);
+        return new VersionImpl((Map<String, Object>) res);
     }
 }

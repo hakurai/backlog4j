@@ -3,6 +3,7 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
 import backlog4j.Issue;
+import backlog4j.impl.IssueImpl;
 import backlog4j.util.XmlRpcUtil;
 
 import java.util.List;
@@ -73,7 +74,7 @@ public class FindIssue extends AbstractFindIssueRequest<List<Issue>> {
         checkParameters();
         Object res = client.execute(BACKLOG_FIND_ISSUE, map);
 
-        return XmlRpcUtil.toList(Issue.class, res);
+        return XmlRpcUtil.<Issue>toList(IssueImpl.class, res);
     }
 
 }
