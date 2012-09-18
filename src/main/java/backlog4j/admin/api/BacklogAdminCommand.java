@@ -22,7 +22,7 @@ public interface BacklogAdminCommand<T> extends BacklogCommand<T> {
     static final String BACKLOG_ADMIN_GET_USERS = "backlog.admin.getUsers";
     static final String BACKLOG_ADMIN_ADD_USER = "backlog.admin.addUser";
     static final String BACKLOG_ADMIN_UPDATE_USER = "backlog.admin.updateUser";
-    static final String BACKLOG_ADMIN_DELETE_USERS = "backlog.admin.deleteUser";
+    static final String BACKLOG_ADMIN_DELETE_USER = "backlog.admin.deleteUser";
     static final String BACKLOG_ADMIN_GET_PROJECTS = "backlog.admin.getProjects";
     static final String BACKLOG_ADMIN_ADD_PROJECT = "backlog.admin.addProject";
     static final String BACKLOG_ADMIN_UPDATE_PROJECT = "backlog.admin.updateProject";

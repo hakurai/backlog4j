@@ -29,7 +29,7 @@ class BacklogAdminClientImpl extends AbstractBacklogClientBase implements Backlo
 
     @Override
     public DeleteUser deleteUser() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return new DeleteUser(this);
     }
 
     @Override

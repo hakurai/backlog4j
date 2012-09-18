@@ -27,5 +27,6 @@ public class UpdateUserTest extends BacklogAdminCommandTestBase{
 
         assertThat(updatedUser.getName(), is("updatedName"));
 
+        mutableClient.deleteUser().setId(newUser.getId()).execute();
     }
 }
