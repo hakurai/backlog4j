@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
 /**
  * @author eguchi
  */
-public class UpdateUserTest extends BacklogAdminCommandTestBase{
+public class UpdateUserTest extends BacklogAdminCommandTestBase {
 
     @Test
     public void testShouldUpdateUserName() throws Exception {

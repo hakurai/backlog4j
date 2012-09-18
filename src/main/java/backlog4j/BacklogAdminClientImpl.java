@@ -49,7 +49,7 @@ class BacklogAdminClientImpl extends AbstractBacklogClientBase implements Backlo
 
     @Override
     public DeleteProject deleteProject() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return new DeleteProject(this);
     }
 
     @Override
