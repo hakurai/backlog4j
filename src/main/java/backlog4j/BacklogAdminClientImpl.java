@@ -34,7 +34,7 @@ class BacklogAdminClientImpl extends AbstractBacklogClientBase implements Backlo
 
     @Override
     public GetProjects getProjects() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return new GetProjects(this);
     }
 
     @Override

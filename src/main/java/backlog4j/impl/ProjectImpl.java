@@ -16,7 +16,6 @@ public final class ProjectImpl implements Project {
     private final Boolean archived;
 
     public ProjectImpl(Map<String, Object> map) {
-        assert (map.size() == 5);
         id = (Integer) map.get("id");
         name = (String) map.get("name");
         key = (String) map.get("key");
