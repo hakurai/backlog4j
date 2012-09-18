@@ -1,7 +1,8 @@
 package backlog4j.admin.api;
 
 import backlog4j.BacklogAdminClient;
-import backlog4j.admin.UserEx;
+import backlog4j.admin.impl.UserEx;
+import backlog4j.util.XmlRpcUtil;
 
 import java.util.List;
 
@@ -18,7 +19,10 @@ public class GetUsers implements BacklogAdminCommand<List<UserEx>> {
 
     @Override
     public List<UserEx> execute() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+
+        Object res = client.execute(BACKLOG_ADMIN_GET_USERS);
+
+        return XmlRpcUtil.toList(UserEx.class, res);
     }
 
 }
