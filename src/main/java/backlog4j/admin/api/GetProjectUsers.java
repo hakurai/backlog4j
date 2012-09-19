@@ -2,8 +2,7 @@ package backlog4j.admin.api;
 
 import backlog4j.BacklogAdminClient;
 import backlog4j.BacklogException;
-import backlog4j.Issue;
-import backlog4j.admin.impl.UserEx;
+import backlog4j.admin.impl.ProjectUser;
 import backlog4j.util.XmlRpcUtil;
 
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
 /**
  * @author eguchi
  */
-public class GetProjectUsers implements BacklogAdminCommand<List<UserEx>> {
+public class GetProjectUsers implements BacklogAdminCommand<List<ProjectUser>> {
 
     private final BacklogAdminClient client;
     private Integer projectId;
@@ -31,13 +30,13 @@ public class GetProjectUsers implements BacklogAdminCommand<List<UserEx>> {
     }
 
     @Override
-    public List<UserEx> execute() {
-        if( getProjectId() == null ){
+    public List<ProjectUser> execute() {
+        if (getProjectId() == null) {
             throw new BacklogException("projectId is required");
         }
 
-        Object res = client.execute(BACKLOG_ADMIN_GET_PROJECT_USERS,getProjectId());
+        Object res = client.execute(BACKLOG_ADMIN_GET_PROJECT_USERS, getProjectId());
 
-        return XmlRpcUtil.toList(UserEx.class, res);
+        return XmlRpcUtil.toList(ProjectUser.class, res);
     }
 }

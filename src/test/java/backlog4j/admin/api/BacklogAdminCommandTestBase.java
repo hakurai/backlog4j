@@ -12,6 +12,7 @@ import org.junit.Before;
 public class BacklogAdminCommandTestBase {
 
     public static final int PROJECT_ID = 1073773875;
+    public static final int MUTABLE_PROJECT_ID = 1073771652;
     protected BacklogAdminClient immutableClient;
     protected BacklogAdminClient mutableClient;
 
