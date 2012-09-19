@@ -10,7 +10,7 @@ dependencies {
 }
 
 sourceCompatibility = 1.6
-version = '0.1'
+version = '0.1.0'
 jar {
     manifest {
         attributes 'Implementation-Title': 'backlog4j', 'Implementation-Version': version
