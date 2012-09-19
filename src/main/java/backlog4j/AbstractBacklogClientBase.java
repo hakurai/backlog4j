@@ -6,7 +6,7 @@ import backlog4j.xmlrpc.XmlRpcClient;
 /**
  * @author eguchi
  */
-public class AbstractBacklogClientBase implements BacklogClientBase {
+public abstract class AbstractBacklogClientBase implements BacklogClientBase {
 
     protected final XmlRpcClient client;
 
