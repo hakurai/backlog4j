@@ -15,7 +15,7 @@ public class GetStatusesTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldReturnStatusList() throws Exception {
-        List<Status> statusList = client.getStatuses().execute();
+        List<Status> statusList = immutableClient.getStatuses().execute();
 
         assertThat(statusList.size(), is(4));
 

@@ -3,6 +3,7 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
 import backlog4j.Comment;
+import backlog4j.impl.CommentImpl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -53,6 +54,6 @@ public class AddComment implements BacklogCommand<Comment> {
         checkParameters();
 
         Object res = client.execute(BACKLOG_ADD_COMMENT, map);
-        return new Comment((Map<String, Object>) res);
+        return new CommentImpl((Map<String, Object>) res);
     }
 }

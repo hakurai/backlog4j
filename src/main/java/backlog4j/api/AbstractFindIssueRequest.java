@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * @author eguchi
  */
-public abstract class AbstractFindIssueRequest<T> implements BacklogCommand<T> {
+abstract class AbstractFindIssueRequest<T> implements BacklogCommand<T> {
 
     protected final Map<String, Object> map = new HashMap<String, Object>();
 

@@ -14,7 +14,7 @@ public class GetIssueTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldReturnP_1_1() throws Exception {
-        GetIssue getIssue = client.getIssue().setIssueKey("P_1-1");
+        GetIssue getIssue = immutableClient.getIssue().setIssueKey("P_1-1");
 
         Issue issue = getIssue.execute();
 
@@ -43,7 +43,7 @@ public class GetIssueTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldReturnP_1_2() throws Exception {
-        GetIssue getIssue = client.getIssue().setIssueKey("P_1-2");
+        GetIssue getIssue = immutableClient.getIssue().setIssueKey("P_1-2");
 
         Issue issue = getIssue.execute();
 
@@ -72,7 +72,7 @@ public class GetIssueTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldReturn1074790283() throws Exception {
-        GetIssue getIssue = client.getIssue().setIssueId(1074790283);
+        GetIssue getIssue = immutableClient.getIssue().setIssueId(1074790283);
 
         Issue issue = getIssue.execute();
 

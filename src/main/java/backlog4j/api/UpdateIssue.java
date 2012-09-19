@@ -3,6 +3,7 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
 import backlog4j.Issue;
+import backlog4j.impl.IssueImpl;
 
 import java.util.Map;
 
@@ -38,6 +39,6 @@ public class UpdateIssue extends AbstractUpdateIssue {
         checkParameters();
         Object res = client.execute(BACKLOG_UPDATE_ISSUE, map);
 
-        return new Issue((Map<String, Object>) res);
+        return new IssueImpl((Map<String, Object>) res);
     }
 }

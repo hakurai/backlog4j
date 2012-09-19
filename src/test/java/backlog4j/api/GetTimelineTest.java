@@ -1,9 +1,6 @@
 package backlog4j.api;
 
 import backlog4j.Activity;
-import backlog4j.BacklogClient;
-import backlog4j.BacklogClientImpl;
-import backlog4j.conf.MutableSpaceConfigure;
 import org.junit.Test;
 
 import java.util.List;
@@ -11,13 +8,12 @@ import java.util.List;
 /**
  * @author eguchi
  */
-public class GetTimelineTest {
+public class GetTimelineTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldReturnActivities() throws Exception {
-        BacklogClient client = new BacklogClientImpl(MutableSpaceConfigure.getInstance());
 
-        List<Activity> activityList = client.getTimeline().execute();
+        List<Activity> activityList = immutableClient.getTimeline().execute();
 
     }
 }

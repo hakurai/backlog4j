@@ -3,6 +3,7 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
 import backlog4j.IssueType;
+import backlog4j.impl.IssueTypeImpl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -66,6 +67,6 @@ public class AddIssueType implements BacklogCommand<IssueType> {
         checkParameters();
 
         Object res = client.execute(BACKLOG_ADD_ISSUE_TYPE, map);
-        return new IssueType((Map<String, Object>) res);
+        return new IssueTypeImpl((Map<String, Object>) res);
     }
 }

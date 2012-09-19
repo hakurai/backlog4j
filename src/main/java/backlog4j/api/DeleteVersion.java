@@ -3,6 +3,7 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
 import backlog4j.Version;
+import backlog4j.impl.VersionImpl;
 
 import java.util.Map;
 
@@ -40,6 +41,6 @@ public class DeleteVersion implements BacklogCommand<Version> {
         checkParameters();
 
         Object res = client.execute(BACKLOG_DELETE_VERSION, id);
-        return new Version((Map<String, Object>) res);
+        return new VersionImpl((Map<String, Object>) res);
     }
 }

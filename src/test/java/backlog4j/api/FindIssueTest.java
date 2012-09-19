@@ -16,7 +16,7 @@ public class FindIssueTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldWorkFindIssue() throws Exception {
-        List<Issue> issueList = client.findIssue().setProjectId(PROJECT_ID).execute();
+        List<Issue> issueList = immutableClient.findIssue().setProjectId(PROJECT_ID).execute();
 
         assertThat(issueList.size(), is(5));
 

@@ -2,6 +2,7 @@ package backlog4j.api;
 
 import backlog4j.BacklogClient;
 import backlog4j.Issue;
+import backlog4j.impl.IssueImpl;
 
 import java.util.Map;
 
@@ -30,7 +31,7 @@ public class CreateIssue extends AbstractUpdateIssue {
     public Issue execute() {
         Object res = client.execute(BACKLOG_CREATE_ISSUE, map);
 
-        return new Issue((Map<String, Object>) res);
+        return new IssueImpl((Map<String, Object>) res);
     }
 
 

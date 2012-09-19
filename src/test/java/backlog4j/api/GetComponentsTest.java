@@ -15,7 +15,7 @@ public class GetComponentsTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldWorkGetComponents() throws Exception {
-        GetComponents getComponents = client.getComponents().setProjectId(PROJECT_ID);
+        GetComponents getComponents = immutableClient.getComponents().setProjectId(PROJECT_ID);
 
 
         List<Category> categoryList = getComponents.execute();

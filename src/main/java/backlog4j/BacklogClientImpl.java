@@ -2,43 +2,14 @@ package backlog4j;
 
 import backlog4j.api.*;
 import backlog4j.conf.BacklogConfigure;
-import org.apache.xmlrpc.XmlRpcException;
-import org.apache.xmlrpc.client.XmlRpcClient;
-import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
 
 /**
  * @author eguchi
  */
-public class BacklogClientImpl implements BacklogClient {
-
-    private final XmlRpcClient client;
-
+class BacklogClientImpl extends AbstractBacklogClientBase implements BacklogClient {
 
     public BacklogClientImpl(BacklogConfigure configure) {
-        if (configure == null) {
-            throw new IllegalArgumentException("configure must not be null");
-        }
-
-        XmlRpcClientConfigImpl config = new XmlRpcClientConfigImpl();
-        config.setServerURL(configure.getXmlRpcUrl());
-
-        config.setBasicUserName(configure.getUsername());
-        config.setBasicPassword(configure.getPassword());
-
-        client = new XmlRpcClient();
-        client.setConfig(config);
-    }
-
-    public Object execute(String methodName) {
-        return execute(methodName, new Object[]{});
-    }
-
-    public Object execute(String methodName, Object... params) {
-        try {
-            return client.execute(methodName, params);
-        } catch (XmlRpcException e) {
-            throw new BacklogException(e);
-        }
+        super(configure);
     }
 
     @Override

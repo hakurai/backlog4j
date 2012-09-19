@@ -5,11 +5,7 @@ import backlog4j.api.*;
 /**
  * @author eguchi
  */
-public interface BacklogClient {
-
-    Object execute(String methodName);
-
-    Object execute(String methodName, Object... params);
+public interface BacklogClient extends BacklogClientBase {
 
     GetProjects getProjects();
 

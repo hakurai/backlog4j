@@ -2,7 +2,8 @@ package backlog4j.api;
 
 import backlog4j.BacklogClient;
 import backlog4j.Resolution;
-import backlog4j.XmlRpcUtil;
+import backlog4j.impl.ResolutionImpl;
+import backlog4j.util.XmlRpcUtil;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class GetResolutions implements BacklogCommand<List<Resolution>> {
     public List<Resolution> execute() {
         Object res = client.execute(BACKLOG_GET_RESOLUTIONS);
 
-        return XmlRpcUtil.toList(Resolution.class, res);
+        return XmlRpcUtil.<Resolution>toList(ResolutionImpl.class, res);
     }
 
 }

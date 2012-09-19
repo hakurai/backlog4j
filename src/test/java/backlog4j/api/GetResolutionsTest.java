@@ -15,7 +15,7 @@ public class GetResolutionsTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldReturnResolutionList() throws Exception {
-        List<Resolution> resolutionList = client.getResolutions().execute();
+        List<Resolution> resolutionList = immutableClient.getResolutions().execute();
 
         assertThat(resolutionList.size(), is(5));
 

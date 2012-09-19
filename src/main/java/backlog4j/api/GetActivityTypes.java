@@ -2,7 +2,8 @@ package backlog4j.api;
 
 import backlog4j.ActivityType;
 import backlog4j.BacklogClient;
-import backlog4j.XmlRpcUtil;
+import backlog4j.impl.ActivityTypeImpl;
+import backlog4j.util.XmlRpcUtil;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class GetActivityTypes implements BacklogCommand<List<ActivityType>> {
     public List<ActivityType> execute() {
         Object res = client.execute(BACKLOG_GET_ACTIVITY_TYPES);
 
-        return XmlRpcUtil.toList(ActivityType.class, res);
+        return XmlRpcUtil.<ActivityType>toList(ActivityTypeImpl.class, res);
     }
 
 }

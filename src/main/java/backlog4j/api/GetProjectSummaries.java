@@ -2,7 +2,8 @@ package backlog4j.api;
 
 import backlog4j.BacklogClient;
 import backlog4j.ProjectSummary;
-import backlog4j.XmlRpcUtil;
+import backlog4j.impl.ProjectSummaryImpl;
+import backlog4j.util.XmlRpcUtil;
 
 import java.util.List;
 
@@ -21,6 +22,6 @@ public class GetProjectSummaries implements BacklogCommand<List<ProjectSummary>>
 
         Object res = client.execute(BACKLOG_GET_PROJECT_SUMMARIES);
 
-        return XmlRpcUtil.toList(ProjectSummary.class, res);
+        return XmlRpcUtil.<ProjectSummary>toList(ProjectSummaryImpl.class, res);
     }
 }

@@ -15,7 +15,7 @@ public class GetPrioritiesTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldReturnPriorityList() throws Exception {
-        List<Priority> priorityList = client.getPriorities().execute();
+        List<Priority> priorityList = immutableClient.getPriorities().execute();
 
         assertThat(priorityList.size(), is(3));
 

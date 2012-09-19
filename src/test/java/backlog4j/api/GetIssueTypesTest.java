@@ -15,7 +15,7 @@ public class GetIssueTypesTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldWorkGetIssueTypes() throws Exception {
-        GetIssueTypes getIssueTypes = client.getIssueTypes().setProjectId(PROJECT_ID);
+        GetIssueTypes getIssueTypes = immutableClient.getIssueTypes().setProjectId(PROJECT_ID);
 
         List<IssueType> issueTypeList = getIssueTypes.execute();
 

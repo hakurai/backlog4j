@@ -13,7 +13,7 @@ public class GetUserIconTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldReturnUserIcon() throws Exception {
-        UserIcon user = client.getUserIcon().setId(1073806664).execute();
+        UserIcon user = immutableClient.getUserIcon().setId(1073806664).execute();
 
         assertThat(user.getId(), is(1073806664));
     }

@@ -12,7 +12,7 @@ public class GetProjectSummaryTest extends BacklogCommandTestBase {
     public void testShouldReturnProjectSummary() throws Exception {
         final int projectId = 1073771652;
         ProjectSummary projectSummary =
-                client.getProjectSummary().setProjectId(projectId).execute();
+                immutableClient.getProjectSummary().setProjectId(projectId).execute();
 
     }
 }

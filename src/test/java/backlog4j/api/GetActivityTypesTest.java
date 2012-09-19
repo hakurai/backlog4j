@@ -12,7 +12,7 @@ public class GetActivityTypesTest extends BacklogCommandTestBase {
 
     @Test
     public void testShouldReturnActivityTypeList() throws Exception {
-        List<ActivityType> activityTypeList = client.getActivityTypes().execute();
+        List<ActivityType> activityTypeList = immutableClient.getActivityTypes().execute();
 
 
     }

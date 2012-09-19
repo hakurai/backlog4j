@@ -3,6 +3,7 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
 import backlog4j.Issue;
+import backlog4j.impl.IssueImpl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -85,6 +86,6 @@ public class SwitchStatus implements BacklogCommand<Issue> {
 
         Object res = client.execute(BACKLOG_SWITCH_STATUS, map);
 
-        return new Issue((Map<String, Object>) res);
+        return new IssueImpl((Map<String, Object>) res);
     }
 }

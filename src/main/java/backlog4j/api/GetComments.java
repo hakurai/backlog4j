@@ -3,7 +3,8 @@ package backlog4j.api;
 import backlog4j.BacklogClient;
 import backlog4j.BacklogException;
 import backlog4j.Comment;
-import backlog4j.XmlRpcUtil;
+import backlog4j.impl.CommentImpl;
+import backlog4j.util.XmlRpcUtil;
 
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class GetComments implements BacklogCommand<List<Comment>> {
         return this;
     }
 
-    private void checkParameters(){
+    private void checkParameters() {
         if (getIssueId() == null) {
             throw new BacklogException("issueId is required");
         }
@@ -42,6 +43,6 @@ public class GetComments implements BacklogCommand<List<Comment>> {
 
         Object res = client.execute(BACKLOG_GET_COMMENTS, getIssueId());
 
-        return XmlRpcUtil.toList(Comment.class, res);
+        return XmlRpcUtil.<Comment>toList(CommentImpl.class, res);
     }
 }
