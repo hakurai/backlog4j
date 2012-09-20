@@ -167,7 +167,7 @@ public class XmlRpcRequestReaderTest {
         assertThat(map.get("updated_on"), is((Object) "20101020144113"));
     }
 
-    @Test(expected= BacklogException.class)
+    @Test(expected = BacklogException.class)
     public void testReadFault() throws Exception {
 
         InputStream in = toInputStream("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
