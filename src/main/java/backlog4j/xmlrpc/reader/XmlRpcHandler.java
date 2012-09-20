@@ -17,6 +17,7 @@ public class XmlRpcHandler extends DefaultHandler {
     private boolean nameTag;
     private boolean valueTag;
     private String name;
+    private boolean fault;
 
 
     public XmlRpcHandler() {
@@ -42,7 +43,7 @@ public class XmlRpcHandler extends DefaultHandler {
             } else if (qName.equals("member")) {
 
             } else if (qName.equals("fault")) {
-
+                fault = true;
             } else {
                 ObjectReader<?> reader = ObjectReader.getObjectReader(qName);
                 reader.setName(name);
@@ -92,6 +93,10 @@ public class XmlRpcHandler extends DefaultHandler {
 
     public Object getObject() {
         return stack.peek().getObject();
+    }
+
+    public boolean isFault() {
+        return fault;
     }
 
     @Override

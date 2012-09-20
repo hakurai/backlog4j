@@ -3,6 +3,8 @@ package backlog4j;
 import backlog4j.conf.BacklogConfigure;
 import backlog4j.xmlrpc.XmlRpcClient;
 
+import java.util.Map;
+
 /**
  * @author eguchi
  */

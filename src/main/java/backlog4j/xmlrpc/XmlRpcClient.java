@@ -58,7 +58,7 @@ public class XmlRpcClient {
             int code = con.getResponseCode();
             if (code != 200) {
                 throw new BacklogException(
-                        "Backlog is returned response code : " + code +
+                        "Backlog returned response code : " + code +
                                 " " + con.getResponseMessage());
             }
 
