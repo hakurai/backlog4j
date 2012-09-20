@@ -1,5 +1,6 @@
 package backlog4j.admin.api;
 
+import backlog4j.BacklogException;
 import backlog4j.admin.impl.UserEx;
 import org.junit.Test;
 
@@ -18,6 +19,12 @@ public class GetUsersTest extends BacklogAdminCommandTestBase {
         List<UserEx> userExList = immutableClient.getUsers().execute();
 
         assertThat(userExList.size(), is(5));
+
+    }
+
+    @Test(expected = BacklogException.class)
+    public void testShouldThrowException() throws Exception {
+        normalUserClient.getUsers().execute();
 
     }
 }

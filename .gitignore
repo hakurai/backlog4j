@@ -7,3 +7,4 @@ target/
 *.bak
 immutable.properties
 mutable.properties
+normalUser.properties
