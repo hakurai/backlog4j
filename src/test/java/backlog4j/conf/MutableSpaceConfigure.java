@@ -27,7 +27,7 @@ public class MutableSpaceConfigure implements BacklogConfigure {
         String password = properties.getProperty("password", "");
 
         try {
-            delegate = new BacklogConfigureImpl(spaceId, username, password);
+            delegate = new BacklogConfigureImpl(spaceId, username, password, 10000, 10000);
         } catch (MalformedURLException e) {
             throw new IllegalStateException("failed to write ImmutableSpaceConfigure");
         }
@@ -39,10 +39,6 @@ public class MutableSpaceConfigure implements BacklogConfigure {
         return BACKLOG_CONFIGURE;
     }
 
-    @Override
-    public String getSpaceId() {
-        return delegate.getSpaceId();
-    }
 
     @Override
     public String getUsername() {
@@ -57,5 +53,15 @@ public class MutableSpaceConfigure implements BacklogConfigure {
     @Override
     public URL getXmlRpcUrl() {
         return delegate.getXmlRpcUrl();
+    }
+
+    @Override
+    public int getReadTimeout() {
+        return delegate.getReadTimeout();
+    }
+
+    @Override
+    public int getConnectTimeout() {
+        return delegate.getConnectTimeout();
     }
 }
