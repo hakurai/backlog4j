@@ -1,6 +1,9 @@
 package backlog4j.conf;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.Properties;
 
 /**
  * @author eguchi
@@ -17,6 +20,20 @@ public class BacklogConfigureBuilder {
     public BacklogConfigureBuilder() {
     }
 
+
+    public BacklogConfigureBuilder loadPropertyFIle(String path) throws IOException {
+        Properties properties = new Properties();
+        properties.loadFromXML(new FileInputStream(path));
+
+        setSpaceId(properties.getProperty("spaceId", null));
+        setUsername(properties.getProperty("username", null));
+        setPassword(properties.getProperty("password", null));
+        setUrl(properties.getProperty("url", null));
+        setConnectTimeout(Integer.parseInt(properties.getProperty("connectionTimeout", null)));
+        setReadTimeout(Integer.parseInt(properties.getProperty("readTimeout", null)));
+
+        return this;
+    }
 
     public String getSpaceId() {
         return spaceId;
