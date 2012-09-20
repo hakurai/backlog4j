@@ -1,5 +1,6 @@
 package backlog4j.admin.api;
 
+import backlog4j.BacklogException;
 import backlog4j.admin.impl.UserEx;
 import org.junit.Test;
 
@@ -28,5 +29,12 @@ public class UpdateUserTest extends BacklogAdminCommandTestBase {
         assertThat(updatedUser.getName(), is("updatedName"));
 
         mutableClient.deleteUser().setId(newUser.getId()).execute();
+    }
+
+    @Test(expected = BacklogException.class)
+    public void testShouldThrowException() throws Exception {
+
+        normalUserClient.updateUser().setId(1073804493).setName("updatedName").execute();
+
     }
 }

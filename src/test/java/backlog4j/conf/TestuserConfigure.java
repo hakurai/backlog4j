@@ -9,16 +9,16 @@ import java.util.Properties;
 /**
  * @author eguchi
  */
-public class ImmutableSpaceConfigure implements BacklogConfigure {
+public class TestuserConfigure implements BacklogConfigure {
 
-    private static final BacklogConfigure BACKLOG_CONFIGURE = new ImmutableSpaceConfigure();
+    private static final BacklogConfigure BACKLOG_CONFIGURE = new TestuserConfigure();
     private final BacklogConfigure delegate;
 
 
-    private ImmutableSpaceConfigure() {
+    private TestuserConfigure() {
         Properties properties = new Properties();
         try {
-            properties.loadFromXML(new FileInputStream("immutable.properties"));
+            properties.loadFromXML(new FileInputStream("normalUser.properties"));
         } catch (IOException e) {
         }
 
@@ -29,7 +29,7 @@ public class ImmutableSpaceConfigure implements BacklogConfigure {
         try {
             delegate = new BacklogConfigureImpl(spaceId, username, password, 10000, 10000);
         } catch (MalformedURLException e) {
-            throw new IllegalStateException("failed to write ImmutableSpaceConfigure");
+            throw new IllegalStateException("failed to write TestuserConfigure");
         }
 
     }
@@ -38,6 +38,7 @@ public class ImmutableSpaceConfigure implements BacklogConfigure {
     public static BacklogConfigure getInstance() {
         return BACKLOG_CONFIGURE;
     }
+
 
     @Override
     public String getUsername() {

@@ -58,7 +58,7 @@ public class XmlRpcClient {
             int code = con.getResponseCode();
             if (code != 200) {
                 throw new BacklogException(
-                        "Backlog is returned response code : " + code +
+                        "Backlog returned response code : " + code +
                                 " " + con.getResponseMessage());
             }
 
@@ -83,6 +83,10 @@ public class XmlRpcClient {
 
         HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
         String encode = Base64.encode((configure.getUsername() + ":" + configure.getPassword()).getBytes());
+
+        con.setConnectTimeout(configure.getConnectTimeout());
+        con.setReadTimeout(configure.getReadTimeout());
+
 
         con.setRequestMethod("POST");
         con.setRequestProperty("Authorization", "Basic " + encode);

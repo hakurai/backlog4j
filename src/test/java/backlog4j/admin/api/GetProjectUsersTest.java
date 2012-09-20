@@ -1,5 +1,6 @@
 package backlog4j.admin.api;
 
+import backlog4j.BacklogException;
 import backlog4j.admin.impl.ProjectUser;
 import org.junit.Test;
 
@@ -25,7 +26,11 @@ public class GetProjectUsersTest extends BacklogAdminCommandTestBase {
         assertThat(user.getId(), is(1073806664));
         assertThat(user.getUserId(), is("eguchi"));
         assertThat(user.getName(), is("hakurai"));
+    }
 
+    @Test(expected = BacklogException.class)
+    public void testShouldThrowException() throws Exception {
 
+        normalUserClient.getProjectUsers().setProjectId(PROJECT_ID).execute();
     }
 }

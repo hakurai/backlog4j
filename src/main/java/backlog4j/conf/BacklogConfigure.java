@@ -7,11 +7,13 @@ import java.net.URL;
  */
 public interface BacklogConfigure {
 
-    String getSpaceId();
-
     String getUsername();
 
     String getPassword();
 
     URL getXmlRpcUrl();
+
+    int getReadTimeout();
+
+    int getConnectTimeout();
 }

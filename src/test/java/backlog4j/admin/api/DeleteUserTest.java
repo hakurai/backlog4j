@@ -1,5 +1,6 @@
 package backlog4j.admin.api;
 
+import backlog4j.BacklogException;
 import backlog4j.admin.impl.UserEx;
 import org.junit.Test;
 
@@ -32,6 +33,14 @@ public class DeleteUserTest extends BacklogAdminCommandTestBase {
         List<UserEx> userExList = immutableClient.getUsers().execute();
 
         assertThat(userExList.size(), is(size));
+
+
+    }
+
+    @Test(expected = BacklogException.class)
+    public void testShouldThrowException() throws Exception {
+
+        normalUserClient.deleteUser().setId(1073804493).execute();
 
 
     }

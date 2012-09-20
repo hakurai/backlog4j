@@ -1,5 +1,6 @@
 package backlog4j.admin.api;
 
+import backlog4j.BacklogException;
 import backlog4j.admin.impl.UserEx;
 import org.junit.Test;
 
@@ -25,5 +26,17 @@ public class AddUserTest extends BacklogAdminCommandTestBase {
         assertThat(newUser.getName(), is("newUserName"));
 
         mutableClient.deleteUser().setId(newUser.getId()).execute();
+    }
+
+    @Test(expected = BacklogException.class)
+    public void testShouldThrowException() throws Exception {
+        normalUserClient.addUser()
+                .setUserId("newUser")
+                .setPassword("newUser")
+                .setName("newUserName")
+                .setMailAddress("test@test.jp")
+                .setRole("admin")
+                .execute();
+
     }
 }

@@ -1,5 +1,6 @@
 package backlog4j.admin.api;
 
+import backlog4j.BacklogException;
 import backlog4j.admin.impl.ProjectUser;
 import org.junit.Test;
 
@@ -40,5 +41,14 @@ public class UpdateProjectUsersTest extends BacklogAdminCommandTestBase {
                 .addUserList(oldList)
                 .execute();
 
+    }
+
+    @Test(expected = BacklogException.class)
+    public void testShouldThrowException() throws Exception {
+        normalUserClient
+                .updateProjectUsers()
+                .setProjectId(MUTABLE_PROJECT_ID)
+                .addUserId(1073804493)
+                .execute();
     }
 }

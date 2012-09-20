@@ -1,5 +1,6 @@
 package backlog4j.xmlrpc.reader;
 
+import backlog4j.BacklogException;
 import org.junit.Test;
 
 import java.io.*;
@@ -166,7 +167,7 @@ public class XmlRpcRequestReaderTest {
         assertThat(map.get("updated_on"), is((Object) "20101020144113"));
     }
 
-    @Test
+    @Test(expected = BacklogException.class)
     public void testReadFault() throws Exception {
 
         InputStream in = toInputStream("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
@@ -187,10 +188,8 @@ public class XmlRpcRequestReaderTest {
                 "  </fault>\n" +
                 "</methodResponse>");
 
-        Map<String, Object> map = (Map<String, Object>) XmlRpcRequestReader.read(in);
+        XmlRpcRequestReader.read(in);
 
-        assertThat(map.get("faultCode"), is((Object) 0));
-        assertThat(map.get("faultString"), is((Object) "No such handler: backlog.getStatus"));
     }
 
     private InputStream toInputStream(String text) throws IOException {

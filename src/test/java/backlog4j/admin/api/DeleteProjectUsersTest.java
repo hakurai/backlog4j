@@ -1,5 +1,6 @@
 package backlog4j.admin.api;
 
+import backlog4j.BacklogException;
 import backlog4j.admin.impl.ProjectUser;
 import org.junit.Test;
 
@@ -30,6 +31,16 @@ public class DeleteProjectUsersTest extends BacklogAdminCommandTestBase {
                         .execute();
 
         assertThat(newList.size(), is(1));
+
+    }
+
+    @Test(expected = BacklogException.class)
+    public void testShouldThrowException() throws Exception {
+        normalUserClient
+                .addProjectUser()
+                .setProjectId(MUTABLE_PROJECT_ID)
+                .setUserId(1073804493)
+                .execute();
 
     }
 }

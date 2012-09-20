@@ -1,5 +1,6 @@
 package backlog4j.admin.api;
 
+import backlog4j.BacklogException;
 import backlog4j.admin.impl.ProjectEx;
 import org.junit.Test;
 
@@ -23,5 +24,12 @@ public class GetProjectsTest extends BacklogAdminCommandTestBase {
 
         assertThat(project.getCreatedOn(), is("20120818212051"));
         assertThat(project.getUpdatedOn(), is("20120919023230"));
+    }
+
+    @Test(expected = BacklogException.class)
+    public void testShouldThrowException() throws Exception {
+
+        normalUserClient.getProjects().execute();
+
     }
 }
