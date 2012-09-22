@@ -1,10 +1,10 @@
 package backlog4j.admin.api;
 
 import backlog4j.BacklogAdminClient;
+import backlog4j.BacklogClient;
 import backlog4j.BacklogClientFactory;
-import backlog4j.conf.ImmutableSpaceConfigure;
-import backlog4j.conf.MutableSpaceConfigure;
-import backlog4j.conf.TestuserConfigure;
+import backlog4j.Project;
+import backlog4j.conf.*;
 import org.junit.Before;
 
 /**
@@ -24,5 +24,20 @@ public class BacklogAdminCommandTestBase {
         immutableClient = new BacklogClientFactory(ImmutableSpaceConfigure.getInstance()).newBacklogAdminClient();
         mutableClient = new BacklogClientFactory(MutableSpaceConfigure.getInstance()).newBacklogAdminClient();
         normalUserClient = new BacklogClientFactory(TestuserConfigure.getInstance()).newBacklogAdminClient();
+
+
+        BacklogConfigure configure =
+                new BacklogConfigureBuilder()
+                        .setSpaceId("yuorSpaceId").
+                        setUsername("yourUsername").
+                        setPassword("yourPassword").
+                        buildBacklogConfigure();
+
+
+        BacklogClient backlogClient = new BacklogClientFactory(configure).newBacklogClient();
+
+
+        Project project = backlogClient.getProject().setProjectKey("PROJECT-KEY").execute();
+
     }
 }
