@@ -14,9 +14,8 @@ public class XmlRpcHandler extends DefaultHandler {
 
     private Deque<ObjectReader<?>> stack = new LinkedList<ObjectReader<?>>();
     private StringBuilder characters = new StringBuilder();
-    private boolean nameTag;
-    private boolean valueTag;
     private String name;
+    private String value;
     private boolean fault;
 
 
@@ -35,12 +34,14 @@ public class XmlRpcHandler extends DefaultHandler {
             } else if (qName.equals("param")) {
 
             } else if (qName.equals("value")) {
-                valueTag = true;
+
             } else if (qName.equals("name")) {
-                nameTag = true;
+
             } else if (qName.equals("data")) {
 
             } else if (qName.equals("member")) {
+                name = null;
+                value = null;
 
             } else if (qName.equals("fault")) {
                 fault = true;
@@ -65,14 +66,23 @@ public class XmlRpcHandler extends DefaultHandler {
             } else if (qName.equals("param")) {
 
             } else if (qName.equals("value")) {
+                value = characters.toString();
+
                 if (name != null) {
-                    stack.peek().addObject(name, characters.toString());
+                    stack.peek().addObject(name, value);
                     name = null;
-                    valueTag = false;
+                    value = null;
                 }
+
             } else if (qName.equals("name")) {
                 name = characters.toString();
-                nameTag = false;
+
+                if (value != null) {
+                    stack.peek().addObject(name, value);
+                    name = null;
+                    value = null;
+                }
+
             } else if (qName.equals("data")) {
 
             } else if (qName.equals("member")) {
@@ -86,6 +96,7 @@ public class XmlRpcHandler extends DefaultHandler {
                 stack.peek().addObject(reader.getName(), reader.getObject());
 
                 name = null;
+                value = null;
 
             }
         }
