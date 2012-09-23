@@ -25,19 +25,5 @@ public class BacklogAdminCommandTestBase {
         mutableClient = new BacklogClientFactory(MutableSpaceConfigure.getInstance()).newBacklogAdminClient();
         normalUserClient = new BacklogClientFactory(TestuserConfigure.getInstance()).newBacklogAdminClient();
 
-
-        BacklogConfigure configure =
-                new BacklogConfigureBuilder()
-                        .setSpaceId("yuorSpaceId").
-                        setUsername("yourUsername").
-                        setPassword("yourPassword").
-                        buildBacklogConfigure();
-
-
-        BacklogClient backlogClient = new BacklogClientFactory(configure).newBacklogClient();
-
-
-        Project project = backlogClient.getProject().setProjectKey("PROJECT-KEY").execute();
-
     }
 }
