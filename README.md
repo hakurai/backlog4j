@@ -34,7 +34,7 @@ backlog4j is a Java library for Backlog API.
 ## Documents
 
 * javadoc
-http://hakurai.github.com/backlog4j/javadoc/
+    * http://hakurai.github.com/backlog4j/javadoc/
 
 ## License
 
