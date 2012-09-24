@@ -31,8 +31,13 @@ backlog4j is a Java library for Backlog API.
 
     Project project = backlogClient.getProject().setProjectKey("PROJECT-KEY").execute();
 
+## Documents
+
+* javadoc
+http://hakurai.github.com/backlog4j/javadoc/
+
 ## License
 
-MIT license
+MIT License
 
 * http://www.opensource.org/licenses/mit-license.php
