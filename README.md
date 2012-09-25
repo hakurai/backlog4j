@@ -27,9 +27,14 @@ backlog4j is a Java library for Backlog API.
 
     BacklogClient backlogClient = new BacklogClientFactory(configure).newBacklogClient();
 
-### Final. Get API and Call "execute"
+### Conclusion
 
-    Project project = backlogClient.getProject().setProjectKey("PROJECT-KEY").execute();
+Get the API object from the BacklogClient and Call "execute" method.
+Enjoy Backlog API!
+
+    GetProject getProject = backlogClient.getProject().setProjectKey("PROJECT-KEY");
+
+    Project project = getProject.execute();
 
 ## Documents
 
