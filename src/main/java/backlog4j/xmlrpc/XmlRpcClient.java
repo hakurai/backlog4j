@@ -68,6 +68,10 @@ public class XmlRpcClient {
                 in = con.getInputStream();
 
                 return XmlRpcRequestReader.read(in);
+            } catch (Exception e){
+
+                throw new BacklogException(params.toString(),e);//TODO detail message
+
             } finally {
                 if (in != null) {
                     in.close();

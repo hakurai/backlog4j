@@ -4,6 +4,7 @@ import backlog4j.BacklogClient;
 import backlog4j.Issue;
 import backlog4j.impl.IssueImpl;
 
+import java.util.List;
 import java.util.Map;
 
 /**
