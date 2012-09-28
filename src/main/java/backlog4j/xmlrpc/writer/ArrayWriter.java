@@ -20,13 +20,19 @@ public final class ArrayWriter extends ObjectWriter {
     public void write(XmlRpcRequestWriter writer, Object value) throws IOException {
         writer.writeTagStart(NAME);
         writer.writeTagStart("data");
-        writeArray(writer, (Object[]) value);
+        if (value != null) {
+            writeArray(writer, (Object[]) value);
+        }
         writer.writeTagEnd("data");
         writer.writeTagEnd(NAME);
 
     }
 
     private void writeArray(XmlRpcRequestWriter writer, Object[] array) throws IOException {
+        if (array.length == 0) {
+            return;
+        }
+
         for (Object obj : array) {
             writer.writeObject(obj);
         }
