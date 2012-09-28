@@ -12,7 +12,7 @@ public final class BacklogConfigureImpl extends AbstractBacklogConfigure {
     private final URL xmlRpcUrl;
 
     public BacklogConfigureImpl(String spaceId, String username, String password, int readTimeout, int connectTimeout) throws MalformedURLException {
-        super(password, username, readTimeout, connectTimeout);
+        super(username, password, readTimeout, connectTimeout);
         if (spaceId == null) {
             throw new IllegalArgumentException("spaceId must not be null");
         }

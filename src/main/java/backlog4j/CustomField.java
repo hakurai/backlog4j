@@ -1,5 +1,7 @@
 package backlog4j;
 
+import java.util.List;
+
 /**
  * @author eguchi
  */
@@ -21,5 +23,42 @@ public interface CustomField {
         private Type(int id) {
             this.id = id;
         }
+
+        public static Type valueOf(int id) {
+            switch (id) {
+                case 1:
+                    return STRING;
+                case 2:
+                    return TEXT;
+                case 3:
+                    return NUMBER;
+                case 4:
+                    return DATE;
+                case 5:
+                    return SINGLE_LIST;
+                case 6:
+                    return MULTIPLE_LIST;
+                case 7:
+                    return CHECKBOX;
+                case 8:
+                    return RADIO;
+                default:
+                    throw new IllegalArgumentException("Illegal id : " + id);
+
+            }
+        }
+
     }
+
+    Integer getId();
+
+    Type getTypeId();
+
+    String getName();
+
+    String getDescription();
+
+    Boolean isRequired();
+
+    List<IssueType> getIssueTypes();
 }

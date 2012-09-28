@@ -1,10 +1,10 @@
 package backlog4j.admin.api;
 
 import backlog4j.BacklogAdminClient;
-import backlog4j.BacklogClient;
 import backlog4j.BacklogClientFactory;
-import backlog4j.Project;
-import backlog4j.conf.*;
+import backlog4j.conf.ImmutableSpaceConfigure;
+import backlog4j.conf.MutableSpaceConfigure;
+import backlog4j.conf.TestuserConfigure;
 import org.junit.Before;
 
 /**

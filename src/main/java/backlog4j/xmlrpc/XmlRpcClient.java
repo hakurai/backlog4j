@@ -6,10 +6,10 @@ import backlog4j.util.Base64;
 import backlog4j.xmlrpc.reader.XmlRpcRequestReader;
 import backlog4j.xmlrpc.writer.XmlRpcRequestWriter;
 
-import javax.net.ssl.HttpsURLConnection;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
@@ -39,7 +39,7 @@ public class XmlRpcClient {
         }
 
         try {
-            HttpsURLConnection con = createConnection();
+            HttpURLConnection con = createConnection();
 
             OutputStream out = null;
             try {
@@ -67,6 +67,12 @@ public class XmlRpcClient {
                 in = con.getInputStream();
 
                 return XmlRpcRequestReader.read(in);
+            } catch (Exception e) {
+
+                String message = params == null ? "param is null" : params.toString();
+
+                throw new BacklogException(message, e);//TODO detail message
+
             } finally {
                 if (in != null) {
                     in.close();
@@ -78,10 +84,10 @@ public class XmlRpcClient {
         }
     }
 
-    private HttpsURLConnection createConnection() throws IOException {
+    private HttpURLConnection createConnection() throws IOException {
         URL url = configure.getXmlRpcUrl();
 
-        HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
         String encode = Base64.encode((configure.getUsername() + ":" + configure.getPassword()).getBytes());
 
         con.setConnectTimeout(configure.getConnectTimeout());

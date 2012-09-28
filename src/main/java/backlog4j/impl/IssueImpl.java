@@ -18,8 +18,8 @@ public final class IssueImpl implements Issue {
     private final String url;
     private final String dueDate;
     private final String startDate;
-    private final String estimatedHours;
-    private final String actualHours;
+    private final Double estimatedHours;
+    private final Double actualHours;
     private final IssueType issueType;
     private final Priority priority;
     private final Resolution resolution;
@@ -40,8 +40,8 @@ public final class IssueImpl implements Issue {
         url = (String) map.get(URL);
         dueDate = (String) map.get(DUE_DATE);
         startDate = (String) map.get(START_DATE);
-        estimatedHours = (String) map.get(ESTIMATED_HOURS);
-        actualHours = (String) map.get(ACTUAL_HOURS);
+        estimatedHours = (Double) map.get(ESTIMATED_HOURS);
+        actualHours = (Double) map.get(ACTUAL_HOURS);
         issueType = IssueTypeImpl.create((Map<String, Object>) map.get(ISSUE_TYPE));
         priority = PriorityImpl.create((Map<String, Object>) map.get(PRIORITY));
         resolution = ResolutionImpl.create((Map<String, Object>) map.get(RESOLUTION));
@@ -92,12 +92,12 @@ public final class IssueImpl implements Issue {
     }
 
     @Override
-    public String getEstimatedHours() {
+    public Double getEstimatedHours() {
         return estimatedHours;
     }
 
     @Override
-    public String getActualHours() {
+    public Double getActualHours() {
         return actualHours;
     }
 

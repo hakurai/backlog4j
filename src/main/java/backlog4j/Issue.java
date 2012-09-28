@@ -42,9 +42,9 @@ public interface Issue {
 
     String getStartDate();
 
-    String getEstimatedHours();
+    Double getEstimatedHours();
 
-    String getActualHours();
+    Double getActualHours();
 
     IssueType getIssueType();
 

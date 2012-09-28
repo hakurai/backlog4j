@@ -20,6 +20,8 @@ public abstract class ObjectWriter {
             writer = IntegerWriter.getInstance();
         } else if (obj instanceof String) {
             writer = StringWriter.getInstance();
+        } else if (obj instanceof Double) {
+            writer = DoubleWriter.getInstance();
         } else if (obj instanceof Boolean) {
             writer = BooleanWriter.getInstance();
         } else if (obj instanceof Object[]) {

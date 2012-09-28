@@ -54,21 +54,21 @@ abstract class AbstractUpdateIssue implements BacklogCommand<Issue> {
         return this;
     }
 
-    public String getEstimatedHours() {
-        return (String) map.get(ESTIMATED_HOURS);
+    public Double getEstimatedHours() {
+        return (Double) map.get(ESTIMATED_HOURS);
     }
 
-    public AbstractUpdateIssue setEstimatedHours(String estimatedHours) {
+    public AbstractUpdateIssue setEstimatedHours(Double estimatedHours) {
         map.put(ESTIMATED_HOURS, estimatedHours);
 
         return this;
     }
 
-    public String getActualHours() {
-        return (String) map.get(ACTUAL_HOURS);
+    public Double getActualHours() {
+        return (Double) map.get(ACTUAL_HOURS);
     }
 
-    public AbstractUpdateIssue setActualHours(String actualHours) {
+    public AbstractUpdateIssue setActualHours(Double actualHours) {
         map.put(ACTUAL_HOURS, actualHours);
 
         return this;

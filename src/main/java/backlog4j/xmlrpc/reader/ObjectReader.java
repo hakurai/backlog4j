@@ -39,6 +39,8 @@ public abstract class ObjectReader<T> {
             return new StructReader();
         } else if (type.equals("base64")) {
             return new Base64Reader();
+        } else if (type.equals("double")) {
+            return new DoubleReader();
         } else {
             throw new BacklogException("Unsupported type : " + type);
         }

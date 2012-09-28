@@ -232,4 +232,11 @@ public interface BacklogClient extends BacklogClientBase {
      * @return the new GetPriorities object.
      */
     GetPriorities getPriorities();
+
+    /**
+     * Returns a object to execute a backlog.getCustomFields API
+     *
+     * @return the new GetCustomFields object.
+     */
+    GetCustomFields getCustomFields();
 }
