@@ -56,7 +56,7 @@ public class XmlRpcRequestWriter {
     public void writeObject(Object obj) throws IOException {
 
         writeTagStart("value");
-        if( obj != null ){
+        if (obj != null) {
             ObjectWriter writer = ObjectWriter.getObjectWriter(obj);
             writer.write(this, obj);
         }

@@ -23,8 +23,8 @@ public abstract class CustomFieldImpl implements CustomField {
         id = (Integer) map.get("id");
         typeId = Type.valueOf((Integer) map.get("type_id"));
         name = (String) map.get("name");
-        description = (String)map.get("description");
-        required = (Boolean)map.get("required");
+        description = (String) map.get("description");
+        required = (Boolean) map.get("required");
         issueTypes = XmlRpcUtil.<IssueType>toList(IssueTypeImpl.class, map.get("issueTypes"));
 
     }

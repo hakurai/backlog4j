@@ -32,7 +32,7 @@ public class GetUsers implements BacklogCommand<List<User>> {
 
     public List<User> execute() {
         if (getProjectId() == null) {
-            throw new BacklogException();
+            throw new BacklogException("projectId is required");
         }
 
         Object res = client.execute(BACKLOG_GET_USERS, getProjectId());

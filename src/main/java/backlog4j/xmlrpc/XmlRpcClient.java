@@ -6,7 +6,6 @@ import backlog4j.util.Base64;
 import backlog4j.xmlrpc.reader.XmlRpcRequestReader;
 import backlog4j.xmlrpc.writer.XmlRpcRequestWriter;
 
-import javax.net.ssl.HttpsURLConnection;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -68,9 +67,11 @@ public class XmlRpcClient {
                 in = con.getInputStream();
 
                 return XmlRpcRequestReader.read(in);
-            } catch (Exception e){
+            } catch (Exception e) {
 
-                throw new BacklogException(params.toString(),e);//TODO detail message
+                String message = params == null ? "param is null" : params.toString();
+
+                throw new BacklogException(message, e);//TODO detail message
 
             } finally {
                 if (in != null) {

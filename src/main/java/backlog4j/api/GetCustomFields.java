@@ -1,6 +1,7 @@
 package backlog4j.api;
 
 import backlog4j.BacklogClient;
+import backlog4j.BacklogException;
 import backlog4j.CustomField;
 import backlog4j.impl.CustomFieldParser;
 
@@ -43,6 +44,10 @@ public class GetCustomFields implements BacklogCommand<List<CustomField>> {
 
     @Override
     public List<CustomField> execute() {
+        if (getProjectId() == null) {
+            throw new BacklogException("projectId is required");
+        }
+
         Object[] res = (Object[]) client.execute(BACKLOG_GET_CUSTOM_FIELDS, map);
 
         List<CustomField> list = new ArrayList<CustomField>(res.length);

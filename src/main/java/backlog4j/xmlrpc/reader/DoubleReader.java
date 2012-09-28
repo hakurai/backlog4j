@@ -5,7 +5,7 @@ import backlog4j.BacklogException;
 /**
  * @author eguchi
  */
-public class DoubleReader  extends ObjectReader<Double> {
+public class DoubleReader extends ObjectReader<Double> {
 
     private Double value;
 

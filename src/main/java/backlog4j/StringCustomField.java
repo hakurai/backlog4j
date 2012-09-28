@@ -3,5 +3,5 @@ package backlog4j;
 /**
  * @author eguchi
  */
-public interface StringCustomField extends CustomField{
+public interface StringCustomField extends CustomField {
 }
