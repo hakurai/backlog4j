@@ -1,6 +1,9 @@
 package backlog4j.api;
 
+import backlog4j.BacklogClient;
+import backlog4j.BacklogClientFactory;
 import backlog4j.Issue;
+import backlog4j.conf.BacklogConfigureBuilder;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -96,6 +99,17 @@ public class GetIssueTest extends BacklogCommandTestBase {
         assertThat(issue.getAssigner().getName(), is("owner"));
         assertThat(issue.getCreatedOn(), is("20120818232007"));
         assertThat(issue.getUpdatedOn(), is("20120818232007"));
+
+    }
+
+    @Test
+    public void test() throws Exception {
+        BacklogClient backlogClient = new BacklogClientFactory(new BacklogConfigureBuilder().setSpaceId("nulab").setUsername("eguchi").setPassword("eguchi99").buildBacklogConfigure()).newBacklogClient();
+
+
+        GetIssue getIssue = backlogClient.getIssue().setIssueKey("BLGLINGUAL-118");
+
+        Issue issue = getIssue.execute();
 
     }
 }
