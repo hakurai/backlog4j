@@ -102,14 +102,4 @@ public class GetIssueTest extends BacklogCommandTestBase {
 
     }
 
-    @Test
-    public void test() throws Exception {
-        BacklogClient backlogClient = new BacklogClientFactory(new BacklogConfigureBuilder().setSpaceId("nulab").setUsername("eguchi").setPassword("eguchi99").buildBacklogConfigure()).newBacklogClient();
-
-
-        GetIssue getIssue = backlogClient.getIssue().setIssueKey("BLGLINGUAL-118");
-
-        Issue issue = getIssue.execute();
-
-    }
 }
