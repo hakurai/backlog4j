@@ -21,13 +21,19 @@ public final class ListWriter extends ObjectWriter {
     public void write(XmlRpcRequestWriter writer, Object value) throws IOException {
         writer.writeTagStart(NAME);
         writer.writeTagStart("data");
-        writeArray(writer, (List<Object>) value);
+        if (value != null) {
+            writeArray(writer, (List<Object>) value);
+        }
         writer.writeTagEnd("data");
         writer.writeTagEnd(NAME);
 
     }
 
     private void writeArray(XmlRpcRequestWriter writer, List<Object> array) throws IOException {
+        if (array.isEmpty()) {
+            return;
+        }
+
         for (Object obj : array) {
             writer.writeObject(obj);
         }

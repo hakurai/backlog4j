@@ -21,7 +21,7 @@ public class BacklogConfigureBuilder {
     }
 
 
-    public BacklogConfigureBuilder loadPropertyFIle(String path) throws IOException {
+    public BacklogConfigureBuilder loadPropertyFile(String path) throws IOException {
         Properties properties = new Properties();
         properties.loadFromXML(new FileInputStream(path));
 
@@ -29,8 +29,8 @@ public class BacklogConfigureBuilder {
         setUsername(properties.getProperty("username", null));
         setPassword(properties.getProperty("password", null));
         setUrl(properties.getProperty("url", null));
-        setConnectTimeout(Integer.parseInt(properties.getProperty("connectionTimeout", null)));
-        setReadTimeout(Integer.parseInt(properties.getProperty("readTimeout", null)));
+        setConnectTimeout(Integer.parseInt(properties.getProperty("connectionTimeout", "0")));
+        setReadTimeout(Integer.parseInt(properties.getProperty("readTimeout", "0")));
 
         return this;
     }

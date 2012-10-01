@@ -18,6 +18,6 @@ public final class StringWriter extends ObjectWriter {
     }
 
     public void write(XmlRpcRequestWriter writer, Object value) throws IOException {
-        writer.write(NAME, (String) value);
+        writer.write(NAME, value == null ? "" : value.toString());
     }
 }

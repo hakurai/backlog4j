@@ -18,7 +18,12 @@ public final class IntegerWriter extends ObjectWriter {
     }
 
     public void write(XmlRpcRequestWriter writer, Object value) throws IOException {
-        writer.write(NAME, value.toString());
+        if (value == null) {
+            writer.write(NAME, "");
+        } else {
+            String text = value.toString();
+            writer.write(NAME, text);
+        }
     }
 
 

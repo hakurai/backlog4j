@@ -65,8 +65,16 @@ public class Base64Test {
     }
 
     @Test
+    public void testDecodeJapanese() throws Exception {
+
+        byte[] bytes = Base64.decode("44GT44KT44Gr44Gh44GvSmF2YQ==");
+
+        assertThat(new String(bytes), is("こんにちはJava"));
+    }
+
+    @Test
     public void testEncodeAndDecode() throws Exception {
-        String source = "`1234567890-=\\][poiuytrewqasdfghjkl;'/.,mnbvcxz?><:{}|+_)(*&^%$#@!~)";
+        String source = "`1234567890-=\\][poiuytrewqasdfghjkl;'/.,mnbvcxz?><:{}|+_)(*&^%$#@!~)あ\n";
 
 
         byte[] bytes = Base64.decode(
