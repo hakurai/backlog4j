@@ -163,4 +163,21 @@ public final class IssueImpl implements Issue {
                 ", summary='" + summary + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || !(o instanceof Issue) ) return false;
+
+        IssueImpl issue = (IssueImpl) o;
+
+        if (id != null ? !id.equals(issue.id) : issue.id != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
 }
