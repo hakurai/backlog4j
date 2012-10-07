@@ -1,6 +1,7 @@
 package backlog4j;
 
 import backlog4j.api.*;
+import backlog4j.conf.BacklogConfigure;
 
 /**
  * The <code>BacklogClient</code> returns a object to execute Backlog APIs.
@@ -8,6 +9,13 @@ import backlog4j.api.*;
  * @author eguchi
  */
 public interface BacklogClient extends BacklogClientBase {
+
+    /**
+     * Returns a configure
+     *
+     * @return configure.
+     */
+    BacklogConfigure getConfigure();
 
     /**
      * Returns a object to execute a backlog.getProjects API

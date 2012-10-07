@@ -1,6 +1,7 @@
 package backlog4j;
 
 import backlog4j.admin.api.*;
+import backlog4j.conf.BacklogConfigure;
 
 /**
  * The <code>BacklogAdminClient</code> returns a object to execute Backlog Admin APIs.
@@ -9,6 +10,13 @@ import backlog4j.admin.api.*;
  */
 public interface BacklogAdminClient extends BacklogClientBase {
 
+    /**
+     * Returns a configure
+     *
+     * @return configure.
+     */
+    BacklogConfigure getConfigure();
+    
     /**
      * Returns a object to execute a backlog.admin.getUsers API
      *

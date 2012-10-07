@@ -23,6 +23,10 @@ public class XmlRpcClient {
         this.configure = configure;
     }
 
+    public BacklogConfigure getConfigure() {
+        return configure;
+    }
+
     public Object execute(String methodName) {
         return execute(methodName, null);
     }

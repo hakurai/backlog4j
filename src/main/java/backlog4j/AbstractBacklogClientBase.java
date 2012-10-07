@@ -18,6 +18,11 @@ public abstract class AbstractBacklogClientBase implements BacklogClientBase {
         client = new XmlRpcClient(configure);
     }
 
+
+    public BacklogConfigure getConfigure() {
+        return client.getConfigure();
+    }
+
     public Object execute(String methodName) {
         return execute(methodName, new Object[]{});
     }
