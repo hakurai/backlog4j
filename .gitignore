@@ -1,0 +1,10 @@
+.idea/
+.gradle/
+out/
+build/
+target/
+.DS_Store
+*.bak
+immutable.properties
+mutable.properties
+normalUser.properties
