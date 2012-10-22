@@ -16,6 +16,18 @@ public interface BacklogAdminCommand<T> extends BacklogCommand<T> {
     static final String TYPE = "type";
     static final String DATA = "data";
     static final String USE_CHART = "use_chart";
+    static final String TYPE_ID = "typeId";
+    static final String ISSUE_TYPES = "issueTypes";
+    static final String REQUIRED = "required";
+    static final String MIN = "min";
+    static final String MAX = "max";
+    static final String INITIAL_VALUE = "initial_value";
+    static final String UNIT = "unit";
+    static final String INITIAL_VALUE_TYPE = "initial_value_type";
+    static final String INITIAL_SHIFT = "initial_shift";
+    static final String INITIAL_DATE = "initial_date";
+    static final String ITEMS = "items";
+    static final String ALLOW_INPUT = "allow_input";
 
 
     static final String MAIL = "mail";

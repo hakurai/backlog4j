@@ -24,6 +24,10 @@ public interface CustomField {
             this.id = id;
         }
 
+        public int getId() {
+            return id;
+        }
+
         public static Type valueOf(int id) {
             switch (id) {
                 case 1:
