@@ -16,7 +16,7 @@ public interface BacklogAdminClient extends BacklogClientBase {
      * @return configure.
      */
     BacklogConfigure getConfigure();
-    
+
     /**
      * Returns a object to execute a backlog.admin.getUsers API
      *
