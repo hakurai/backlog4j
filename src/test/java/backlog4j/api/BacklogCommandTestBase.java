@@ -27,11 +27,12 @@ public class BacklogCommandTestBase {
     }
 
 
-    public void assertProject1(Project project) {
+    public void expectProject1(Project project) {
         assertThat(project.getId(), is(PROJECT_ID));
         assertThat(project.getName(), is("project1"));
         assertThat(project.getKey(), is("P_1"));
         assertThat(project.getUrl(), is("https://b4jtest.backlog.jp/projects/P_1"));
+        assertThat(project.isArchived(), is(false));
     }
 
 }

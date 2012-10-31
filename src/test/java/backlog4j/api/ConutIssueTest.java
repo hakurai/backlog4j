@@ -17,6 +17,26 @@ public class ConutIssueTest extends BacklogCommandTestBase {
         assertThat(count, is(5));
     }
 
+    @Test
+    public void testShouldWorkIssueTypeId() throws Exception {
+        int count = immutableClient.countIssue().setProjectId(PROJECT_ID).addIssueTypeId(1073884674).execute();
+
+        assertThat(count, is(3));
+    }
+
+    @Test
+    public void testShouldWorkIssueType() throws Exception {
+        int count = immutableClient.countIssue().setProjectId(PROJECT_ID).addIssueType("バグ").execute();
+
+        assertThat(count, is(3));
+    }
+
+    @Test
+    public void testShouldWorkComponentId() throws Exception {
+        int count = immutableClient.countIssue().setProjectId(PROJECT_ID).addComponentId(1073813651).execute();
+
+        assertThat(count, is(1));
+    }
 
     @Test
     public void testShouldWorkPriority() throws Exception {
