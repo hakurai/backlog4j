@@ -13,7 +13,7 @@ import java.util.Map;
 abstract class AbstractUpdateIssue<S> implements BacklogCommand<Issue> {
 
     protected final Map<String, Object> map = new HashMap<String, Object>();
-    
+
     protected abstract S getThis();
 
     public String getSummary() {
@@ -100,45 +100,36 @@ abstract class AbstractUpdateIssue<S> implements BacklogCommand<Issue> {
         return (List<Integer>) map.get(COMPONENT_ID);
     }
 
-    public S addComponentId(Integer componentId) {
-        List<Integer> components = getComponentId();
-        if (components == null) {
-            components = new ArrayList<Integer>();
-            map.put(COMPONENT_ID, components);
-        }
-        components.add(componentId);
+    public S setComponentId(Integer componentId) {
+        return setValue(COMPONENT_ID, componentId);
+    }
 
-        return getThis();
+    public S addComponentId(Integer componentId) {
+        return addValue(COMPONENT_ID, componentId);
     }
 
     public List<Integer> getVersionId() {
         return (List<Integer>) map.get(VERSION_ID);
     }
 
-    public S addVersion(int versionId) {
-        List<Integer> versions = getVersionId();
-        if (versions == null) {
-            versions = new ArrayList<Integer>();
-            map.put(VERSION_ID, versions);
-        }
-        versions.add(versionId);
+    public S setVersionId(Integer versionId) {
+        return setValue(VERSION_ID, versionId);
+    }
 
-        return getThis();
+    public S addVersionId(int versionId) {
+        return addValue(VERSION_ID, versionId);
     }
 
     public List<Integer> getMilestoneId() {
         return (List<Integer>) map.get(MILESTONE_ID);
     }
 
-    public S addMilestonId(int milestone) {
-        List<Integer> milestones = getMilestoneId();
-        if (milestones == null) {
-            milestones = new ArrayList<Integer>();
-            map.put(MILESTONE_ID, milestones);
-        }
-        milestones.add(milestone);
+    public S setMilestoneId(Integer milestoneId) {
+        return setValue(MILESTONE_ID, milestoneId);
+    }
 
-        return getThis();
+    public S addMilestonId(int milestone) {
+        return addValue(MILESTONE_ID, milestone);
     }
 
     public Integer getAssignerId() {
@@ -147,6 +138,27 @@ abstract class AbstractUpdateIssue<S> implements BacklogCommand<Issue> {
 
     public S setAssignerId(int assignerId) {
         map.put(ASSIGNER_ID, assignerId);
+
+        return getThis();
+    }
+
+    protected <V> S setValue(String name, V value) {
+        List<V> list = (List<V>) map.get(name);
+        if (list != null && !list.isEmpty()) {
+            list.clear();
+        }
+        addValue(name, value);
+
+        return getThis();
+    }
+
+    protected <V> S addValue(String name, V value) {
+        List<V> list = (List<V>) map.get(name);
+        if (list == null) {
+            list = new ArrayList<V>();
+            map.put(name, list);
+        }
+        list.add(value);
 
         return getThis();
     }

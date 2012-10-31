@@ -8,14 +8,14 @@ import java.util.Map;
 /**
  * @author eguchi
  */
-abstract class AbstractFindIssueRequest<T,S extends BacklogCommand<T>> implements BacklogCommand<T> {
+abstract class AbstractFindIssueRequest<T, S extends BacklogCommand<T>> implements BacklogCommand<T> {
 
     protected final Map<String, Object> map = new HashMap<String, Object>();
 
     public Integer getProjectId() {
         return (Integer) map.get(PROJECT_ID);
     }
-    
+
     protected abstract S getThis();
 
     public S setProjectId(Integer projectId) {
@@ -28,90 +28,74 @@ abstract class AbstractFindIssueRequest<T,S extends BacklogCommand<T>> implement
         return (List<Integer>) map.get(ISSUE_TYPE_ID);
     }
 
-    public S addIssueTypeId(int newIssueTypeId) {
-        List<Integer> issueTypeId = getIssueTypeId();
-        if (issueTypeId == null) {
-            issueTypeId = new ArrayList<Integer>();
-            map.put(ISSUE_TYPE_ID, issueTypeId);
-        }
-        issueTypeId.add(newIssueTypeId);
+    public S setIssueTypeId(Integer issueTypeId) {
+        return setValue(ISSUE_TYPE_ID, issueTypeId);
+    }
 
-        return getThis();
+    public S addIssueTypeId(Integer newIssueTypeId) {
+        return addValue(ISSUE_TYPE_ID, newIssueTypeId);
     }
 
     public List<String> getIssueType() {
         return (List<String>) map.get(ISSUE_TYPE);
     }
 
-    public S addIssueType(String newIssueType) {
-        List<String> issueType = getIssueType();
-        if (issueType == null) {
-            issueType = new ArrayList<String>();
-            map.put(ISSUE_TYPE, issueType);
-        }
-        issueType.add(newIssueType);
+    public S setIssueType(String issueType) {
+        return setValue(ISSUE_TYPE, issueType);
 
-        return getThis();
+    }
+
+    public S addIssueType(String newIssueType) {
+        return addValue(ISSUE_TYPE, newIssueType);
     }
 
     public List<Integer> getComponentId() {
         return (List<Integer>) map.get(COMPONENT_ID);
     }
 
-    public S addComponentId(int newComponentId) {
-        List<Integer> componentId = getComponentId();
-        if (componentId == null) {
-            componentId = new ArrayList<Integer>();
-            map.put(COMPONENT_ID, componentId);
-        }
-        componentId.add(newComponentId);
+    public S setComponentId(Integer componentId) {
+        return setValue(COMPONENT_ID, componentId);
 
-        return getThis();
+    }
+
+    public S addComponentId(int newComponentId) {
+        return addValue(COMPONENT_ID, newComponentId);
     }
 
     public List<Integer> getVersionId() {
         return (List<Integer>) map.get(VERSION_ID);
     }
 
-    public S addVersionId(int newVersionId) {
-        List<Integer> versionId = getVersionId();
-        if (versionId == null) {
-            versionId = new ArrayList<Integer>();
-            map.put(VERSION_ID, versionId);
-        }
-        versionId.add(newVersionId);
+    public S setVersionId(Integer versionId) {
+        return setValue(VERSION_ID, versionId);
+    }
 
-        return getThis();
+    public S addVersionId(int newVersionId) {
+        return addValue(VERSION_ID, newVersionId);
     }
 
     public List<Integer> getMilestoneId() {
         return (List<Integer>) map.get(MILESTONE_ID);
     }
 
-    public S addMilestoneId(int newMilestoneId) {
-        List<Integer> milestoneId = getMilestoneId();
-        if (milestoneId == null) {
-            milestoneId = new ArrayList<Integer>();
-            map.put(MILESTONE_ID, milestoneId);
-        }
-        milestoneId.add(newMilestoneId);
+    public S setMilestoneId(Integer milestoneId) {
+        return setValue(MILESTONE_ID, milestoneId);
+    }
 
-        return getThis();
+    public S addMilestoneId(int newMilestoneId) {
+        return addValue(MILESTONE_ID, newMilestoneId);
     }
 
     public List<Integer> getStatusId() {
         return (List<Integer>) map.get(STATUS_ID);
     }
 
-    public S addStatusId(int newStatusId) {
-        List<Integer> statusId = getStatusId();
-        if (statusId == null) {
-            statusId = new ArrayList<Integer>();
-            map.put(STATUS_ID, statusId);
-        }
-        statusId.add(newStatusId);
+    public S setStatusId(Integer statusId) {
+        return setValue(STATUS_ID, statusId);
+    }
 
-        return getThis();
+    public S addStatusId(int newStatusId) {
+        return addValue(STATUS_ID, newStatusId);
     }
 
     public List<Integer> getPriorityId() {
@@ -119,59 +103,43 @@ abstract class AbstractFindIssueRequest<T,S extends BacklogCommand<T>> implement
     }
 
     public S addPriorityId(int newPriorityId) {
-        List<Integer> priorityId = getPriorityId();
-        if (priorityId == null) {
-            priorityId = new ArrayList<Integer>();
-            map.put(PRIORITY_ID, priorityId);
-        }
-        priorityId.add(newPriorityId);
-
-        return getThis();
+        return addValue(PRIORITY_ID, newPriorityId);
     }
 
     public List<Integer> getAssignerId() {
         return (List<Integer>) map.get(ASSIGNER_ID);
     }
 
-    public S addAssignerId(int newAssignerId) {
-        List<Integer> assignerId = getAssignerId();
-        if (assignerId == null) {
-            assignerId = new ArrayList<Integer>();
-            map.put(ASSIGNER_ID, assignerId);
-        }
-        assignerId.add(newAssignerId);
+    public S setAssignerId(Integer assignerId) {
+        return setValue(ASSIGNER_ID, assignerId);
+    }
 
-        return getThis();
+    public S addAssignerId(int newAssignerId) {
+        return addValue(ASSIGNER_ID, newAssignerId);
     }
 
     public List<Integer> getCreatedUserId() {
         return (List<Integer>) map.get(CREATED_USER_ID);
     }
 
-    public S addCreatedUserId(int newCreatedUserId) {
-        List<Integer> createdUserId = getCreatedUserId();
-        if (createdUserId == null) {
-            createdUserId = new ArrayList<Integer>();
-            map.put(CREATED_USER_ID, createdUserId);
-        }
-        createdUserId.add(newCreatedUserId);
+    public S setCreatedUserId(Integer createdUserId) {
+        return setValue(CREATED_USER_ID, createdUserId);
+    }
 
-        return getThis();
+    public S addCreatedUserId(int newCreatedUserId) {
+        return addValue(CREATED_USER_ID, newCreatedUserId);
     }
 
     public List<Integer> getResolutionId() {
         return (List<Integer>) map.get(RESOLUTION_ID);
     }
 
-    public S addResolutionId(int newResolutionId) {
-        List<Integer> resolutionId = getResolutionId();
-        if (resolutionId == null) {
-            resolutionId = new ArrayList<Integer>();
-            map.put(RESOLUTION_ID, resolutionId);
-        }
-        resolutionId.add(newResolutionId);
+    public S setResolutionId(Integer resolutionId) {
+        return setValue(RESOLUTION_ID, resolutionId);
+    }
 
-        return getThis();
+    public S addResolutionId(int newResolutionId) {
+        return addValue(RESOLUTION_ID, newResolutionId);
     }
 
     public String getCreatedOnMin() {
@@ -268,13 +236,31 @@ abstract class AbstractFindIssueRequest<T,S extends BacklogCommand<T>> implement
         return (List<BacklogCommand.File>) map.get(FILE);
     }
 
+    public S setFile(BacklogCommand.File file) {
+        return setValue(FILE, file);
+    }
+
     public S addFile(BacklogCommand.File file) {
-        List<BacklogCommand.File> list = getFile();
-        if (list == null) {
-            list = new ArrayList<BacklogCommand.File>();
-            map.put(FILE, list);
+        return addValue(FILE, file);
+    }
+
+    protected <V> S setValue(String name, V value) {
+        List<V> list = (List<V>) map.get(name);
+        if (list != null && !list.isEmpty()) {
+            list.clear();
         }
-        list.add(file);
+        addValue(name, value);
+
+        return getThis();
+    }
+
+    protected <V> S addValue(String name, V value) {
+        List<V> list = (List<V>) map.get(name);
+        if (list == null) {
+            list = new ArrayList<V>();
+            map.put(name, list);
+        }
+        list.add(value);
 
         return getThis();
     }
