@@ -59,16 +59,12 @@ public class UpdateCustomField implements BacklogAdminCommand {
         return (String) map.get(NAME);
     }
 
+    public UpdateCustomField setIssueType(Integer issueTypeId) {
+        return setValue(ISSUE_TYPES, issueTypeId);
+    }
+
     public UpdateCustomField addIssueType(Integer issueTypeId) {
-        List<Integer> issueTypes = getIssueTypes();
-        if (issueTypes == null) {
-            issueTypes = new ArrayList<Integer>();
-            map.put(ISSUE_TYPES, issueTypes);
-        }
-
-        issueTypes.add(issueTypeId);
-
-        return this;
+        return addValue(ISSUE_TYPES, issueTypeId);
     }
 
     public List<Integer> getIssueTypes() {
@@ -175,16 +171,12 @@ public class UpdateCustomField implements BacklogAdminCommand {
         return (String) map.get(INITIAL_DATE);
     }
 
+    public UpdateCustomField setItem(String item) {
+        return setValue(ITEMS, item);
+    }
+
     public UpdateCustomField addItem(String item) {
-        List<String> items = getItems();
-        if (items == null) {
-            items = new ArrayList<String>();
-            map.put(ITEMS, items);
-        }
-
-        items.add(item);
-
-        return this;
+        return addValue(ITEMS, item);
     }
 
     public List<String> getItems() {
@@ -220,5 +212,26 @@ public class UpdateCustomField implements BacklogAdminCommand {
         Object res = client.execute(BACKLOG_ADMIN_UPDATE_CUSTOM_FIELD, map);
 
         return CustomFieldParser.parse((Map<String, Object>) res);
+    }
+
+    protected <V> UpdateCustomField setValue(String name, V value) {
+        List<V> list = (List<V>) map.get(name);
+        if (list != null && !list.isEmpty()) {
+            list.clear();
+        }
+        addValue(name, value);
+
+        return this;
+    }
+
+    protected <V> UpdateCustomField addValue(String name, V value) {
+        List<V> list = (List<V>) map.get(name);
+        if (list == null) {
+            list = new ArrayList<V>();
+            map.put(name, list);
+        }
+        list.add(value);
+
+        return this;
     }
 }

@@ -8,3 +8,4 @@ target/
 immutable.properties
 mutable.properties
 normalUser.properties
+custom.properties
