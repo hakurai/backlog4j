@@ -18,7 +18,7 @@ public final class SelectCustomFieldImpl extends CustomFieldImpl implements Sele
     public SelectCustomFieldImpl(Map<String, Object> map) {
         super(map);
 
-        items = XmlRpcUtil.<Item>toList(ItemImpl.class, map);
+        items = XmlRpcUtil.<Item>toList(ItemImpl.class, map.get("items"));
         allowInput = (Boolean) map.get("allow_input");
 
     }

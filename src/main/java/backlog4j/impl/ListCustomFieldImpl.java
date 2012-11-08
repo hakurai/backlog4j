@@ -17,7 +17,7 @@ public final class ListCustomFieldImpl extends CustomFieldImpl implements ListCu
     public ListCustomFieldImpl(Map<String, Object> map) {
         super(map);
 
-        items = XmlRpcUtil.<Item>toList(ItemImpl.class, map);
+        items = XmlRpcUtil.<Item>toList(ItemImpl.class, map.get("items"));
     }
 
     @Override

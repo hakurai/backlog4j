@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * @author eguchi
  */
-abstract class AbstractFindIssueRequest<T> implements BacklogCommand<T> {
+abstract class AbstractFindIssueRequest<T, S extends BacklogCommand<T>> implements BacklogCommand<T> {
 
     protected final Map<String, Object> map = new HashMap<String, Object>();
 
@@ -16,264 +16,252 @@ abstract class AbstractFindIssueRequest<T> implements BacklogCommand<T> {
         return (Integer) map.get(PROJECT_ID);
     }
 
-    public AbstractFindIssueRequest<T> setProjectId(Integer projectId) {
+    protected abstract S getThis();
+
+    public S setProjectId(Integer projectId) {
         map.put(PROJECT_ID, projectId);
 
-        return this;
+        return getThis();
     }
 
     public List<Integer> getIssueTypeId() {
         return (List<Integer>) map.get(ISSUE_TYPE_ID);
     }
 
-    public AbstractFindIssueRequest<T> addIssueTypeId(int newIssueTypeId) {
-        List<Integer> issueTypeId = getIssueTypeId();
-        if (issueTypeId == null) {
-            issueTypeId = new ArrayList<Integer>();
-            map.put(ISSUE_TYPE_ID, issueTypeId);
-        }
-        issueTypeId.add(newIssueTypeId);
+    public S setIssueTypeId(Integer issueTypeId) {
+        return setValue(ISSUE_TYPE_ID, issueTypeId);
+    }
 
-        return this;
+    public S addIssueTypeId(Integer newIssueTypeId) {
+        return addValue(ISSUE_TYPE_ID, newIssueTypeId);
     }
 
     public List<String> getIssueType() {
         return (List<String>) map.get(ISSUE_TYPE);
     }
 
-    public AbstractFindIssueRequest<T> addIssueType(String newIssueType) {
-        List<String> issueType = getIssueType();
-        if (issueType == null) {
-            issueType = new ArrayList<String>();
-            map.put(ISSUE_TYPE, issueType);
-        }
-        issueType.add(newIssueType);
+    public S setIssueType(String issueType) {
+        return setValue(ISSUE_TYPE, issueType);
 
-        return this;
+    }
+
+    public S addIssueType(String newIssueType) {
+        return addValue(ISSUE_TYPE, newIssueType);
     }
 
     public List<Integer> getComponentId() {
         return (List<Integer>) map.get(COMPONENT_ID);
     }
 
-    public AbstractFindIssueRequest<T> addComponentId(int newComponentId) {
-        List<Integer> componentId = getComponentId();
-        if (componentId == null) {
-            componentId = new ArrayList<Integer>();
-            map.put(COMPONENT_ID, componentId);
-        }
-        componentId.add(newComponentId);
+    public S setComponentId(Integer componentId) {
+        return setValue(COMPONENT_ID, componentId);
 
-        return this;
+    }
+
+    public S addComponentId(int newComponentId) {
+        return addValue(COMPONENT_ID, newComponentId);
     }
 
     public List<Integer> getVersionId() {
         return (List<Integer>) map.get(VERSION_ID);
     }
 
-    public AbstractFindIssueRequest<T> addVersionId(int newVersionId) {
-        List<Integer> versionId = getVersionId();
-        if (versionId == null) {
-            versionId = new ArrayList<Integer>();
-            map.put(VERSION_ID, versionId);
-        }
-        versionId.add(newVersionId);
+    public S setVersionId(Integer versionId) {
+        return setValue(VERSION_ID, versionId);
+    }
 
-        return this;
+    public S addVersionId(int newVersionId) {
+        return addValue(VERSION_ID, newVersionId);
     }
 
     public List<Integer> getMilestoneId() {
         return (List<Integer>) map.get(MILESTONE_ID);
     }
 
-    public AbstractFindIssueRequest<T> addMilestoneId(int newMilestoneId) {
-        List<Integer> milestoneId = getMilestoneId();
-        if (milestoneId == null) {
-            milestoneId = new ArrayList<Integer>();
-            map.put(MILESTONE_ID, milestoneId);
-        }
-        milestoneId.add(newMilestoneId);
+    public S setMilestoneId(Integer milestoneId) {
+        return setValue(MILESTONE_ID, milestoneId);
+    }
 
-        return this;
+    public S addMilestoneId(int newMilestoneId) {
+        return addValue(MILESTONE_ID, newMilestoneId);
     }
 
     public List<Integer> getStatusId() {
         return (List<Integer>) map.get(STATUS_ID);
     }
 
-    public AbstractFindIssueRequest<T> addStatusId(int newStatusId) {
-        List<Integer> statusId = getStatusId();
-        if (statusId == null) {
-            statusId = new ArrayList<Integer>();
-            map.put(STATUS_ID, statusId);
-        }
-        statusId.add(newStatusId);
+    public S setStatusId(Integer statusId) {
+        return setValue(STATUS_ID, statusId);
+    }
 
-        return this;
+    public S addStatusId(int newStatusId) {
+        return addValue(STATUS_ID, newStatusId);
     }
 
     public List<Integer> getPriorityId() {
         return (List<Integer>) map.get(PRIORITY_ID);
     }
 
-    public AbstractFindIssueRequest<T> addPriorityId(int newPriorityId) {
-        List<Integer> priorityId = getPriorityId();
-        if (priorityId == null) {
-            priorityId = new ArrayList<Integer>();
-            map.put(PRIORITY_ID, priorityId);
-        }
-        priorityId.add(newPriorityId);
-
-        return this;
+    public S addPriorityId(int newPriorityId) {
+        return addValue(PRIORITY_ID, newPriorityId);
     }
 
     public List<Integer> getAssignerId() {
         return (List<Integer>) map.get(ASSIGNER_ID);
     }
 
-    public AbstractFindIssueRequest<T> addAssignerId(int newAssignerId) {
-        List<Integer> assignerId = getAssignerId();
-        if (assignerId == null) {
-            assignerId = new ArrayList<Integer>();
-            map.put(ASSIGNER_ID, assignerId);
-        }
-        assignerId.add(newAssignerId);
+    public S setAssignerId(Integer assignerId) {
+        return setValue(ASSIGNER_ID, assignerId);
+    }
 
-        return this;
+    public S addAssignerId(int newAssignerId) {
+        return addValue(ASSIGNER_ID, newAssignerId);
     }
 
     public List<Integer> getCreatedUserId() {
         return (List<Integer>) map.get(CREATED_USER_ID);
     }
 
-    public AbstractFindIssueRequest<T> addCreatedUserId(int newCreatedUserId) {
-        List<Integer> createdUserId = getCreatedUserId();
-        if (createdUserId == null) {
-            createdUserId = new ArrayList<Integer>();
-            map.put(CREATED_USER_ID, createdUserId);
-        }
-        createdUserId.add(newCreatedUserId);
+    public S setCreatedUserId(Integer createdUserId) {
+        return setValue(CREATED_USER_ID, createdUserId);
+    }
 
-        return this;
+    public S addCreatedUserId(int newCreatedUserId) {
+        return addValue(CREATED_USER_ID, newCreatedUserId);
     }
 
     public List<Integer> getResolutionId() {
         return (List<Integer>) map.get(RESOLUTION_ID);
     }
 
-    public AbstractFindIssueRequest<T> addResolutionId(int newResolutionId) {
-        List<Integer> resolutionId = getResolutionId();
-        if (resolutionId == null) {
-            resolutionId = new ArrayList<Integer>();
-            map.put(RESOLUTION_ID, resolutionId);
-        }
-        resolutionId.add(newResolutionId);
+    public S setResolutionId(Integer resolutionId) {
+        return setValue(RESOLUTION_ID, resolutionId);
+    }
 
-        return this;
+    public S addResolutionId(int newResolutionId) {
+        return addValue(RESOLUTION_ID, newResolutionId);
     }
 
     public String getCreatedOnMin() {
         return (String) map.get(CREATED_ON_MIN);
     }
 
-    public AbstractFindIssueRequest<T> setCreatedOnMin(String createdOnMin) {
+    public S setCreatedOnMin(String createdOnMin) {
         map.put(CREATED_ON_MIN, createdOnMin);
 
-        return this;
+        return getThis();
     }
 
     public String getCreatedOnMax() {
         return (String) map.get(CREATED_ON_MAX);
     }
 
-    public AbstractFindIssueRequest<T> setCreatedOnMax(String createdOnMax) {
+    public S setCreatedOnMax(String createdOnMax) {
         map.put(CREATED_ON_MAX, createdOnMax);
 
-        return this;
+        return getThis();
     }
 
     public String getUpdatedOnMin() {
         return (String) map.get(UPDATED_ON_MIN);
     }
 
-    public AbstractFindIssueRequest<T> setUpdatedOnMin(String updatedOnMin) {
+    public S setUpdatedOnMin(String updatedOnMin) {
         map.put(UPDATED_ON_MIN, updatedOnMin);
 
-        return this;
+        return getThis();
     }
 
     public String getUpdatedOnMax() {
         return (String) map.get(UPDATED_ON_MAX);
     }
 
-    public AbstractFindIssueRequest<T> setUpdatedOnMax(String updatedOnMax) {
+    public S setUpdatedOnMax(String updatedOnMax) {
         map.put(UPDATED_ON_MAX, updatedOnMax);
 
-        return this;
+        return getThis();
     }
 
     public String getStartDateMin() {
         return (String) map.get(START_DATE_MIN);
     }
 
-    public AbstractFindIssueRequest<T> setStartDateMin(String startDateMin) {
+    public S setStartDateMin(String startDateMin) {
         map.put(START_DATE_MIN, START_DATE_MIN);
 
-        return this;
+        return getThis();
     }
 
     public String getStartDateMax() {
         return (String) map.get(START_DATE_MAX);
     }
 
-    public AbstractFindIssueRequest<T> setStartDateMax(String startDateMax) {
+    public S setStartDateMax(String startDateMax) {
         map.put(START_DATE_MAX, startDateMax);
 
-        return this;
+        return getThis();
     }
 
     public String getDueDateMin() {
         return (String) map.get(DUE_DATE_MIN);
     }
 
-    public AbstractFindIssueRequest<T> setDueDateMin(String dueDateMin) {
+    public S setDueDateMin(String dueDateMin) {
         map.put(DUE_DATE_MIN, dueDateMin);
 
-        return this;
+        return getThis();
     }
 
     public String getDueDateMax() {
         return (String) map.get(DUE_DATE_MAX);
     }
 
-    public AbstractFindIssueRequest<T> setDueDateMax(String dueDateMax) {
+    public S setDueDateMax(String dueDateMax) {
         map.put(DUE_DATE_MAX, dueDateMax);
 
-        return this;
+        return getThis();
     }
 
     public String getQuery() {
         return (String) map.get(QUERY);
     }
 
-    public AbstractFindIssueRequest<T> setQuery(String query) {
+    public S setQuery(String query) {
         map.put(QUERY, query);
 
-        return this;
+        return getThis();
     }
 
     public List<BacklogCommand.File> getFile() {
         return (List<BacklogCommand.File>) map.get(FILE);
     }
 
-    public AbstractFindIssueRequest<T> addFile(BacklogCommand.File file) {
-        List<BacklogCommand.File> list = getFile();
-        if (list == null) {
-            list = new ArrayList<BacklogCommand.File>();
-            map.put(FILE, list);
-        }
-        list.add(file);
+    public S setFile(BacklogCommand.File file) {
+        return setValue(FILE, file);
+    }
 
-        return this;
+    public S addFile(BacklogCommand.File file) {
+        return addValue(FILE, file);
+    }
+
+    protected <V> S setValue(String name, V value) {
+        List<V> list = (List<V>) map.get(name);
+        if (list != null && !list.isEmpty()) {
+            list.clear();
+        }
+        addValue(name, value);
+
+        return getThis();
+    }
+
+    protected <V> S addValue(String name, V value) {
+        List<V> list = (List<V>) map.get(name);
+        if (list == null) {
+            list = new ArrayList<V>();
+            map.put(name, list);
+        }
+        list.add(value);
+
+        return getThis();
     }
 }

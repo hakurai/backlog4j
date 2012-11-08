@@ -22,7 +22,7 @@ public class GetProjectsTest extends BacklogCommandTestBase {
         assertThat(projects.size(), is(1));
 
         Project project = projects.get(0);
-        assertProject1(project);
+        expectProject1(project);
     }
 
 }

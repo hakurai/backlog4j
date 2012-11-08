@@ -10,142 +10,156 @@ import java.util.Map;
 /**
  * @author eguchi
  */
-abstract class AbstractUpdateIssue implements BacklogCommand<Issue> {
+abstract class AbstractUpdateIssue<S> implements BacklogCommand<Issue> {
 
     protected final Map<String, Object> map = new HashMap<String, Object>();
+
+    protected abstract S getThis();
 
     public String getSummary() {
         return (String) map.get(SUMMARY);
     }
 
-    public AbstractUpdateIssue setSummary(String summary) {
+    public S setSummary(String summary) {
         map.put(SUMMARY, summary);
 
-        return this;
+        return getThis();
     }
 
     public String getDescription() {
         return (String) map.get(DESCRIPTION);
     }
 
-    public AbstractUpdateIssue setDescription(String description) {
+    public S setDescription(String description) {
         map.put(DESCRIPTION, description);
 
-        return this;
+        return getThis();
     }
 
     public String getDueDate() {
         return (String) map.get(DUE_DATE);
     }
 
-    public AbstractUpdateIssue setDueDate(String dueDate) {
+    public S setDueDate(String dueDate) {
         map.put(DUE_DATE, dueDate);
 
-        return this;
+        return getThis();
     }
 
     public String getStartDate() {
         return (String) map.get(START_DATE);
     }
 
-    public AbstractUpdateIssue setStartDate(String startDate) {
+    public S setStartDate(String startDate) {
         map.put(START_DATE, startDate);
 
-        return this;
+        return getThis();
     }
 
     public Double getEstimatedHours() {
         return (Double) map.get(ESTIMATED_HOURS);
     }
 
-    public AbstractUpdateIssue setEstimatedHours(Double estimatedHours) {
+    public S setEstimatedHours(Double estimatedHours) {
         map.put(ESTIMATED_HOURS, estimatedHours);
 
-        return this;
+        return getThis();
     }
 
     public Double getActualHours() {
         return (Double) map.get(ACTUAL_HOURS);
     }
 
-    public AbstractUpdateIssue setActualHours(Double actualHours) {
+    public S setActualHours(Double actualHours) {
         map.put(ACTUAL_HOURS, actualHours);
 
-        return this;
+        return getThis();
     }
 
     public Integer getIssueTypeId() {
         return (Integer) map.get(ISSUE_TYPE_ID);
     }
 
-    public AbstractUpdateIssue setIssueTypeId(Integer issueTypeId) {
+    public S setIssueTypeId(Integer issueTypeId) {
         map.put(ISSUE_TYPE_ID, issueTypeId);
 
-        return this;
+        return getThis();
     }
 
     public Integer getPriorityId() {
         return (Integer) map.get(PRIORITY_ID);
     }
 
-    public AbstractUpdateIssue setPriorityId(Integer priorityId) {
+    public S setPriorityId(Integer priorityId) {
         map.put(PRIORITY_ID, priorityId);
 
-        return this;
+        return getThis();
     }
 
     public List<Integer> getComponentId() {
         return (List<Integer>) map.get(COMPONENT_ID);
     }
 
-    public AbstractUpdateIssue addComponentId(Integer componentId) {
-        List<Integer> components = getComponentId();
-        if (components == null) {
-            components = new ArrayList<Integer>();
-            map.put(COMPONENT_ID, components);
-        }
-        components.add(componentId);
+    public S setComponentId(Integer componentId) {
+        return setValue(COMPONENT_ID, componentId);
+    }
 
-        return this;
+    public S addComponentId(Integer componentId) {
+        return addValue(COMPONENT_ID, componentId);
     }
 
     public List<Integer> getVersionId() {
         return (List<Integer>) map.get(VERSION_ID);
     }
 
-    public AbstractUpdateIssue addVersion(int versionId) {
-        List<Integer> versions = getVersionId();
-        if (versions == null) {
-            versions = new ArrayList<Integer>();
-            map.put(VERSION_ID, versions);
-        }
-        versions.add(versionId);
+    public S setVersionId(Integer versionId) {
+        return setValue(VERSION_ID, versionId);
+    }
 
-        return this;
+    public S addVersionId(int versionId) {
+        return addValue(VERSION_ID, versionId);
     }
 
     public List<Integer> getMilestoneId() {
         return (List<Integer>) map.get(MILESTONE_ID);
     }
 
-    public AbstractUpdateIssue addMilestonId(int milestone) {
-        List<Integer> milestones = getMilestoneId();
-        if (milestones == null) {
-            milestones = new ArrayList<Integer>();
-            map.put(MILESTONE_ID, milestones);
-        }
-        milestones.add(milestone);
+    public S setMilestoneId(Integer milestoneId) {
+        return setValue(MILESTONE_ID, milestoneId);
+    }
 
-        return this;
+    public S addMilestonId(int milestone) {
+        return addValue(MILESTONE_ID, milestone);
     }
 
     public Integer getAssignerId() {
         return (Integer) map.get(ASSIGNER_ID);
     }
 
-    public AbstractUpdateIssue setAssignerId(int assignerId) {
+    public S setAssignerId(int assignerId) {
         map.put(ASSIGNER_ID, assignerId);
 
-        return this;
+        return getThis();
+    }
+
+    protected <V> S setValue(String name, V value) {
+        List<V> list = (List<V>) map.get(name);
+        if (list != null && !list.isEmpty()) {
+            list.clear();
+        }
+        addValue(name, value);
+
+        return getThis();
+    }
+
+    protected <V> S addValue(String name, V value) {
+        List<V> list = (List<V>) map.get(name);
+        if (list == null) {
+            list = new ArrayList<V>();
+            map.put(name, list);
+        }
+        list.add(value);
+
+        return getThis();
     }
 }

@@ -15,7 +15,7 @@ public class GetProjectTest extends BacklogCommandTestBase {
 
         Project project = getProject.execute();
 
-        assertProject1(project);
+        expectProject1(project);
     }
 
     @Test
@@ -24,6 +24,6 @@ public class GetProjectTest extends BacklogCommandTestBase {
 
         Project project = getProject.execute();
 
-        assertProject1(project);
+        expectProject1(project);
     }
 }
