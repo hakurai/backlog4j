@@ -20,11 +20,12 @@
 
     <scm>
         <url>https://github.com/hakurai/backlog4j</url>
-        <connection>git://github.com/hakurai/backlog4j.git</connection>
-        <developerConnection>https://github.com/hakurai/backlog4j.git</developerConnection>
+        <connection>scm:git:git://github.com/hakurai/backlog4j.git</connection>
+        <developerConnection>scm::git:git://github.com/hakurai/backlog4j.git</developerConnection>
     </scm>
 
     <build>
+        <defaultGoal>install</defaultGoal>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -32,6 +33,13 @@
                 <configuration>
                     <charset>UTF-8</charset>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -41,6 +49,27 @@
                     <source>1.6</source>
                     <target>1.6</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest/>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <version>2.1.2</version>
             </plugin>
         </plugins>
     </build>
