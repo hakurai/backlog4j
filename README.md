@@ -6,11 +6,15 @@ backlog4j is a Java library for Backlog API.
 
 ### maven
 
-    mvn install -DskipTests
+    <dependency>
+      <groupId>org.backlog4j</groupId>
+      <artifactId>backlog4j</artifactId>
+      <version>0.4.1</version>
+    </dependency>
 
 ### gradle
 
-    gradle install
+    'org.backlog4j:backlog4j:0.4.1'
 
 ## How to use
 
@@ -32,7 +36,8 @@ backlog4j is a Java library for Backlog API.
 Get the API object from the BacklogClient and Call "execute" method.
 Enjoy Backlog API!
 
-    GetProject getProject = backlogClient.getProject().setProjectKey("PROJECT-KEY");
+    GetProject getProject = backlogClient.getProject();
+    getProject.setProjectKey("PROJECT-KEY");
 
     Project project = getProject.execute();
 
