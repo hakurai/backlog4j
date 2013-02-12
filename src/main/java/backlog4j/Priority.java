@@ -3,8 +3,5 @@ package backlog4j;
 /**
  * @author eguchi
  */
-public interface Priority {
-    Integer getId();
-
-    String getName();
+public interface Priority extends Identifired, Named {
 }

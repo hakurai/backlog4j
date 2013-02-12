@@ -3,8 +3,7 @@ package backlog4j;
 /**
  * @author eguchi
  */
-public interface UserIcon {
-    Integer getId();
+public interface UserIcon extends Identifired {
 
     String getContentType();
 

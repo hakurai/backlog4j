@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * @author eguchi
  */
-public interface CustomField {
+public interface CustomField extends Identifired, Named {
 
     public enum Type {
         UNDEFINED(0),
@@ -54,11 +54,7 @@ public interface CustomField {
 
     }
 
-    Integer getId();
-
     Type getTypeId();
-
-    String getName();
 
     String getDescription();
 

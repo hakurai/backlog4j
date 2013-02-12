@@ -1,16 +1,11 @@
 package backlog4j;
 
-import java.util.List;
-
 /**
  * @author eguchi
  */
-public interface Milestone {
-    Integer getId();
-
-    String getName();
+public interface Milestone extends Identifired, Named {
 
     String getDate();
 
-    List<Status> getStatuses();
+    StatusList getStatuses();
 }
