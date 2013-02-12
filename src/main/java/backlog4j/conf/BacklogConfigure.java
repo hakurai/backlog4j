@@ -1,5 +1,7 @@
 package backlog4j.conf;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
@@ -16,4 +18,6 @@ public interface BacklogConfigure {
     int getReadTimeout();
 
     int getConnectTimeout();
+
+    HttpURLConnection createConnection() throws IOException;
 }

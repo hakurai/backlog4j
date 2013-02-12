@@ -89,21 +89,6 @@ public class XmlRpcClient {
     }
 
     private HttpURLConnection createConnection() throws IOException {
-        URL url = configure.getXmlRpcUrl();
-
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        String encode = Base64.encode((configure.getUsername() + ":" + configure.getPassword()).getBytes());
-
-        con.setConnectTimeout(configure.getConnectTimeout());
-        con.setReadTimeout(configure.getReadTimeout());
-
-
-        con.setRequestMethod("POST");
-        con.setRequestProperty("Authorization", "Basic " + encode);
-        con.setRequestProperty("Content-Type", "text/xml");
-
-        con.setDoOutput(true);
-
-        return con;
+        return configure.createConnection();
     }
 }

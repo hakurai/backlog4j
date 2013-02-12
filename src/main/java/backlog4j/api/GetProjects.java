@@ -2,7 +2,9 @@ package backlog4j.api;
 
 import backlog4j.BacklogClient;
 import backlog4j.Project;
+import backlog4j.ProjectList;
 import backlog4j.impl.ProjectImpl;
+import backlog4j.impl.ProjectListImpl;
 import backlog4j.util.XmlRpcUtil;
 
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.List;
 /**
  * @author eguchi
  */
-public class GetProjects implements BacklogCommand<List<Project>> {
+public class GetProjects implements BacklogCommand<ProjectList> {
 
     private final BacklogClient client;
 
@@ -18,9 +20,10 @@ public class GetProjects implements BacklogCommand<List<Project>> {
         this.client = client;
     }
 
-    public List<Project> execute() {
+    public ProjectList execute() {
         Object res = client.execute(BACKLOG_GET_PROJECTS);
 
-        return XmlRpcUtil.<Project>toList(ProjectImpl.class, res);
+        List<Project> projectList = XmlRpcUtil.<Project>toList(ProjectImpl.class, res);
+        return new ProjectListImpl(projectList);
     }
 }

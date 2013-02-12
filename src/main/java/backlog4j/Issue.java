@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * @author eguchi
  */
-public interface Issue {
+public interface Issue extends Identifired {
 
     static final String ID = "id";
     static final String KEY = "key";
@@ -27,8 +27,6 @@ public interface Issue {
     static final String ASSIGNER = "assigner";
     static final String CREATED_ON = "created_on";
     static final String UPDATED_ON = "updated_on";
-
-    Integer getId();
 
     String getKey();
 

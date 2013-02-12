@@ -3,8 +3,7 @@ package backlog4j;
 /**
  * @author eguchi
  */
-public interface Comment {
-    Integer getId();
+public interface Comment extends Identifired {
 
     String getContent();
 

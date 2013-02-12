@@ -3,10 +3,7 @@ package backlog4j;
 /**
  * @author eguchi
  */
-public interface User {
-    Integer getId();
-
-    String getName();
+public interface User extends Identifired, Named {
 
     String getLang();
 

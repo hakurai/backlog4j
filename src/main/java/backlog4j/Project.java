@@ -3,10 +3,7 @@ package backlog4j;
 /**
  * @author eguchi
  */
-public interface Project {
-    Integer getId();
-
-    String getName();
+public interface Project extends Identifired, Named {
 
     String getKey();
 

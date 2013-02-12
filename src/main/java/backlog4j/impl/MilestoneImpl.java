@@ -2,9 +2,9 @@ package backlog4j.impl;
 
 import backlog4j.Milestone;
 import backlog4j.Status;
+import backlog4j.StatusList;
 import backlog4j.util.XmlRpcUtil;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -54,10 +54,27 @@ public final class MilestoneImpl implements Milestone {
     }
 
     @Override
-    public List<Status> getStatuses() {
-        return new ArrayList<Status>(statuses);
+    public StatusList getStatuses() {
+        return new StatusListImpl(statuses);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        MilestoneImpl milestone = (MilestoneImpl) o;
+
+        if (!id.equals(milestone.id)) return false;
+
+        return true;
+    }
+    
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+    
     @Override
     public String toString() {
         return "Milestone{" +

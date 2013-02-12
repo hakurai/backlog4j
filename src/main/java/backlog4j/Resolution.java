@@ -3,8 +3,5 @@ package backlog4j;
 /**
  * @author eguchi
  */
-public interface Resolution {
-    Integer getId();
-
-    String getName();
+public interface Resolution extends Identifired, Named {
 }

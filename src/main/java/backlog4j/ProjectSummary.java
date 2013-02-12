@@ -5,10 +5,7 @@ import java.util.List;
 /**
  * @author eguchi
  */
-public interface ProjectSummary {
-    Integer getId();
-
-    String getName();
+public interface ProjectSummary extends Identifired, Named {
 
     String getKey();
 
