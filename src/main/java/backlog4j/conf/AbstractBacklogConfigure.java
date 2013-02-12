@@ -1,5 +1,11 @@
 package backlog4j.conf;
 
+import backlog4j.util.Base64;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 /**
  * @author eguchi
  */
@@ -40,5 +46,24 @@ public abstract class AbstractBacklogConfigure implements BacklogConfigure {
     @Override
     public int getConnectTimeout() {
         return connectTimeout;
+    }
+
+    public HttpURLConnection createConnection() throws IOException {
+        URL url = getXmlRpcUrl();
+
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        String encode = Base64.encode((getUsername() + ":" + getPassword()).getBytes());
+
+        con.setConnectTimeout(getConnectTimeout());
+        con.setReadTimeout(getReadTimeout());
+
+
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Authorization", "Basic " + encode);
+        con.setRequestProperty("Content-Type", "text/xml");
+
+        con.setDoOutput(true);
+        
+        return con;
     }
 }

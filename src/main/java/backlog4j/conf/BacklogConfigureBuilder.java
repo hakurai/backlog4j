@@ -1,5 +1,7 @@
 package backlog4j.conf;
 
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLSocketFactory;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -16,6 +18,8 @@ public class BacklogConfigureBuilder {
     private String url;
     private int connectTimeout;
     private int readTimeout;
+    private HostnameVerifier hostnameVerifier;
+    private SSLSocketFactory sslSocketFactory;
 
     public BacklogConfigureBuilder() {
     }
@@ -95,6 +99,25 @@ public class BacklogConfigureBuilder {
         return this;
     }
 
+    public HostnameVerifier getHostnameVerifier() {
+        return hostnameVerifier;
+    }
+    
+    public BacklogConfigureBuilder setHostnameVerifier(HostnameVerifier hostnameVerifier) {
+        this.hostnameVerifier = hostnameVerifier;
+
+        return this;
+    }
+
+    public SSLSocketFactory getSslSocketFactory() {
+        return sslSocketFactory;
+    }
+
+    public BacklogConfigureBuilder setSslSocketFactory(SSLSocketFactory sslSocketFactory) {
+        this.sslSocketFactory = sslSocketFactory;
+        
+        return this;
+    }
 
     public BacklogConfigure buildBacklogConfigure() throws MalformedURLException {
         return new BacklogConfigureImpl(spaceId, username, password, readTimeout, connectTimeout);
@@ -105,6 +128,6 @@ public class BacklogConfigureBuilder {
     }
 
     public BacklogConfigure buildBacklogPackageConfigure() throws MalformedURLException {
-        return new BacklogPackageConfigureImpl(url, username, password, readTimeout, connectTimeout);
+        return new BacklogPackageConfigureImpl(url, username, password, readTimeout, connectTimeout, hostnameVerifier, sslSocketFactory);
     }
 }

@@ -2,6 +2,7 @@ package backlog4j.conf;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
@@ -63,5 +64,10 @@ public class MutableSpaceConfigure implements BacklogConfigure {
     @Override
     public int getConnectTimeout() {
         return delegate.getConnectTimeout();
+    }
+
+    @Override
+    public HttpURLConnection createConnection() throws IOException {
+        return delegate.createConnection();
     }
 }
