@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<project>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.backlog4j</groupId>
     <artifactId>backlog4j</artifactId>
-    <version>0.5.0</version>
+    <version>0.5.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Backlog API</name>
@@ -21,7 +21,7 @@
     <scm>
         <url>https://github.com/hakurai/backlog4j</url>
         <connection>scm:git:git://github.com/hakurai/backlog4j.git</connection>
-        <developerConnection>scm::git:git://github.com/hakurai/backlog4j.git</developerConnection>
+        <developerConnection>scm:git:git@github.com:hakurai/backlog4j.git</developerConnection>
     </scm>
     <developers>
         <developer>
@@ -87,7 +87,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
                     <archive>
-                        <manifest/>
+                        <manifest />
                     </archive>
                 </configuration>
             </plugin>
