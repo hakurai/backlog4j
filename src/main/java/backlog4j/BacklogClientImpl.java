@@ -7,11 +7,19 @@ import backlog4j.conf.BacklogConfigure;
  * @author eguchi
  */
 class BacklogClientImpl extends AbstractBacklogClientBase implements BacklogClient {
+    
+    private BacklogAdminClient adminClient;
 
     public BacklogClientImpl(BacklogConfigure configure) {
         super(configure);
+        
+        adminClient = new BacklogAdminClientImpl(configure);
     }
 
+    @Override
+    public BacklogAdminClient getAdmin() {
+        return adminClient;
+    }
     @Override
     public GetProjects getProjects() {
         return new GetProjects(this);

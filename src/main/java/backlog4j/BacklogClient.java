@@ -11,6 +11,13 @@ import backlog4j.conf.BacklogConfigure;
 public interface BacklogClient extends BacklogClientBase {
 
     /**
+     * Return a BacklogAdminClient instance
+     * 
+     * @return BacklogAdminClient
+     */
+    BacklogAdminClient getAdmin();
+
+    /**
      * Returns a configure
      *
      * @return configure.
