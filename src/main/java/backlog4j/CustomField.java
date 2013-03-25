@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * @author eguchi
  */
-public interface CustomField extends Identifired, Named {
+public interface CustomField extends identified, Named {
 
     public enum Type {
         UNDEFINED(0),

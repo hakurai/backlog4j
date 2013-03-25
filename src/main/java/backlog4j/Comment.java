@@ -3,7 +3,7 @@ package backlog4j;
 /**
  * @author eguchi
  */
-public interface Comment extends Identifired {
+public interface Comment extends identified {
 
     String getContent();
 

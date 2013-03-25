@@ -1,6 +1,6 @@
 package backlog4j.impl;
 
-import backlog4j.Identifired;
+import backlog4j.identified;
 import backlog4j.Named;
 
 import java.util.Collection;
@@ -111,7 +111,7 @@ public abstract class BacklogResponse<T> implements List<T> {
         return getDelegate().toArray(a);
     }
     
-    protected <T1 extends Identifired> T1 getById(List<T1> list, Integer id){
+    protected <T1 extends identified> T1 getById(List<T1> list, Integer id){
         for (T1 t1 : list) {
             if(t1.getId().equals(id)){
                 return t1;

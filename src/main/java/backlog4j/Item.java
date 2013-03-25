@@ -3,5 +3,5 @@ package backlog4j;
 /**
  * @author eguchi
  */
-public interface Item extends Identifired, Named {
+public interface Item extends identified, Named {
 }

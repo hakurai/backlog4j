@@ -3,7 +3,7 @@ package backlog4j;
 /**
  * @author eguchi
  */
-public interface User extends Identifired, Named {
+public interface User extends identified, Named {
 
     String getLang();
 

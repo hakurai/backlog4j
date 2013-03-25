@@ -3,5 +3,5 @@ package backlog4j;
 /**
  * @author eguchi
  */
-public interface ActivityType extends Identifired, Named {
+public interface ActivityType extends identified, Named {
 }

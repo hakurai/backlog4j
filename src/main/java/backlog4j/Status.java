@@ -3,7 +3,7 @@ package backlog4j;
 /**
  * @author eguchi
  */
-public interface Status extends Identifired, Named {
+public interface Status extends identified, Named {
 
     Integer getCount();
 }

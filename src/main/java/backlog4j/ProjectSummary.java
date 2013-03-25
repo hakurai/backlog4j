@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * @author eguchi
  */
-public interface ProjectSummary extends Identifired, Named {
+public interface ProjectSummary extends identified, Named {
 
     String getKey();
 

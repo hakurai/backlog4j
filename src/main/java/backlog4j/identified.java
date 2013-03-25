@@ -3,7 +3,7 @@ package backlog4j;
 /**
  * @author eguchi
  */
-public interface Identifired {
+public interface identified {
     
     Integer getId();
 }

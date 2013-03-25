@@ -3,7 +3,7 @@ package backlog4j;
 /**
  * @author eguchi
  */
-public interface Project extends Identifired, Named {
+public interface Project extends identified, Named {
 
     String getKey();
 
