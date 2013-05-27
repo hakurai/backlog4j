@@ -20,9 +20,9 @@ public class AddCommentTest extends BacklogCommandTestBase {
 
         assertThat(issue.getStatus().getName(), is("未対応"));
 
-        Comment commnet = mutableClient.addComment().setKey(issue.getKey()).setContent("Hello backlog!").execute();
+        Comment comment = mutableClient.addComment().setKey(issue.getKey()).setContent("Hello backlog!").execute();
 
-        assertThat(commnet.getContent(), is("Hello backlog!"));
+        assertThat(comment.getContent(), is("Hello backlog!"));
 
 
     }

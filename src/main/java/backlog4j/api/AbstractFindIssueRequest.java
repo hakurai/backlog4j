@@ -10,6 +10,37 @@ import java.util.Map;
  */
 abstract class AbstractFindIssueRequest<T, S extends BacklogCommand<T>> implements BacklogCommand<T> {
 
+    public enum ParentChildCondition {
+        NOT_CHILD_ISSUE(1),
+        CHILD_ISSUE(2),
+        LONELY_ISSUE(3),
+        PARENT_ISSUE(4);
+
+        private final int value;
+        public int getValue() {
+            return value;
+        }
+
+        public static ParentChildCondition of(int value) {
+            switch (value) {
+                case 1:
+                    return NOT_CHILD_ISSUE;
+                case 2:
+                    return CHILD_ISSUE;
+                case 3:
+                    return LONELY_ISSUE;
+                case 4:
+                    return PARENT_ISSUE;
+                default:
+                    throw new IllegalArgumentException("Illegal ParentChildCondition value: " + value);
+            }
+        }
+
+        private ParentChildCondition(int value) {
+            this.value = value;
+        }
+    }
+
     protected final Map<String, Object> map = new HashMap<String, Object>();
 
     public Integer getProjectId() {
@@ -218,6 +249,18 @@ abstract class AbstractFindIssueRequest<T, S extends BacklogCommand<T>> implemen
 
     public S setDueDateMax(String dueDateMax) {
         map.put(DUE_DATE_MAX, dueDateMax);
+
+        return getThis();
+    }
+
+    public ParentChildCondition getParentChildIssue() {
+        Integer value = (Integer) map.get(PARENT_CHILD_ISSUE);
+
+        return value == null ? null : ParentChildCondition.of(value);
+    }
+
+    public S setParentChildIssue(ParentChildCondition parentChildCondition) {
+        map.put(PARENT_CHILD_ISSUE, parentChildCondition.getValue());
 
         return getThis();
     }

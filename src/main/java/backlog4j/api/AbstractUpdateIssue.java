@@ -16,6 +16,16 @@ abstract class AbstractUpdateIssue<S> implements BacklogCommand<Issue> {
 
     protected abstract S getThis();
 
+    public Integer getParentIssueId() {
+        return (Integer) map.get(PARENT_ISSUE_ID);
+    }
+
+    public S setParentIssueId(Integer parentIssueId) {
+        map.put(PARENT_ISSUE_ID, parentIssueId);
+
+        return getThis();
+    }
+
     public String getSummary() {
         return (String) map.get(SUMMARY);
     }

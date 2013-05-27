@@ -49,14 +49,24 @@ public class UpdateProject implements BacklogAdminCommand<ProjectEx> {
         return (String) map.get(KEY);
     }
 
-    public UpdateProject setUseChart(String key) {
-        map.put(USE_CHART, key);
+    public UpdateProject setUseChart(Boolean useChart) {
+        map.put(USE_CHART, useChart);
 
         return this;
     }
 
     public Boolean getUseChart() {
         return (Boolean) map.get(USE_CHART);
+    }
+
+    public UpdateProject setUseParentChildIssue(Boolean b) {
+        map.put(PARENT_CHILD_ISSUE, b);
+
+        return this;
+    }
+
+    public Boolean getUseParentChildIssue() {
+        return (Boolean) map.get(USE_PARENT_CHILD_ISSUE);
     }
 
     public UpdateProject setArchived(Boolean archived) {

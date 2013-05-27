@@ -14,6 +14,7 @@ public final class ProjectImpl implements Project {
     private final String key;
     private final String url;
     private final Boolean archived;
+    private final Boolean useParentChildIssue;
 
     public ProjectImpl(Map<String, Object> map) {
         id = (Integer) map.get("id");
@@ -21,6 +22,7 @@ public final class ProjectImpl implements Project {
         key = (String) map.get("key");
         url = (String) map.get("url");
         archived = (Boolean) map.get("archived");
+        useParentChildIssue  = (Boolean) map.get("use_parent_child_issue");
     }
 
     public static Project create(Map<String, Object> map) {
@@ -50,6 +52,10 @@ public final class ProjectImpl implements Project {
     @Override
     public Boolean isArchived() {
         return archived;
+    }
+    @Override
+    public Boolean isUseParentChildIssue() {
+        return useParentChildIssue;
     }
 
     @Override

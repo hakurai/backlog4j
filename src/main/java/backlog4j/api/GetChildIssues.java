@@ -46,7 +46,7 @@ public class GetChildIssues implements BacklogCommand<Map<String, IssueList>> {
     public Map<String, IssueList> execute() {
         checkParameters();
 
-        Map res = (Map) client.execute(BACKLOG_GET_CHILD_ISSUES, getParentIssueIds());
+        Map res = (Map) client.execute(BACKLOG_GET_CHILD_ISSUES, (Object)getParentIssueIds());
 
         HashMap<String, IssueList> childIssuesMap = new HashMap<String, IssueList>();
         for (Object key : res.keySet()) {

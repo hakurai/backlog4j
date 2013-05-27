@@ -8,6 +8,7 @@ import java.util.List;
 public interface Issue extends identified {
 
     static final String ID = "id";
+    static final String PARENT_ISSUE_ID = "id";
     static final String KEY = "key";
     static final String SUMMARY = "summary";
     static final String DESCRIPTION = "description";
@@ -28,6 +29,8 @@ public interface Issue extends identified {
     static final String CREATED_ON = "created_on";
     static final String UPDATED_ON = "updated_on";
 
+    Integer getParentIssueId();
+    
     String getKey();
 
     String getSummary();

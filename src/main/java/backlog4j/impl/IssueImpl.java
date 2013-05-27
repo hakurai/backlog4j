@@ -12,6 +12,7 @@ import java.util.Map;
 public final class IssueImpl implements Issue {
 
     private final Integer id;
+    private final Integer parentIssueId;
     private final String key;
     private final String summary;
     private final String description;
@@ -34,6 +35,7 @@ public final class IssueImpl implements Issue {
 
     public IssueImpl(Map<String, Object> map) {
         id = (Integer) map.get(ID);
+        parentIssueId = (Integer) map.get(PARENT_ISSUE_ID);
         key = (String) map.get(KEY);
         summary = (String) map.get(SUMMARY);
         description = (String) map.get(DESCRIPTION);
@@ -61,6 +63,10 @@ public final class IssueImpl implements Issue {
         return id;
     }
 
+    @Override
+    public Integer getParentIssueId() {
+        return parentIssueId;
+    }
     @Override
     public String getKey() {
         return key;

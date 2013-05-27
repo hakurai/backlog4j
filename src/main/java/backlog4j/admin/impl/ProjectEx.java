@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * @author eguchi
  */
-public class ProjectEx implements Project {
+public final class ProjectEx implements Project {
 
     private final Project delegate;
 
@@ -49,6 +49,11 @@ public class ProjectEx implements Project {
         return delegate.isArchived();
     }
 
+    @Override
+    public Boolean isUseParentChildIssue() {
+        return delegate.isUseParentChildIssue();
+    }
+    
     @Override
     public String toString() {
         return delegate.toString();

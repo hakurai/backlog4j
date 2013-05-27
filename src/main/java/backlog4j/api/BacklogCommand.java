@@ -30,6 +30,7 @@ public interface BacklogCommand<T> {
     static final String SORT_CUSTOM_FIELD_ = "CUSTOM_FIELD_";
 
     static final String PROJECT_ID = "projectId";
+    static final String PARENT_ISSUE_ID = "parent_issue_id";
     static final String SUMMARY = "summary";
     static final String DESCRIPTION = "description";
     static final String DUE_DATE = "due_date";
@@ -54,6 +55,7 @@ public interface BacklogCommand<T> {
     static final String START_DATE_MAX = "start_date_max";
     static final String DUE_DATE_MIN = "due_date_min";
     static final String DUE_DATE_MAX = "due_date_max";
+    static final String PARENT_CHILD_ISSUE = "parent_child_issue";
     static final String QUERY = "query";
     static final String FILE = "file";
     static final String SORT = "sort";
