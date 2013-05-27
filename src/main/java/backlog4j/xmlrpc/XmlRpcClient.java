@@ -73,9 +73,13 @@ public class XmlRpcClient {
                 return XmlRpcRequestReader.read(in);
             } catch (Exception e) {
 
-                String message = params == null ? "param is null" : params.toString();
+                StringBuilder sb = new StringBuilder("Failed to execute: ");
+                sb.append(methodName).append(" ");
+                
+                String paramsText = params == null ? "{}" : params.toString();
+                sb.append(paramsText);
 
-                throw new BacklogException(message, e);//TODO detail message
+                throw new BacklogException(sb.toString(), e);//TODO detail message
 
             } finally {
                 if (in != null) {
