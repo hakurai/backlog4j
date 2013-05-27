@@ -11,12 +11,12 @@ import java.util.Map;
  */
 public final class UserEx implements User {
 
-    private final User delegate;
-    private final String userId;
-    private final String mailAddress;
-    private final String role;
+    private final User        delegate;
+    private final String      userId;
+    private final String      mailAddress;
+    private final String      role;
     private final MailSetting mailSetting;
-    private final String createdOn;
+    private final String      createdOn;
 
     public UserEx(Map<String, Object> map) {
         delegate = UserImpl.create(map);

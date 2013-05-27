@@ -16,7 +16,7 @@ import java.util.List;
 public class GetComponents implements BacklogCommand<CategoryList> {
 
     private final BacklogClient client;
-    private Integer projectId;
+    private       Integer       projectId;
 
     public GetComponents(BacklogClient client) {
         this.client = client;

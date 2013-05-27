@@ -1,7 +1,7 @@
 package backlog4j.impl;
 
-import backlog4j.identified;
 import backlog4j.Named;
+import backlog4j.identified;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -12,9 +12,9 @@ import java.util.ListIterator;
  * @author eguchi
  */
 public abstract class BacklogResponse<T> implements List<T> {
-    
+
     public abstract List<T> getDelegate();
-    
+
     public boolean add(T t) {
         throw new UnsupportedOperationException();
     }
@@ -110,19 +110,19 @@ public abstract class BacklogResponse<T> implements List<T> {
     public <T1 extends Object> T1[] toArray(T1[] a) {
         return getDelegate().toArray(a);
     }
-    
-    protected <T1 extends identified> T1 getById(List<T1> list, Integer id){
+
+    protected <T1 extends identified> T1 getById(List<T1> list, Integer id) {
         for (T1 t1 : list) {
-            if(t1.getId().equals(id)){
+            if (t1.getId().equals(id)) {
                 return t1;
             }
         }
         return null;
     }
 
-    protected <T1 extends Named> T1 getByName(List<T1> list, String name){
+    protected <T1 extends Named> T1 getByName(List<T1> list, String name) {
         for (T1 t1 : list) {
-            if(t1.getName().equals(name)){
+            if (t1.getName().equals(name)) {
                 return t1;
             }
         }

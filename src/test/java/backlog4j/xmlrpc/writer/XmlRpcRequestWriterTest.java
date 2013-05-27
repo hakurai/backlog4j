@@ -4,7 +4,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -31,10 +36,10 @@ public class XmlRpcRequestWriterTest {
         assertThat(
                 out.toString(),
                 is("<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-                        "<methodCall>" +
-                        "<methodName>backlog.getProjects</methodName>" +
-                        "<params></params>" +
-                        "</methodCall>"));
+                   "<methodCall>" +
+                   "<methodName>backlog.getProjects</methodName>" +
+                   "<params></params>" +
+                   "</methodCall>"));
     }
 
     @Test
@@ -109,11 +114,11 @@ public class XmlRpcRequestWriterTest {
         XmlRpcRequestWriter.write(out, "backlog.getProjects", array);
 
         assertThat(out.toString(),
-                containsString("<params><param><value><array><data>" +
-                        "<value><int>1</int></value>" +
-                        "<value><int>2</int></value>" +
-                        "<value><int>3</int></value>" +
-                        "</data></array></value></param></params></methodCall>"));
+                   containsString("<params><param><value><array><data>" +
+                                  "<value><int>1</int></value>" +
+                                  "<value><int>2</int></value>" +
+                                  "<value><int>3</int></value>" +
+                                  "</data></array></value></param></params></methodCall>"));
     }
 
     @Test
@@ -124,11 +129,11 @@ public class XmlRpcRequestWriterTest {
         XmlRpcRequestWriter.write(out, "backlog.getProjects", list);
 
         assertThat(out.toString(),
-                containsString("<params><param><value><array><data>" +
-                        "<value><int>1</int></value>" +
-                        "<value><int>2</int></value>" +
-                        "<value><int>3</int></value>" +
-                        "</data></array></value></param></params></methodCall>"));
+                   containsString("<params><param><value><array><data>" +
+                                  "<value><int>1</int></value>" +
+                                  "<value><int>2</int></value>" +
+                                  "<value><int>3</int></value>" +
+                                  "</data></array></value></param></params></methodCall>"));
     }
 
     @Test
@@ -143,14 +148,14 @@ public class XmlRpcRequestWriterTest {
         XmlRpcRequestWriter.write(out, "backlog.getProjects", list);
 
         assertThat(out.toString(),
-                containsString("<params><param><value><array><data>" +
-                        "<value><array><data>" +
-                        "<value><int>1</int></value><value><int>2</int></value><value><int>3</int></value>" +
-                        "</data></array></value>" +
-                        "<value><array><data>" +
-                        "<value><int>4</int></value><value><int>5</int></value><value><int>6</int></value>" +
-                        "</data></array></value>" +
-                        "</data></array></value></param></params>"));
+                   containsString("<params><param><value><array><data>" +
+                                  "<value><array><data>" +
+                                  "<value><int>1</int></value><value><int>2</int></value><value><int>3</int></value>" +
+                                  "</data></array></value>" +
+                                  "<value><array><data>" +
+                                  "<value><int>4</int></value><value><int>5</int></value><value><int>6</int></value>" +
+                                  "</data></array></value>" +
+                                  "</data></array></value></param></params>"));
     }
 
     @Test
@@ -165,13 +170,13 @@ public class XmlRpcRequestWriterTest {
         XmlRpcRequestWriter.write(out, "backlog.getProjects", map);
 
         assertThat(out.toString(),
-                containsString("<params><param><value><struct>" +
-                        "<member><name>male</name><value><boolean>1</boolean></value></member>" +
-                        "<member><name>age</name><value><int>25</int></value></member>" +
-                        "<member><name>name</name><value><string>backlog</string></value></member><member>" +
-                        "<name>hobby</name><value>" +
-                        "<array><data><value><string>reading</string></value><value><string>football</string></value></data></array>" +
-                        "</value></member></struct></value></param></params>"));
+                   containsString("<params><param><value><struct>" +
+                                  "<member><name>male</name><value><boolean>1</boolean></value></member>" +
+                                  "<member><name>age</name><value><int>25</int></value></member>" +
+                                  "<member><name>name</name><value><string>backlog</string></value></member><member>" +
+                                  "<name>hobby</name><value>" +
+                                  "<array><data><value><string>reading</string></value><value><string>football</string></value></data></array>" +
+                                  "</value></member></struct></value></param></params>"));
     }
 
     @Test
@@ -185,14 +190,14 @@ public class XmlRpcRequestWriterTest {
         XmlRpcRequestWriter.write(out, "backlog.getProjects", map);
 
         assertThat(out.toString(),
-                containsString("<params><param><value>" +
-                        "<struct><member>" +
-                        "<name>map</name>" +
-                        "<value><struct>" +
-                        "<member><name>name</name><value><string>backlog</string></value></member>" +
-                        "</struct></value>" +
-                        "</member></struct>" +
-                        "</value></param></params>"));
+                   containsString("<params><param><value>" +
+                                  "<struct><member>" +
+                                  "<name>map</name>" +
+                                  "<value><struct>" +
+                                  "<member><name>name</name><value><string>backlog</string></value></member>" +
+                                  "</struct></value>" +
+                                  "</member></struct>" +
+                                  "</value></param></params>"));
 
     }
 }

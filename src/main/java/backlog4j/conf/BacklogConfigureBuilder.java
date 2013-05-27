@@ -12,12 +12,12 @@ import java.util.Properties;
  */
 public class BacklogConfigureBuilder {
 
-    private String spaceId;
-    private String username;
-    private String password;
-    private String url;
-    private int connectTimeout;
-    private int readTimeout;
+    private String           spaceId;
+    private String           username;
+    private String           password;
+    private String           url;
+    private int              connectTimeout;
+    private int              readTimeout;
     private HostnameVerifier hostnameVerifier;
     private SSLSocketFactory sslSocketFactory;
 
@@ -102,7 +102,7 @@ public class BacklogConfigureBuilder {
     public HostnameVerifier getHostnameVerifier() {
         return hostnameVerifier;
     }
-    
+
     public BacklogConfigureBuilder setHostnameVerifier(HostnameVerifier hostnameVerifier) {
         this.hostnameVerifier = hostnameVerifier;
 
@@ -115,7 +115,7 @@ public class BacklogConfigureBuilder {
 
     public BacklogConfigureBuilder setSslSocketFactory(SSLSocketFactory sslSocketFactory) {
         this.sslSocketFactory = sslSocketFactory;
-        
+
         return this;
     }
 

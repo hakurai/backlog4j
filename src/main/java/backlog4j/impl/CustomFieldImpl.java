@@ -12,11 +12,11 @@ import java.util.Map;
  */
 public abstract class CustomFieldImpl implements CustomField {
 
-    private final Integer id;
-    private final Type typeId;
-    private final String name;
-    private final String description;
-    private final Boolean required;
+    private final Integer         id;
+    private final Type            typeId;
+    private final String          name;
+    private final String          description;
+    private final Boolean         required;
     private final List<IssueType> issueTypes;
 
     protected CustomFieldImpl(Map<String, Object> map) {

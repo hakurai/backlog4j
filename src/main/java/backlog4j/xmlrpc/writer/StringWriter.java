@@ -7,7 +7,7 @@ import java.io.IOException;
  */
 public final class StringWriter extends ObjectWriter {
 
-    private static final String NAME = "string";
+    private static final String       NAME     = "string";
     private static final StringWriter INSTANCE = new StringWriter();
 
     private StringWriter() {

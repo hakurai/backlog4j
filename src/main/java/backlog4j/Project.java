@@ -10,6 +10,6 @@ public interface Project extends identified, Named {
     String getUrl();
 
     Boolean isArchived();
-    
+
     Boolean isUseParentChildIssue();
 }

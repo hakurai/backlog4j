@@ -13,10 +13,10 @@ import java.util.Map;
 public final class ActivityImpl implements Activity {
 
     private final ActivityType type;
-    private final String content;
-    private final String updatedOn;
-    private final User user;
-    private final Issue issue;
+    private final String       content;
+    private final String       updatedOn;
+    private final User         user;
+    private final Issue        issue;
 
 
     public ActivityImpl(Map<String, Object> map) {
@@ -60,8 +60,8 @@ public final class ActivityImpl implements Activity {
     @Override
     public String toString() {
         return "Activity{" +
-                "content='" + content + '\'' +
-                ", updatedOn='" + updatedOn + '\'' +
-                '}';
+               "content='" + content + '\'' +
+               ", updatedOn='" + updatedOn + '\'' +
+               '}';
     }
 }

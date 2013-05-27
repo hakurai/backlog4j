@@ -10,7 +10,7 @@ import java.util.Map;
 public final class CategoryImpl implements Category {
 
     private final Integer id;
-    private final String name;
+    private final String  name;
 
     public CategoryImpl(Map<String, Object> map) {
         assert (map.size() == 2);
@@ -35,8 +35,8 @@ public final class CategoryImpl implements Category {
     @Override
     public String toString() {
         return "Category{" +
-                "name='" + name + '\'' +
-                '}';
+               "name='" + name + '\'' +
+               '}';
     }
 
     @Override

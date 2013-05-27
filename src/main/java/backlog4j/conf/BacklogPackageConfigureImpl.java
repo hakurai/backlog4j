@@ -14,7 +14,7 @@ import java.net.URL;
 public final class BacklogPackageConfigureImpl extends AbstractBacklogConfigure {
 
 
-    private final URL xmlRpcUrl;
+    private final URL              xmlRpcUrl;
     private final HostnameVerifier hostnameVerifier;
     private final SSLSocketFactory sslSocketFactory;
 
@@ -60,7 +60,7 @@ public final class BacklogPackageConfigureImpl extends AbstractBacklogConfigure 
             }
 
         }
-        
+
         return connection;
     }
 }

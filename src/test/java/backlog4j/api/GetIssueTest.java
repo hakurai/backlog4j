@@ -1,9 +1,6 @@
 package backlog4j.api;
 
-import backlog4j.BacklogClient;
-import backlog4j.BacklogClientFactory;
 import backlog4j.Issue;
-import backlog4j.conf.BacklogConfigureBuilder;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

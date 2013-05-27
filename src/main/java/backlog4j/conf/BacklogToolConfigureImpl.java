@@ -9,7 +9,7 @@ import java.net.URL;
 public final class BacklogToolConfigureImpl extends AbstractBacklogConfigure {
 
     private final String spaceId;
-    private final URL xmlRpcUrl;
+    private final URL    xmlRpcUrl;
 
     public BacklogToolConfigureImpl(
             String spaceId,

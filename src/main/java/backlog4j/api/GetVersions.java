@@ -16,7 +16,7 @@ import java.util.List;
 public class GetVersions implements BacklogCommand<VersionList> {
 
     private final BacklogClient client;
-    private Integer projectId;
+    private       Integer       projectId;
 
     public GetVersions(BacklogClient client) {
         this.client = client;

@@ -10,7 +10,7 @@ import java.util.Map;
 public final class ItemImpl implements Item {
 
     private final Integer id;
-    private final String name;
+    private final String  name;
 
     public ItemImpl(Map<String, Object> map) {
         this.id = (Integer) map.get("id");

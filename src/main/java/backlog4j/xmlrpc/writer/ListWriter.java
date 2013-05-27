@@ -8,7 +8,7 @@ import java.util.List;
  */
 public final class ListWriter extends ObjectWriter {
 
-    private static final String NAME = "array";
+    private static final String     NAME     = "array";
     private static final ListWriter INSTANCE = new ListWriter();
 
     private ListWriter() {

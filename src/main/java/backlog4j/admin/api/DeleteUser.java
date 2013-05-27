@@ -12,7 +12,7 @@ import java.util.Map;
 public class DeleteUser implements BacklogAdminCommand<UserEx> {
 
     private final BacklogAdminClient client;
-    private Integer id;
+    private       Integer            id;
 
     public DeleteUser(BacklogAdminClient client) {
         this.client = client;

@@ -1,6 +1,39 @@
 package backlog4j;
 
-import backlog4j.api.*;
+import backlog4j.api.AddComment;
+import backlog4j.api.AddComponent;
+import backlog4j.api.AddIssueType;
+import backlog4j.api.AddVersion;
+import backlog4j.api.CountIssue;
+import backlog4j.api.CreateIssue;
+import backlog4j.api.DeleteComponent;
+import backlog4j.api.DeleteIssueType;
+import backlog4j.api.DeleteVersion;
+import backlog4j.api.FindIssue;
+import backlog4j.api.GetActivityTypes;
+import backlog4j.api.GetChildIssues;
+import backlog4j.api.GetComments;
+import backlog4j.api.GetComponents;
+import backlog4j.api.GetCustomFields;
+import backlog4j.api.GetIssue;
+import backlog4j.api.GetIssueTypes;
+import backlog4j.api.GetPriorities;
+import backlog4j.api.GetProject;
+import backlog4j.api.GetProjectSummaries;
+import backlog4j.api.GetProjectSummary;
+import backlog4j.api.GetProjects;
+import backlog4j.api.GetResolutions;
+import backlog4j.api.GetStatuses;
+import backlog4j.api.GetTimeline;
+import backlog4j.api.GetUser;
+import backlog4j.api.GetUserIcon;
+import backlog4j.api.GetUsers;
+import backlog4j.api.GetVersions;
+import backlog4j.api.SwitchStatus;
+import backlog4j.api.UpdateComponent;
+import backlog4j.api.UpdateIssue;
+import backlog4j.api.UpdateIssueType;
+import backlog4j.api.UpdateVersion;
 import backlog4j.conf.BacklogConfigure;
 
 /**
@@ -12,7 +45,7 @@ public interface BacklogClient extends BacklogClientBase {
 
     /**
      * Return a BacklogAdminClient instance
-     * 
+     *
      * @return BacklogAdminClient
      */
     BacklogAdminClient getAdmin();

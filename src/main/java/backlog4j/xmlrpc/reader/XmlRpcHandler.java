@@ -12,10 +12,10 @@ import java.util.LinkedList;
  */
 public class XmlRpcHandler extends DefaultHandler {
 
-    private Deque<ObjectReader<?>> stack = new LinkedList<ObjectReader<?>>();
-    private StringBuilder characters = new StringBuilder();
-    private String name;
-    private String value;
+    private Deque<ObjectReader<?>> stack      = new LinkedList<ObjectReader<?>>();
+    private StringBuilder          characters = new StringBuilder();
+    private String  name;
+    private String  value;
     private boolean fault;
 
 

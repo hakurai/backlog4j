@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * @author eguchi
  */
-public class FindIssue extends AbstractFindIssueRequest<IssueList,FindIssue> {
+public class FindIssue extends AbstractFindIssueRequest<IssueList, FindIssue> {
 
 
     private final BacklogClient client;

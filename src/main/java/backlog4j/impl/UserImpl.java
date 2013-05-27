@@ -10,9 +10,9 @@ import java.util.Map;
 public final class UserImpl implements User {
 
     private final Integer id;
-    private final String name;
-    private final String lang;
-    private final String updatedOn;
+    private final String  name;
+    private final String  lang;
+    private final String  updatedOn;
 
     public UserImpl(Map<String, Object> map) {
         assert (map.size() > 1);
@@ -49,8 +49,8 @@ public final class UserImpl implements User {
     @Override
     public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
-                '}';
+               "name='" + name + '\'' +
+               '}';
     }
 
     @Override

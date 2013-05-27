@@ -12,7 +12,7 @@ import java.util.Map;
 public class DeleteProject implements BacklogAdminCommand<ProjectEx> {
 
     private final BacklogAdminClient client;
-    private Integer id;
+    private       Integer            id;
 
     public DeleteProject(BacklogAdminClient client) {
         this.client = client;

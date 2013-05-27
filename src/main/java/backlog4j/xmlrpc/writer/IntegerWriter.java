@@ -7,7 +7,7 @@ import java.io.IOException;
  */
 public final class IntegerWriter extends ObjectWriter {
 
-    private static final String NAME = "int";
+    private static final String        NAME     = "int";
     private static final IntegerWriter INSTANCE = new IntegerWriter();
 
     private IntegerWriter() {

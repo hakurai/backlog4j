@@ -13,7 +13,7 @@ import java.util.Map;
 public class GetProjectSummary implements BacklogCommand<ProjectSummary> {
 
     private final BacklogClient client;
-    private Integer projectId;
+    private       Integer       projectId;
 
     public GetProjectSummary(BacklogClient client) {
         this.client = client;

@@ -9,7 +9,7 @@ import java.util.Set;
  */
 public class MapWriter extends ObjectWriter {
 
-    private static final String NAME = "struct";
+    private static final String    NAME     = "struct";
     private static final MapWriter INSTANCE = new MapWriter();
 
     private MapWriter() {

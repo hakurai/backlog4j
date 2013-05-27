@@ -10,7 +10,7 @@ import java.util.Map;
 public final class PriorityImpl implements Priority {
 
     private final Integer id;
-    private final String name;
+    private final String  name;
 
     public PriorityImpl(Map<String, Object> map) {
         assert (map.size() == 2);
@@ -35,8 +35,8 @@ public final class PriorityImpl implements Priority {
     @Override
     public String toString() {
         return "Priority{" +
-                "name='" + name + '\'' +
-                '}';
+               "name='" + name + '\'' +
+               '}';
     }
 
     @Override

@@ -2,8 +2,6 @@ package backlog4j.impl;
 
 import backlog4j.Category;
 import backlog4j.CategoryList;
-import backlog4j.IssueType;
-import backlog4j.IssueTypeList;
 
 import java.util.List;
 

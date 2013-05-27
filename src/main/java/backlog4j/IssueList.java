@@ -8,7 +8,7 @@ import java.util.List;
 public interface IssueList extends List<Issue> {
 
     Issue getById(Integer id);
-    
+
     Issue getByKey(String key);
-   
+
 }

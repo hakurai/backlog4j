@@ -16,7 +16,7 @@ import java.util.List;
 public class GetUsers implements BacklogCommand<UserList> {
 
     private final BacklogClient client;
-    private Integer projectId;
+    private       Integer       projectId;
 
     public GetUsers(BacklogClient client) {
         this.client = client;

@@ -1,6 +1,14 @@
 package backlog4j.impl;
 
-import backlog4j.*;
+import backlog4j.Category;
+import backlog4j.Issue;
+import backlog4j.IssueType;
+import backlog4j.Milestone;
+import backlog4j.Priority;
+import backlog4j.Resolution;
+import backlog4j.Status;
+import backlog4j.User;
+import backlog4j.Version;
 import backlog4j.util.XmlRpcUtil;
 
 import java.util.List;
@@ -11,27 +19,27 @@ import java.util.Map;
  */
 public final class IssueImpl implements Issue {
 
-    private final Integer id;
-    private final Integer parentIssueId;
-    private final String key;
-    private final String summary;
-    private final String description;
-    private final String url;
-    private final String dueDate;
-    private final String startDate;
-    private final Double estimatedHours;
-    private final Double actualHours;
-    private final IssueType issueType;
-    private final Priority priority;
-    private final Resolution resolution;
-    private final Status status;
-    private final List<Category> components;
-    private final List<Version> versions;
+    private final Integer         id;
+    private final Integer         parentIssueId;
+    private final String          key;
+    private final String          summary;
+    private final String          description;
+    private final String          url;
+    private final String          dueDate;
+    private final String          startDate;
+    private final Double          estimatedHours;
+    private final Double          actualHours;
+    private final IssueType       issueType;
+    private final Priority        priority;
+    private final Resolution      resolution;
+    private final Status          status;
+    private final List<Category>  components;
+    private final List<Version>   versions;
     private final List<Milestone> milestones;
-    private final User createdUser;
-    private final User assigner;
-    private final String createdOn;
-    private final String updatedOn;
+    private final User            createdUser;
+    private final User            assigner;
+    private final String          createdOn;
+    private final String          updatedOn;
 
     public IssueImpl(Map<String, Object> map) {
         id = (Integer) map.get(ID);
@@ -165,15 +173,15 @@ public final class IssueImpl implements Issue {
     @Override
     public String toString() {
         return "Issue{" +
-                "key='" + key + '\'' +
-                ", summary='" + summary + '\'' +
-                '}';
+               "key='" + key + '\'' +
+               ", summary='" + summary + '\'' +
+               '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || !(o instanceof Issue) ) return false;
+        if (o == null || !(o instanceof Issue)) return false;
 
         IssueImpl issue = (IssueImpl) o;
 

@@ -37,8 +37,8 @@ public final class MailSettingImpl implements MailSetting {
     @Override
     public String toString() {
         return "MailSettingImpl{" +
-                "mail=" + mail +
-                ", comment=" + comment +
-                '}';
+               "mail=" + mail +
+               ", comment=" + comment +
+               '}';
     }
 }

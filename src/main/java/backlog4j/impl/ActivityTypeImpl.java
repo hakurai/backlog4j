@@ -10,7 +10,7 @@ import java.util.Map;
 public final class ActivityTypeImpl implements ActivityType {
 
     private final Integer id;
-    private final String name;
+    private final String  name;
 
 
     public ActivityTypeImpl(Map<String, Object> map) {
@@ -35,9 +35,9 @@ public final class ActivityTypeImpl implements ActivityType {
     @Override
     public String toString() {
         return "ActivityType{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+               "id=" + id +
+               ", name='" + name + '\'' +
+               '}';
     }
 
     @Override

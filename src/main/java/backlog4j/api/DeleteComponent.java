@@ -13,7 +13,7 @@ import java.util.Map;
 public class DeleteComponent implements BacklogCommand<Category> {
 
     protected final BacklogClient client;
-    protected Integer id;
+    protected       Integer       id;
 
     public DeleteComponent(BacklogClient client) {
         this.client = client;

@@ -8,5 +8,5 @@ import java.util.List;
 public interface CommentList extends List<Comment> {
 
     Comment getById(Integer id);
-   
+
 }

@@ -13,7 +13,7 @@ import java.util.List;
 public class GetProjectUsers implements BacklogAdminCommand<List<ProjectUser>> {
 
     private final BacklogAdminClient client;
-    private Integer projectId;
+    private       Integer            projectId;
 
     public GetProjectUsers(BacklogAdminClient client) {
         this.client = client;

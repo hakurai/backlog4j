@@ -19,9 +19,9 @@ public class UpdateComponentTest extends BacklogCommandTestBase {
                 mutableClient.addComponent().setProjectId(projectId).setName("newComponent").execute();
 
         Category updatedComponent = mutableClient.updateComponent()
-                .setId(newComponent.getId())
-                .setName("updatedComponent")
-                .execute();
+                                                 .setId(newComponent.getId())
+                                                 .setName("updatedComponent")
+                                                 .execute();
 
 
         assertThat(updatedComponent.getName(), is("updatedComponent"));

@@ -20,12 +20,12 @@ public class DeleteUserTest extends BacklogAdminCommandTestBase {
 
 
         UserEx newUser = mutableClient.addUser()
-                .setUserId("newUser")
-                .setPassword("newUser")
-                .setName("newUserName")
-                .setMailAddress("test@test.jp")
-                .setRole("admin")
-                .execute();
+                                      .setUserId("newUser")
+                                      .setPassword("newUser")
+                                      .setName("newUserName")
+                                      .setMailAddress("test@test.jp")
+                                      .setRole("admin")
+                                      .execute();
 
 
         mutableClient.deleteUser().setId(newUser.getId()).execute();

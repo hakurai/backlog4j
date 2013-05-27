@@ -6,7 +6,7 @@ import backlog4j.BacklogException;
 /**
  * @author eguchi
  */
-public class CountIssue extends AbstractFindIssueRequest<Integer,CountIssue> {
+public class CountIssue extends AbstractFindIssueRequest<Integer, CountIssue> {
 
     private final BacklogClient client;
 

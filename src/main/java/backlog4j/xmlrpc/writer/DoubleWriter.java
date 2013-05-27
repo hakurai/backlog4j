@@ -7,7 +7,7 @@ import java.io.IOException;
  */
 public final class DoubleWriter extends ObjectWriter {
 
-    private static final String NAME = "double";
+    private static final String       NAME     = "double";
     private static final DoubleWriter INSTANCE = new DoubleWriter();
 
     private DoubleWriter() {

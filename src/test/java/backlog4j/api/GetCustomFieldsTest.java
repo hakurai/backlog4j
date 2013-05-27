@@ -29,7 +29,7 @@ public class GetCustomFieldsTest {
     public void testExecute() throws Exception {
         List<CustomField> customFieldList = customClient.getCustomFields().setProjectId(151).execute();
 
-        assertThat(customFieldList.size(),is(5));
+        assertThat(customFieldList.size(), is(5));
 
     }
 }

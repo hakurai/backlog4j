@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public final class StatusImpl implements Status {
     private final Integer id;
-    private final String name;
+    private final String  name;
     private final Integer count;
 
     public StatusImpl(Map<String, Object> map) {
@@ -41,8 +41,8 @@ public final class StatusImpl implements Status {
     @Override
     public String toString() {
         return "Status{" +
-                "name='" + name + '\'' +
-                '}';
+               "name='" + name + '\'' +
+               '}';
     }
 
     @Override

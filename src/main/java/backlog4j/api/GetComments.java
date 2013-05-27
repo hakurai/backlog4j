@@ -17,7 +17,7 @@ public class GetComments implements BacklogCommand<CommentList> {
 
 
     private final BacklogClient client;
-    private Integer issueId;
+    private       Integer       issueId;
 
     public GetComments(BacklogClient client) {
         this.client = client;

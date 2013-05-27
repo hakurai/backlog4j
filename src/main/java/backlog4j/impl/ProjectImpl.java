@@ -10,9 +10,9 @@ import java.util.Map;
 public final class ProjectImpl implements Project {
 
     private final Integer id;
-    private final String name;
-    private final String key;
-    private final String url;
+    private final String  name;
+    private final String  key;
+    private final String  url;
     private final Boolean archived;
     private final Boolean useParentChildIssue;
 
@@ -22,7 +22,7 @@ public final class ProjectImpl implements Project {
         key = (String) map.get("key");
         url = (String) map.get("url");
         archived = (Boolean) map.get("archived");
-        useParentChildIssue  = (Boolean) map.get("use_parent_child_issue");
+        useParentChildIssue = (Boolean) map.get("use_parent_child_issue");
     }
 
     public static Project create(Map<String, Object> map) {
@@ -61,9 +61,9 @@ public final class ProjectImpl implements Project {
     @Override
     public String toString() {
         return "Project{" +
-                "key='" + key + '\'' +
-                ", name='" + name + '\'' +
-                '}';
+               "key='" + key + '\'' +
+               ", name='" + name + '\'' +
+               '}';
     }
 
     @Override

@@ -10,8 +10,8 @@ import java.util.Map;
 public final class VersionImpl implements Version {
 
     private final Integer id;
-    private final String name;
-    private final String date;
+    private final String  name;
+    private final String  date;
 
 
     public VersionImpl(Map<String, Object> map) {
@@ -43,9 +43,9 @@ public final class VersionImpl implements Version {
     @Override
     public String toString() {
         return "Version{" +
-                "name='" + name + '\'' +
-                ", date='" + date + '\'' +
-                '}';
+               "name='" + name + '\'' +
+               ", date='" + date + '\'' +
+               '}';
     }
 
     @Override

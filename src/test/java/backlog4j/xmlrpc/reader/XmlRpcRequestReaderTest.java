@@ -3,7 +3,11 @@ package backlog4j.xmlrpc.reader;
 import backlog4j.BacklogException;
 import org.junit.Test;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -20,13 +24,13 @@ public class XmlRpcRequestReaderTest {
     public void testReadInt() throws Exception {
 
         InputStream in = toInputStream("<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-                "<methodResponse>" +
-                "<params>" +
-                "<param>" +
-                "<value><int>100</int></value>" +
-                "</param>" +
-                "</params>" +
-                "</methodResponse>");
+                                       "<methodResponse>" +
+                                       "<params>" +
+                                       "<param>" +
+                                       "<value><int>100</int></value>" +
+                                       "</param>" +
+                                       "</params>" +
+                                       "</methodResponse>");
 
         Object o = XmlRpcRequestReader.read(in);
 
@@ -37,13 +41,13 @@ public class XmlRpcRequestReaderTest {
     public void testReadI4() throws Exception {
 
         InputStream in = toInputStream("<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-                "<methodResponse>" +
-                "<params>" +
-                "<param>" +
-                "<value><i4>200</i4></value>" +
-                "</param>" +
-                "</params>" +
-                "</methodResponse>");
+                                       "<methodResponse>" +
+                                       "<params>" +
+                                       "<param>" +
+                                       "<value><i4>200</i4></value>" +
+                                       "</param>" +
+                                       "</params>" +
+                                       "</methodResponse>");
 
         Object o = XmlRpcRequestReader.read(in);
 
@@ -54,13 +58,13 @@ public class XmlRpcRequestReaderTest {
     public void testReadTrue() throws Exception {
 
         InputStream in = toInputStream("<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-                "<methodResponse>" +
-                "<params>" +
-                "<param>" +
-                "<value><boolean>1</boolean></value>" +
-                "</param>" +
-                "</params>" +
-                "</methodResponse>");
+                                       "<methodResponse>" +
+                                       "<params>" +
+                                       "<param>" +
+                                       "<value><boolean>1</boolean></value>" +
+                                       "</param>" +
+                                       "</params>" +
+                                       "</methodResponse>");
 
         Object o = XmlRpcRequestReader.read(in);
 
@@ -71,13 +75,13 @@ public class XmlRpcRequestReaderTest {
     public void testReadFalse() throws Exception {
 
         InputStream in = toInputStream("<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-                "<methodResponse>" +
-                "<params>" +
-                "<param>" +
-                "<value><boolean>0</boolean></value>" +
-                "</param>" +
-                "</params>" +
-                "</methodResponse>");
+                                       "<methodResponse>" +
+                                       "<params>" +
+                                       "<param>" +
+                                       "<value><boolean>0</boolean></value>" +
+                                       "</param>" +
+                                       "</params>" +
+                                       "</methodResponse>");
 
         Object o = XmlRpcRequestReader.read(in);
 
@@ -88,13 +92,13 @@ public class XmlRpcRequestReaderTest {
     public void testReadString() throws Exception {
 
         InputStream in = toInputStream("<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-                "<methodResponse>" +
-                "<params>" +
-                "<param>" +
-                "<value><string>hello world!</string></value>" +
-                "</param>" +
-                "</params>" +
-                "</methodResponse>");
+                                       "<methodResponse>" +
+                                       "<params>" +
+                                       "<param>" +
+                                       "<value><string>hello world!</string></value>" +
+                                       "</param>" +
+                                       "</params>" +
+                                       "</methodResponse>");
 
         Object o = XmlRpcRequestReader.read(in);
 
@@ -105,21 +109,21 @@ public class XmlRpcRequestReaderTest {
     public void testReadArray() throws Exception {
 
         InputStream in = toInputStream("<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-                "<methodResponse>" +
-                "<params>" +
-                "<param>" +
-                "<value>" +
-                "<array>" +
-                "<data>" +
-                "<value><string>java!</string></value>" +
-                "<value><string>scala!</string></value>" +
-                "<value><string>groovy!</string></value>" +
-                "</data>" +
-                "</array>" +
-                "</value>" +
-                "</param>" +
-                "</params>" +
-                "</methodResponse>");
+                                       "<methodResponse>" +
+                                       "<params>" +
+                                       "<param>" +
+                                       "<value>" +
+                                       "<array>" +
+                                       "<data>" +
+                                       "<value><string>java!</string></value>" +
+                                       "<value><string>scala!</string></value>" +
+                                       "<value><string>groovy!</string></value>" +
+                                       "</data>" +
+                                       "</array>" +
+                                       "</value>" +
+                                       "</param>" +
+                                       "</params>" +
+                                       "</methodResponse>");
 
         Object[] obj = (Object[]) XmlRpcRequestReader.read(in);
 
@@ -130,34 +134,34 @@ public class XmlRpcRequestReaderTest {
     public void testReadStruct() throws Exception {
 
         InputStream in = toInputStream("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
-                "<methodResponse>\n" +
-                "  <params>\n" +
-                "    <param>\n" +
-                "      <value>\n" +
-                "        <struct>\n" +
-                "          <member>\n" +
-                "            <name>id</name>\n" +
-                "            <value>\n" +
-                "              <i4>123</i4>\n" +
-                "            </value>\n" +
-                "          </member>\n" +
-                "          <member>\n" +
-                "            <name>name</name>\n" +
-                "            <value>えぐち</value>\n" +
-                "          </member>\n" +
-                "          <member>\n" +
-                "            <name>lang</name>\n" +
-                "            <value>ja</value>\n" +
-                "          </member>\n" +
-                "          <member>\n" +
-                "            <name>updated_on</name>\n" +
-                "            <value>20101020144113</value>\n" +
-                "          </member>\n" +
-                "        </struct>\n" +
-                "      </value>\n" +
-                "    </param>\n" +
-                "  </params>\n" +
-                "</methodResponse>");
+                                       "<methodResponse>\n" +
+                                       "  <params>\n" +
+                                       "    <param>\n" +
+                                       "      <value>\n" +
+                                       "        <struct>\n" +
+                                       "          <member>\n" +
+                                       "            <name>id</name>\n" +
+                                       "            <value>\n" +
+                                       "              <i4>123</i4>\n" +
+                                       "            </value>\n" +
+                                       "          </member>\n" +
+                                       "          <member>\n" +
+                                       "            <name>name</name>\n" +
+                                       "            <value>えぐち</value>\n" +
+                                       "          </member>\n" +
+                                       "          <member>\n" +
+                                       "            <name>lang</name>\n" +
+                                       "            <value>ja</value>\n" +
+                                       "          </member>\n" +
+                                       "          <member>\n" +
+                                       "            <name>updated_on</name>\n" +
+                                       "            <value>20101020144113</value>\n" +
+                                       "          </member>\n" +
+                                       "        </struct>\n" +
+                                       "      </value>\n" +
+                                       "    </param>\n" +
+                                       "  </params>\n" +
+                                       "</methodResponse>");
 
         Map<String, Object> map = (Map<String, Object>) XmlRpcRequestReader.read(in);
 
@@ -171,22 +175,22 @@ public class XmlRpcRequestReaderTest {
     public void testReadFault() throws Exception {
 
         InputStream in = toInputStream("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
-                "<methodResponse>\n" +
-                "  <fault>\n" +
-                "    <value>\n" +
-                "      <struct>\n" +
-                "        <member>\n" +
-                "          <name>faultCode</name>\n" +
-                "          <value><int>0</int></value>\n" +
-                "        </member>\n" +
-                "        <member>\n" +
-                "          <name>faultString</name>\n" +
-                "          <value><string>No such handler: backlog.getStatus</string></value>\n" +
-                "        </member>\n" +
-                "      </struct>\n" +
-                "    </value>\n" +
-                "  </fault>\n" +
-                "</methodResponse>");
+                                       "<methodResponse>\n" +
+                                       "  <fault>\n" +
+                                       "    <value>\n" +
+                                       "      <struct>\n" +
+                                       "        <member>\n" +
+                                       "          <name>faultCode</name>\n" +
+                                       "          <value><int>0</int></value>\n" +
+                                       "        </member>\n" +
+                                       "        <member>\n" +
+                                       "          <name>faultString</name>\n" +
+                                       "          <value><string>No such handler: backlog.getStatus</string></value>\n" +
+                                       "        </member>\n" +
+                                       "      </struct>\n" +
+                                       "    </value>\n" +
+                                       "  </fault>\n" +
+                                       "</methodResponse>");
 
         XmlRpcRequestReader.read(in);
 

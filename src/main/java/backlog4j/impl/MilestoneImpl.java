@@ -14,9 +14,9 @@ import java.util.Map;
  */
 public final class MilestoneImpl implements Milestone {
 
-    private final Integer id;
-    private final String name;
-    private final String date;
+    private final Integer      id;
+    private final String       name;
+    private final String       date;
     private final List<Status> statuses;
 
     public MilestoneImpl(Map<String, Object> map) {
@@ -69,18 +69,18 @@ public final class MilestoneImpl implements Milestone {
 
         return true;
     }
-    
+
     @Override
     public int hashCode() {
         return id.hashCode();
     }
-    
+
     @Override
     public String toString() {
         return "Milestone{" +
-                "name='" + name + '\'' +
-                ", date='" + date + '\'' +
-                '}';
+               "name='" + name + '\'' +
+               ", date='" + date + '\'' +
+               '}';
     }
 
 }

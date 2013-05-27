@@ -13,7 +13,7 @@ import java.util.Map;
 public class DeleteVersion implements BacklogCommand<Version> {
 
     protected final BacklogClient client;
-    protected Integer id;
+    protected       Integer       id;
 
     public DeleteVersion(BacklogClient client) {
         this.client = client;

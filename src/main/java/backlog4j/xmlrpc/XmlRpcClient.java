@@ -2,7 +2,6 @@ package backlog4j.xmlrpc;
 
 import backlog4j.BacklogException;
 import backlog4j.conf.BacklogConfigure;
-import backlog4j.util.Base64;
 import backlog4j.xmlrpc.reader.XmlRpcRequestReader;
 import backlog4j.xmlrpc.writer.XmlRpcRequestWriter;
 
@@ -10,7 +9,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.URL;
 
 /**
  * @author eguchi
@@ -63,7 +61,7 @@ public class XmlRpcClient {
             if (code != 200) {
                 throw new BacklogException(
                         "Backlog returned response code : " + code +
-                                " " + con.getResponseMessage());
+                        " " + con.getResponseMessage());
             }
 
             InputStream in = null;
@@ -75,7 +73,7 @@ public class XmlRpcClient {
 
                 StringBuilder sb = new StringBuilder("Failed to execute: ");
                 sb.append(methodName).append(" ");
-                
+
                 String paramsText = params == null ? "{}" : params.toString();
                 sb.append(paramsText);
 

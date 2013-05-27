@@ -7,7 +7,7 @@ import java.io.IOException;
  */
 public final class BooleanWriter extends ObjectWriter {
 
-    private static final String NAME = "boolean";
+    private static final String        NAME     = "boolean";
     private static final BooleanWriter INSTANCE = new BooleanWriter();
 
     private BooleanWriter() {

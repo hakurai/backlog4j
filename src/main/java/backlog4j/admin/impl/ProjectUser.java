@@ -10,8 +10,8 @@ import java.util.Map;
 public final class ProjectUser implements User {
 
     private final Integer id;
-    private final String userId;
-    private final String name;
+    private final String  userId;
+    private final String  name;
 
     public ProjectUser(Map<String, Object> map) {
 

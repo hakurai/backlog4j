@@ -12,8 +12,8 @@ import java.net.URL;
 public abstract class AbstractBacklogConfigure implements BacklogConfigure {
     private final String username;
     private final String password;
-    private final int readTimeout;
-    private final int connectTimeout;
+    private final int    readTimeout;
+    private final int    connectTimeout;
 
     public AbstractBacklogConfigure(String username, String password, int readTimeout, int connectTimeout) {
         if (username == null) {
@@ -63,7 +63,7 @@ public abstract class AbstractBacklogConfigure implements BacklogConfigure {
         con.setRequestProperty("Content-Type", "text/xml");
 
         con.setDoOutput(true);
-        
+
         return con;
     }
 }

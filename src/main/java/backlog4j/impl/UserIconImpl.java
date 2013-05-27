@@ -11,9 +11,9 @@ import java.util.Map;
 public final class UserIconImpl implements UserIcon {
 
     private final Integer id;
-    private final String contentType;
-    private final byte[] data;
-    private final String updatedOn;
+    private final String  contentType;
+    private final byte[]  data;
+    private final String  updatedOn;
 
     public UserIconImpl(Map<String, Object> map) {
         id = (Integer) map.get("id");

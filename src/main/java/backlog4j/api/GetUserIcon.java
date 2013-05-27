@@ -13,7 +13,7 @@ import java.util.Map;
 public class GetUserIcon implements BacklogCommand<UserIcon> {
 
     private final BacklogClient client;
-    private Integer id;
+    private       Integer       id;
 
     public GetUserIcon(BacklogClient client) {
         this.client = client;

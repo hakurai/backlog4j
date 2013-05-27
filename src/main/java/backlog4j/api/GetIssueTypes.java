@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class GetIssueTypes implements BacklogCommand<IssueTypeList> {
     private final BacklogClient client;
-    private Integer projectId;
+    private       Integer       projectId;
 
     public GetIssueTypes(BacklogClient client) {
         this.client = client;

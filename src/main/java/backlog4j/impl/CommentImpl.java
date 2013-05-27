@@ -11,10 +11,10 @@ import java.util.Map;
 public final class CommentImpl implements Comment {
 
     private final Integer id;
-    private final String content;
-    private final User createdUser;
-    private final String createdOn;
-    private final String updatedOn;
+    private final String  content;
+    private final User    createdUser;
+    private final String  createdOn;
+    private final String  updatedOn;
 
 
     public CommentImpl(Map<String, Object> map) {
@@ -58,9 +58,9 @@ public final class CommentImpl implements Comment {
     @Override
     public String toString() {
         return "Comment{" +
-                "createdUser=" + createdUser +
-                ", content='" + content + '\'' +
-                '}';
+               "createdUser=" + createdUser +
+               ", content='" + content + '\'' +
+               '}';
     }
 
     @Override

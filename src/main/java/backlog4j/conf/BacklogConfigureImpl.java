@@ -9,7 +9,7 @@ import java.net.URL;
 public final class BacklogConfigureImpl extends AbstractBacklogConfigure {
 
     private final String spaceId;
-    private final URL xmlRpcUrl;
+    private final URL    xmlRpcUrl;
 
     public BacklogConfigureImpl(String spaceId, String username, String password, int readTimeout, int connectTimeout) throws MalformedURLException {
         super(username, password, readTimeout, connectTimeout);

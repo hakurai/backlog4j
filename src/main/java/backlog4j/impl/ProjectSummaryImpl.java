@@ -14,13 +14,13 @@ import java.util.Map;
  */
 public final class ProjectSummaryImpl implements ProjectSummary {
 
-    private final Integer id;
-    private final String name;
-    private final String key;
-    private final String url;
-    private final List<Status> statuses;
+    private final Integer         id;
+    private final String          name;
+    private final String          key;
+    private final String          url;
+    private final List<Status>    statuses;
     private final List<Milestone> milestones;
-    private final Milestone currentMilestone;
+    private final Milestone       currentMilestone;
 
     public ProjectSummaryImpl(Map<String, Object> map) {
         id = (Integer) map.get("id");

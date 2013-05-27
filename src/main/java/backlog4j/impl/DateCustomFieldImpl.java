@@ -11,10 +11,10 @@ public final class DateCustomFieldImpl extends CustomFieldImpl implements DateCu
 
 
     private final InitialValueType initialValueType;
-    private final Integer initialShift;
-    private final String initialiDate;
-    private final String min;
-    private final String max;
+    private final Integer          initialShift;
+    private final String           initialiDate;
+    private final String           min;
+    private final String           max;
 
 
     public DateCustomFieldImpl(Map<String, Object> map) {

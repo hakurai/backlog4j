@@ -10,8 +10,8 @@ import java.util.Map;
 public final class IssueTypeImpl implements IssueType {
 
     private final Integer id;
-    private final String name;
-    private final String color;
+    private final String  name;
+    private final String  color;
 
     public IssueTypeImpl(Map<String, Object> map) {
         assert (map.size() == 3);
@@ -43,8 +43,8 @@ public final class IssueTypeImpl implements IssueType {
     @Override
     public String toString() {
         return "IssueType{" +
-                "name='" + name + '\'' +
-                '}';
+               "name='" + name + '\'' +
+               '}';
     }
 
     @Override

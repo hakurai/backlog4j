@@ -10,7 +10,7 @@ import java.util.Map;
 public final class ResolutionImpl implements Resolution {
 
     private final Integer id;
-    private final String name;
+    private final String  name;
 
     public ResolutionImpl(Map<String, Object> map) {
         assert (map.size() == 2);
@@ -35,8 +35,8 @@ public final class ResolutionImpl implements Resolution {
     @Override
     public String toString() {
         return "Resolution{" +
-                "name='" + name + '\'' +
-                '}';
+               "name='" + name + '\'' +
+               '}';
     }
 
     @Override

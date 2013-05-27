@@ -13,8 +13,8 @@ public final class ProjectEx implements Project {
     private final Project delegate;
 
     private final Boolean useChart;
-    private final String createdOn;
-    private final String updatedOn;
+    private final String  createdOn;
+    private final String  updatedOn;
 
     public ProjectEx(Map<String, Object> map) {
         delegate = new ProjectImpl(map);
@@ -53,7 +53,7 @@ public final class ProjectEx implements Project {
     public Boolean isUseParentChildIssue() {
         return delegate.isUseParentChildIssue();
     }
-    
+
     @Override
     public String toString() {
         return delegate.toString();

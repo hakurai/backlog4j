@@ -13,7 +13,7 @@ import java.util.Map;
 public final class SelectCustomFieldImpl extends CustomFieldImpl implements SelectCustomField {
 
     private final List<Item> items;
-    private final Boolean allowInput;
+    private final Boolean    allowInput;
 
     public SelectCustomFieldImpl(Map<String, Object> map) {
         super(map);

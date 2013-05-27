@@ -13,8 +13,8 @@ import java.util.Map;
 public class GetUser implements BacklogCommand<User> {
 
     private final BacklogClient client;
-    private Integer id;
-    private String userId;
+    private       Integer       id;
+    private       String        userId;
 
     public GetUser(BacklogClient client) {
         this.client = client;

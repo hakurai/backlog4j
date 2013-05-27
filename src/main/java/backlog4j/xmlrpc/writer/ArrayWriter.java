@@ -7,7 +7,7 @@ import java.io.IOException;
  */
 public final class ArrayWriter extends ObjectWriter {
 
-    private static final String NAME = "array";
+    private static final String      NAME     = "array";
     private static final ArrayWriter INSTANCE = new ArrayWriter();
 
     private ArrayWriter() {
