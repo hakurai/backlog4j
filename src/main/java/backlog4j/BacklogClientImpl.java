@@ -184,4 +184,8 @@ class BacklogClientImpl extends AbstractBacklogClientBase implements BacklogClie
     public GetCustomFields getCustomFields() {
         return new GetCustomFields(this);
     }
+    @Override
+    public GetChildIssues getChildIssues() {
+        return new GetChildIssues(this);
+    }
 }

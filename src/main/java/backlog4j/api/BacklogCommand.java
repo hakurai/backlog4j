@@ -106,6 +106,7 @@ public interface BacklogCommand<T> {
     static final String BACKLOG_GET_RESOLUTIONS = "backlog.getResolutions";
     static final String BACKLOG_GET_PRIORITIES = "backlog.getPriorities";
     static final String BACKLOG_GET_CUSTOM_FIELDS = "backlog.getCustomFields";
+    static final String BACKLOG_GET_CHILD_ISSUES = "backlog.getChildIssues";
 
 
     T execute();

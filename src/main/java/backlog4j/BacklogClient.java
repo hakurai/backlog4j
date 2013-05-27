@@ -254,4 +254,11 @@ public interface BacklogClient extends BacklogClientBase {
      * @return the new GetCustomFields object.
      */
     GetCustomFields getCustomFields();
+
+    /**
+     * Returns a object to execute a backlog.getChildIssues API
+     *
+     * @return the new GetChildIssues object.
+     */
+    GetChildIssues getChildIssues();
 }
