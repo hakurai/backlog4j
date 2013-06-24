@@ -11,5 +11,7 @@ public interface Project extends identified, Named {
 
     Boolean isArchived();
 
+    String getTextFormattingRule();
+
     Boolean isUseParentChildIssue();
 }

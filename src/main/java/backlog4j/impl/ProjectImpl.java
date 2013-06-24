@@ -14,6 +14,7 @@ public final class ProjectImpl implements Project {
     private final String  key;
     private final String  url;
     private final Boolean archived;
+    private final String  textFormattingRule;
     private final Boolean useParentChildIssue;
 
     public ProjectImpl(Map<String, Object> map) {
@@ -22,6 +23,7 @@ public final class ProjectImpl implements Project {
         key = (String) map.get("key");
         url = (String) map.get("url");
         archived = (Boolean) map.get("archived");
+        textFormattingRule = (String)map.get("text_formatting_rule");
         useParentChildIssue = (Boolean) map.get("use_parent_child_issue");
     }
 
@@ -53,6 +55,11 @@ public final class ProjectImpl implements Project {
     public Boolean isArchived() {
         return archived;
     }
+
+    public String getTextFormattingRule() {
+        return textFormattingRule;
+    }
+    
     @Override
     public Boolean isUseParentChildIssue() {
         return useParentChildIssue;

@@ -48,6 +48,10 @@ public final class ProjectEx implements Project {
     public Boolean isArchived() {
         return delegate.isArchived();
     }
+    @Override
+    public String getTextFormattingRule() {
+        return delegate.getTextFormattingRule();
+    }
 
     @Override
     public Boolean isUseParentChildIssue() {

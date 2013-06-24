@@ -8,7 +8,7 @@ import java.util.List;
 public interface Issue extends identified {
 
     static final String ID              = "id";
-    static final String PARENT_ISSUE_ID = "id";
+    static final String PARENT_ISSUE_ID = "parent_issue_id";
     static final String KEY             = "key";
     static final String SUMMARY         = "summary";
     static final String DESCRIPTION     = "description";
