@@ -14,7 +14,7 @@ import java.util.Map;
 public class DeleteCustomField implements BacklogAdminCommand {
 
     private final BacklogAdminClient client;
-    private final Map<String, Object> map = new HashMap<String, Object>();
+    private Integer id;
 
     public DeleteCustomField(BacklogAdminClient client) {
         this.client = client;
@@ -22,13 +22,13 @@ public class DeleteCustomField implements BacklogAdminCommand {
 
 
     public DeleteCustomField setId(Integer id) {
-        map.put(ID, id);
+        this.id = id;
 
         return this;
     }
 
     public Integer getId() {
-        return (Integer) map.get(ID);
+        return id;
     }
 
     private void checkParameters() {
@@ -40,7 +40,7 @@ public class DeleteCustomField implements BacklogAdminCommand {
     @Override
     public CustomField execute() {
         checkParameters();
-        Object res = client.execute(BACKLOG_ADMIN_DELETE_CUSTOM_FIELD, map);
+        Object res = client.execute(BACKLOG_ADMIN_DELETE_CUSTOM_FIELD, getId());
 
         return CustomFieldParser.parse((Map<String, Object>) res);
     }
