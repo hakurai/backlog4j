@@ -1,6 +1,8 @@
 package backlog4j.xmlrpc.writer;
 
 import backlog4j.BacklogException;
+import backlog4j.util.XmlRpcUtil;
+import backlog4j.xmlrpc.XmlRpcException;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -67,7 +69,7 @@ public class XmlRpcRequestWriter {
     public void write(String name, String text) throws IOException {
 
         writeTagStart(name);
-        out.write(text.getBytes(CHARSET));
+        out.write(XmlRpcUtil.escape(text).getBytes(CHARSET));
         writeTagEnd(name);
     }
 
@@ -105,7 +107,7 @@ public class XmlRpcRequestWriter {
             requestWriter.endRequest();
 
         } catch (IOException e) {
-            throw new BacklogException(e);
+            throw new XmlRpcException(e);
         }
     }
 

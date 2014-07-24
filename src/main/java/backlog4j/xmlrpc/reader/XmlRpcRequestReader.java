@@ -1,6 +1,7 @@
 package backlog4j.xmlrpc.reader;
 
 import backlog4j.BacklogException;
+import backlog4j.xmlrpc.XmlRpcException;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -28,9 +29,8 @@ public class XmlRpcRequestReader {
                 Integer faultCode = (Integer) map.get("faultCode");
                 String faultString = (String) map.get("faultString");
 
-                throw new BacklogException("Request faild faultCode : " + faultCode + " faultString : " + faultString);
+                throw new XmlRpcException(faultCode, faultString);
             }
-
 
             return handler.getObject();
 

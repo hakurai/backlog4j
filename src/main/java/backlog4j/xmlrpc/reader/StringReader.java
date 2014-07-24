@@ -1,5 +1,7 @@
 package backlog4j.xmlrpc.reader;
 
+import backlog4j.util.XmlRpcUtil;
+
 /**
  * @author eguchi
  */
@@ -9,7 +11,7 @@ public class StringReader extends ObjectReader<String> {
 
     @Override
     public void read(String source) {
-        value = source;
+        value = XmlRpcUtil.unescape(source);
     }
 
     @Override

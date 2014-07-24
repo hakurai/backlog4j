@@ -9,16 +9,18 @@ backlog4j is a Java library for Backlog API.
     <dependency>
       <groupId>org.backlog4j</groupId>
       <artifactId>backlog4j</artifactId>
-      <version>0.4.1</version>
+      <version>1.0.0</version>
     </dependency>
 
 ### gradle
 
-    'org.backlog4j:backlog4j:0.4.1'
+    'org.backlog4j:backlog4j:1.0.0'
 
 ## How to use
 
-### Part1. Set up configuration
+    BacklogClient backlogClient = BacklogClientFactory.createBacklogClient("yuorSpaceId", "yourUsername", "yourPassword");
+
+or
 
     BacklogConfigure configure =
         new BacklogConfigureBuilder()
@@ -26,8 +28,6 @@ backlog4j is a Java library for Backlog API.
         .setUsername("yourUsername")
         .setPassword("yourPassword")
         .buildBacklogConfigure();
-
-### Part2. Create client
 
     BacklogClient backlogClient = new BacklogClientFactory(configure).newBacklogClient();
 

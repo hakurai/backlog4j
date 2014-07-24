@@ -28,6 +28,26 @@ public class UpdateIssue extends AbstractUpdateIssue<UpdateIssue> {
         return this;
     }
 
+    public UpdateIssue setResolutionId(Integer resolutionId) {
+        map.put(RESOLUTION_ID, resolutionId);
+        
+        return this;
+    }
+    
+    public Integer getResolutionId(){
+        return (Integer)map.get(RESOLUTION_ID);
+    }
+
+    public UpdateIssue setComment(String comment) {
+        map.put(COMMENT, comment);
+
+        return this;
+    }
+
+    public String getComment() {
+        return (String)map.get(COMMENT);
+    }
+
     @Override
     protected UpdateIssue getThis() {
         return this;
