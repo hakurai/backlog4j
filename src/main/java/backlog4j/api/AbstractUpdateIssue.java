@@ -172,4 +172,84 @@ abstract class AbstractUpdateIssue<S> implements BacklogCommand<Issue> {
 
         return getThis();
     }
+
+    public S setCustomFieldValue(Integer customFieldId, String value) {
+        Map<String, Object> customFieldObject = ensureCustomFieldObject(customFieldId);
+        customFieldObject.put("values", value);
+
+        return getThis();
+    }
+
+    public S setCustomFieldValue(Integer customFieldId, Integer value) {
+        Map<String, Object> customFieldObject = ensureCustomFieldObject(customFieldId);
+        customFieldObject.put("values", value);
+
+        return getThis();
+    }
+
+    public S setCustomFieldValue(Integer customFieldId, List<Integer> values) {
+        Map<String, Object> customFieldObject = ensureCustomFieldObject(customFieldId);
+        customFieldObject.put("values", values);
+
+        return getThis();
+    }
+    
+    public Object getCustomFieldValue(Integer customFieldId) {
+        Map<String, Object> object = getCustomFieldObject(customFieldId);
+        if(object != null){
+            return object.get("values");
+        }else{
+            return null;
+        }
+    }
+    
+    public Object getCustomFieldOtherText(Integer customFieldId) {
+        Map<String, Object> object = getCustomFieldObject(customFieldId);
+        if(object != null){
+            return object.get("other_text");
+        }else{
+            return null;
+        }
+    }
+
+    public S setCustomFieldOtherText(Integer customFieldId, String value) {
+        Map<String, Object> customFieldObject = ensureCustomFieldObject(customFieldId);
+        customFieldObject.put("other_text", value);
+
+        return getThis();
+    }
+
+    private Map<String, Object> ensureCustomFieldObject(Integer customFieldId) {
+        Map<String, Object> customFieldObject = getCustomFieldObject(customFieldId);
+        if (customFieldObject == null) {
+            customFieldObject = new HashMap<String, Object>();
+            customFieldObject.put("id", customFieldId);
+            addCustomFieldObject(customFieldObject);
+        }
+        return customFieldObject;
+    }
+
+    private Map<String, Object> getCustomFieldObject(Integer customFieldId) {
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> customFields = (List<Map<String, Object>>) map.get("custom_fields");
+        if (customFields != null) {
+            for (Map<String, Object> customFieldObj : customFields) {
+                if (customFieldObj.get("id").equals(customFieldId)) {
+                    return customFieldObj;
+                }
+            }
+        }
+        return null;
+    }
+
+    private void addCustomFieldObject(Map<String, Object> obj) {
+        @SuppressWarnings("unchecked")
+        List<Map<String, Object>> customFields = (List<Map<String, Object>>) map.get("custom_fields");
+        if (customFields == null) {
+            customFields = new ArrayList<Map<String, Object>>();
+            map.put("custom_fields", customFields);
+        }
+
+        customFields.add(obj);
+    }
 }
