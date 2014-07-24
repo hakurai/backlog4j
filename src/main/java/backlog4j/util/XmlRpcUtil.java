@@ -53,4 +53,20 @@ public final class XmlRpcUtil {
     public static <T> List<T> toList(Class<? extends T> clazz, Object o) {
         return toList(clazz, (Object[]) o);
     }
+
+    public static String escape(String text) {
+        return text.replace("&", "&amp;")
+                   .replace("<", "&lt;")
+                   .replace(">", "&gt;")
+                   .replace("\"", "&quot;")
+                   .replace("'", "&apos;");
+    }
+
+    public static String unescape(String text) {
+        return text.replace("&lt;", "<")
+                   .replace("&gt;", ">")
+                   .replace("&quot;", "\"")
+                   .replace("&apos;", "'")
+                   .replace("&amp;", "&");
+    }
 }
