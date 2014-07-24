@@ -9,12 +9,12 @@ backlog4j is a Java library for Backlog API.
     <dependency>
       <groupId>org.backlog4j</groupId>
       <artifactId>backlog4j</artifactId>
-      <version>0.6.0</version>
+      <version>1.0.0</version>
     </dependency>
 
 ### gradle
 
-    'org.backlog4j:backlog4j:0.6.0'
+    'org.backlog4j:backlog4j:1.0.0'
 
 ## How to use
 
