@@ -1,5 +1,6 @@
 package backlog4j.xmlrpc.reader;
 
+import backlog4j.BacklogException;
 import backlog4j.xmlrpc.XmlRpcException;
 
 import javax.xml.parsers.SAXParser;
@@ -14,31 +15,28 @@ public class XmlRpcRequestReader {
 
     public static Object read(InputStream input) {
 
-        XmlRpcHandler handler;
         try {
+
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser parser = factory.newSAXParser();
 
-            handler = new XmlRpcHandler();
+            XmlRpcHandler handler = new XmlRpcHandler();
             parser.parse(input, handler);
 
+            if (handler.isFault()) {
+                Map<String, Object> map = (Map<String, Object>) handler.getObject();
+
+                Integer faultCode = (Integer) map.get("faultCode");
+                String faultString = (String) map.get("faultString");
+
+                throw new XmlRpcException(faultCode, faultString);
+            }
+
+            return handler.getObject();
+
         } catch (Exception e) {
-            throw new XmlRpcException(e);
+            throw new BacklogException(e);
         }
-
-        if (handler.isFault()) {
-            Map<String, Object> map = (Map<String, Object>) handler.getObject();
-
-            Integer faultCode = (Integer) map.get("faultCode");
-            String faultString = (String) map.get("faultString");
-
-            throw new XmlRpcException(faultCode, faultString);
-        }
-
-
-        return handler.getObject();
-
-
     }
 
 
