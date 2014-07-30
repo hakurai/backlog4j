@@ -88,16 +88,16 @@ class BacklogAdminClientImpl extends AbstractBacklogClientBase implements Backlo
 
     @Override
     public AddCustomField addCustomField() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return new AddCustomField(this);
     }
 
     @Override
     public UpdateCustomField updateCustomField() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return new UpdateCustomField(this);
     }
 
     @Override
     public DeleteCustomField deleteCustomField() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return new DeleteCustomField(this);
     }
 }
