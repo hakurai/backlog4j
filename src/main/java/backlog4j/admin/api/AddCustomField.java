@@ -6,6 +6,7 @@ import backlog4j.CustomField;
 import backlog4j.impl.CustomFieldParser;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -216,6 +217,10 @@ public class AddCustomField implements BacklogAdminCommand {
     @Override
     public CustomField execute() {
         checkParameters();
+        if (getIssueTypes() == null) {
+            map.put(ISSUE_TYPES, Collections.emptyList());
+        }
+
         Object res = client.execute(BACKLOG_ADMIN_ADD_CUSTOM_FIELD, map);
 
         return CustomFieldParser.parse((Map<String, Object>) res);

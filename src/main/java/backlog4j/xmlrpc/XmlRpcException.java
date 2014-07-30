@@ -6,7 +6,6 @@ package backlog4j.xmlrpc;
 public class XmlRpcException extends RuntimeException {
 
     private Integer faultCode;
-    private String  faultString;
 
     public XmlRpcException() {
 
@@ -15,17 +14,13 @@ public class XmlRpcException extends RuntimeException {
     public XmlRpcException(Throwable cause) {
         super(cause);
     }
-    
+
     public XmlRpcException(Integer faultCode, String faultString) {
-        super("Request faild faultCode : " + faultCode + " faultString : " + faultString);
+        super(faultString);
         this.faultCode = faultCode;
-        this.faultString = faultString;
     }
 
     public Integer getFaultCode() {
         return faultCode;
-    }
-    public String getFaultString() {
-        return faultString;
     }
 }
