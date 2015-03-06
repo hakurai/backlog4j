@@ -4,12 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -161,7 +156,7 @@ public class XmlRpcRequestWriterTest {
     @Test
     public void testMap() throws Exception {
 
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new LinkedHashMap<String, Object>();
         map.put("name", "backlog");
         map.put("age", 25);
         map.put("male", true);
@@ -170,19 +165,18 @@ public class XmlRpcRequestWriterTest {
         XmlRpcRequestWriter.write(out, "backlog.getProjects", map);
 
         assertThat(out.toString(),
-                   containsString("<params><param><value><struct>" +
-                                  "<member><name>male</name><value><boolean>1</boolean></value></member>" +
-                                  "<member><name>age</name><value><int>25</int></value></member>" +
-                                  "<member><name>name</name><value><string>backlog</string></value></member><member>" +
-                                  "<name>hobby</name><value>" +
-                                  "<array><data><value><string>reading</string></value><value><string>football</string></value></data></array>" +
-                                  "</value></member></struct></value></param></params>"));
+                   containsString("<params><param><value>" +
+                           "<struct><member><name>name</name><value><string>backlog</string></value></member>" +
+                           "<member><name>age</name><value><int>25</int></value></member>" +
+                           "<member><name>male</name><value><boolean>1</boolean></value></member>" +
+                           "<member><name>hobby</name><value><array><data><value><string>reading</string></value><value><string>football</string></value></data></array></value></member>" +
+                           "</struct></value></param></params>"));
     }
 
     @Test
     public void testNestingMap() throws Exception {
-        Map<String, Object> map = new HashMap<String, Object>();
-        Map<String, Object> map2 = new HashMap<String, Object>();
+        Map<String, Object> map = new LinkedHashMap<String, Object>();
+        Map<String, Object> map2 = new LinkedHashMap<String, Object>();
 
         map2.put("name", "backlog");
         map.put("map", map2);
