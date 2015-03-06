@@ -2,6 +2,8 @@ package backlog4j.api;
 
 import backlog4j.Issue;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -66,21 +68,29 @@ abstract class AbstractUpdateIssue<S> implements BacklogCommand<Issue> {
         return getThis();
     }
 
-    public Double getEstimatedHours() {
-        return (Double) map.get(ESTIMATED_HOURS);
+    public BigDecimal getEstimatedHours() {
+        return (BigDecimal) map.get(ESTIMATED_HOURS);
     }
 
     public S setEstimatedHours(Double estimatedHours) {
-        map.put(ESTIMATED_HOURS, estimatedHours);
+        return setEstimatedHours(new BigDecimal(estimatedHours));
+    }
+
+    public S setEstimatedHours(BigDecimal estimatedHours) {
+        map.put(ESTIMATED_HOURS, estimatedHours.setScale(2, RoundingMode.HALF_EVEN));
 
         return getThis();
     }
 
-    public Double getActualHours() {
-        return (Double) map.get(ACTUAL_HOURS);
+    public BigDecimal getActualHours() {
+        return (BigDecimal) map.get(ACTUAL_HOURS);
     }
 
     public S setActualHours(Double actualHours) {
+        return setActualHours(new BigDecimal(actualHours));
+    }
+
+    public S setActualHours(BigDecimal actualHours) {
         map.put(ACTUAL_HOURS, actualHours);
 
         return getThis();

@@ -49,6 +49,17 @@ public class UpdateProject implements BacklogAdminCommand<ProjectEx> {
         return (String) map.get(KEY);
     }
 
+
+    public UpdateProject setTextFormattingRule(String textFormattingRule) {
+        map.put(TEXT_FORMATTING_RULE, textFormattingRule);
+
+        return this;
+    }
+
+    public String getTextFormattingRule() {
+        return (String) map.get(TEXT_FORMATTING_RULE);
+    }
+
     public UpdateProject setUseChart(Boolean useChart) {
         map.put(USE_CHART, useChart);
 
@@ -60,7 +71,7 @@ public class UpdateProject implements BacklogAdminCommand<ProjectEx> {
     }
 
     public UpdateProject setUseParentChildIssue(Boolean b) {
-        map.put(PARENT_CHILD_ISSUE, b);
+        map.put(USE_PARENT_CHILD_ISSUE, b);
 
         return this;
     }
