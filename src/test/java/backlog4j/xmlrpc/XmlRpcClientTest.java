@@ -1,7 +1,11 @@
 package backlog4j.xmlrpc;
 
 import backlog4j.BacklogException;
+import backlog4j.conf.BacklogConfigure;
+import backlog4j.conf.BacklogConfigureBuilder;
 import backlog4j.conf.ImmutableSpaceConfigure;
+import org.hamcrest.CoreMatchers;
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
