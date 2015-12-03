@@ -73,12 +73,20 @@ abstract class AbstractUpdateIssue<S> implements BacklogCommand<Issue> {
     }
 
     public S setEstimatedHours(Double estimatedHours) {
-        return setEstimatedHours(new BigDecimal(estimatedHours));
+        if (estimatedHours == null) {
+            return setEstimatedHours((BigDecimal) null);
+        } else {
+            return setEstimatedHours(new BigDecimal(estimatedHours));
+        }
     }
 
     public S setEstimatedHours(BigDecimal estimatedHours) {
-        map.put(ESTIMATED_HOURS, estimatedHours.setScale(2, RoundingMode.HALF_EVEN));
-
+        if (estimatedHours == null) {
+            map.put(ESTIMATED_HOURS, null);
+        } else {
+            map.put(ESTIMATED_HOURS, estimatedHours.setScale(2, RoundingMode.HALF_EVEN));
+        }
+        
         return getThis();
     }
 
@@ -87,11 +95,19 @@ abstract class AbstractUpdateIssue<S> implements BacklogCommand<Issue> {
     }
 
     public S setActualHours(Double actualHours) {
-        return setActualHours(new BigDecimal(actualHours));
+        if (actualHours == null) {
+            return setActualHours((BigDecimal) null);
+        } else {
+            return setActualHours(new BigDecimal(actualHours));
+        }
     }
 
     public S setActualHours(BigDecimal actualHours) {
-        map.put(ACTUAL_HOURS, actualHours);
+        if (actualHours == null) {
+            map.put(ACTUAL_HOURS, null);
+        } else {
+            map.put(ACTUAL_HOURS, actualHours.setScale(2, RoundingMode.HALF_EVEN));
+        }
 
         return getThis();
     }
@@ -203,21 +219,21 @@ abstract class AbstractUpdateIssue<S> implements BacklogCommand<Issue> {
 
         return getThis();
     }
-    
+
     public Object getCustomFieldValue(Integer customFieldId) {
         Map<String, Object> object = getCustomFieldObject(customFieldId);
-        if(object != null){
+        if (object != null) {
             return object.get("values");
-        }else{
+        } else {
             return null;
         }
     }
-    
+
     public Object getCustomFieldOtherText(Integer customFieldId) {
         Map<String, Object> object = getCustomFieldObject(customFieldId);
-        if(object != null){
+        if (object != null) {
             return object.get("other_text");
-        }else{
+        } else {
             return null;
         }
     }
